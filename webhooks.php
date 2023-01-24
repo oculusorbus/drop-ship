@@ -1,5 +1,5 @@
 <?PHP
-include('/credentials/webhooks_credentials.php');
+include('credentials/webhooks_credentials.php');
 //
 //-- https://gist.github.com/Mo45/cb0813cb8a6ebcd6524f6a36d4f8862c
 //
