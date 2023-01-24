@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="loading">
-	  <img id="loading-image" src="loading.gif" alt="Loading..." />
+	  <img id="loading-image" src="images/loading.gif" alt="Loading..." />
 	</div>
 	<div class="container">
 		<!-- Navigation Bar -->
