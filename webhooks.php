@@ -50,7 +50,7 @@ include('credentials/webhooks_credentials.php');
 					/*
 		            "footer" => [
 		                "text" => "Drop Ship",
-		                "icon_url" => "https://www.madballs.net/dropship/vip.gif"
+		                "icon_url" => "https://www.madballs.net/drop-ship/images/vip.gif"
 		            ],*/
 
 		            // Embed image
@@ -60,7 +60,7 @@ include('credentials/webhooks_credentials.php');
 
 		            // thumbnail
 		            "thumbnail" => [
-		                "url" => "https://www.madballs.net/dropship/vip.gif"
+		                "url" => "https://www.madballs.net/drop-ship/images/vip.gif"
 		            ],
 
 		            // Author name & url
