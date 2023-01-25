@@ -868,9 +868,7 @@ if(isset($_POST['run'])){
 				}	
 			}
 			if(isset($dropshipMarkup)){
-				deleteResult($conn);
 				logScore($conn, $dropshipMarkup);
-				killSquad($conn);
 			}else{
 				echo "<script type='text/javascript'>alert('Something went wrong with your game and no results markup was generated. Your score was not logged and your squad is still intact. Please try again and let Oculus Orbus know if you continue to experience issues.');</script>";
 			}

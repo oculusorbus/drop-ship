@@ -560,6 +560,8 @@ function logScore($conn, $replay) {
 	// Check for the off chance that someone ran an inactive game right after a game was deactivated
 	checkGame($conn);
 	if(isset($_SESSION['userData']['game_id'])) {
+		// Delete previous result for current game, if it exists
+		deleteResult($conn);
 		$sql = "INSERT INTO results (game_id, user_id, score, replay, project_id)
 		VALUES ('".$_SESSION['userData']['game_id']."', '".$_SESSION['userData']['user_id']."', '".$_SESSION['userData']['score']."', '".htmlspecialchars($replay)."', '".$_SESSION['userData']['project_id']."')";
 
@@ -567,6 +569,8 @@ function logScore($conn, $replay) {
 		  //echo "New record created successfully";
 			checkActiveInventory($conn);
 			removeInventory($conn);
+			checkActiveSoldiers($conn);
+			killSquad($conn);
 		} else {
 		  //echo "Error: " . $sql . "<br>" . $conn->error;
 		}
@@ -595,6 +599,34 @@ function logResultsItems($conn, $item_id) {
 	$result_id = checkResultID($conn);
 	$sql = "INSERT INTO results_items (result_id, item_id, project_id)
 	VALUES ('".$result_id."', '".$item_id."', '".$_SESSION['userData']['project_id']."')";
+
+	if ($conn->query($sql) === TRUE) {
+	  //echo "New record created successfully";
+	} else {
+	  //echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+}
+
+// Check active soldiers
+function checkActiveSoldiers($conn) {
+	$sql = "SELECT id FROM soldiers WHERE user_id='".$_SESSION['userData']['user_id']."' AND active='1' AND project_id = '".$_SESSION['userData']['project_id']."'";
+	$result = $conn->query($sql);
+	
+	if ($result->num_rows > 0) {
+	  // output data of each row
+	  while($row = $result->fetch_assoc()) {
+		 logResultsSoldiers($conn, $row["id"]);
+	  }
+	} else {
+	  //echo "0 results";
+	}
+}
+
+// Associates active soldiers with results
+function logResultsSoldiers($conn, $soldier_id) {
+	$result_id = checkResultID($conn);
+	$sql = "INSERT INTO results_soldiers (result_id, soldier_id, project_id)
+	VALUES ('".$result_id."', '".$soldier_id."', '".$_SESSION['userData']['project_id']."')";
 
 	if ($conn->query($sql) === TRUE) {
 	  //echo "New record created successfully";
