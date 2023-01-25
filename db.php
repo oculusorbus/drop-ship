@@ -367,7 +367,7 @@ function getSoldiers($conn, $active, $filterby="", $all=false){
 		$filterby = "";
 	}
 	$active_clause = "";
-	if($active != null){
+	if($active != 2){
 		$active_clause = "AND active = '".$active."' ";
 	}
 	$user_clause = "user_id != 0 ";
