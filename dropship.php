@@ -223,6 +223,12 @@ if($melee == "true") {
 }
 //$roleMarkup .= '</ul>';
 
+// Also extracted this from dashboard to support multi page
+$filterby = "";
+if(isset($_POST['filterby'])){
+	$filterby = $_POST['filterby'];
+}
+
 // Extracted this function from dashboard so that it can be used on other pages
 function filterTroops($page){
 	echo'

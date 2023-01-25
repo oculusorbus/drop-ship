@@ -45,11 +45,6 @@ if($_SESSION['userData']['discord_id'] == "772831523899965440") {
 	}
 }
 
-$filterby = "";
-if(isset($_POST['filterby'])){
-	$filterby = $_POST['filterby'];
-}
-
 function renderNFT($nft_data, $ipfs){
 	echo "<div class='nft'><div class='nft-data'>
 	<span class='nft-name'>".$nft_data->name."</span>";
