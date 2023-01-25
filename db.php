@@ -1280,6 +1280,21 @@ function instantReplayButton($result_id, $small_button){
 	</form>';
 }
 
+function getResultsSoldiers($conn, $result_id){
+	$sql = "SELECT name, asset_name, ipfs FROM soldiers INNER JOIN results_soldiers ON soldiers.id=results_soldiers.soldier_id WHERE results_soldiers.result_id='".$result_id."' AND soldiers.project_id = '".$_SESSION['userData']['project_id']."'";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		if($_SESSION['userData']['project_id'] == 1){
+			echo "<span class='nft-image'><img src='images/nfts/".$row["asset_name"].".jpg'/></span>";
+		}else{
+			echo "<span class='nft-image'><img src='https://image-optimizer.jpgstoreapis.com/".$row["ipfs"]."'/></span>";
+		}
+	} else {
+	  //echo "0 results";
+	}
+}
+
 // Check leaderboard for discord and site display
 function checkLeaderboard($conn, $clean) {
 	$sql = "SELECT results.id, results.game_id, results.user_id, results.score, users.username, users.id AS user_id FROM results INNER JOIN users ON results.user_id=users.id WHERE game_id='".$_SESSION['userData']['game_id']."' AND results.project_id = '".$_SESSION['userData']['project_id']."' ORDER BY results.score DESC";
@@ -1312,6 +1327,7 @@ function checkLeaderboard($conn, $clean) {
 					instantReplayButton($row["id"], true);
 				}
 				echo "</td></tr></table></li>";
+				getResultsSoldiers($conn, $result_id);
 		  	}
 			echo "</ul>";
 		}
