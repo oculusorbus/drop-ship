@@ -412,6 +412,9 @@ function getSoldiers($conn, $active=null, $filterby="", $all=false){
 		}else{
 			echo "<span class='status'><strong>Status</strong><br>Deceased</span>";
 		}
+		if($all){
+			echo "<span class='nft-owner'><strong>Owner</strong><br>".$row["username"]."</span>";
+		}
 		echo "</div></div>";
 	  }
 	  if($troopcounter < 4 && $active == 1){
