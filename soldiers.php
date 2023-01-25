@@ -6,7 +6,7 @@ include 'header.php';
 ?>
 		<div class="row" id="row3">
 			<div class="main">
-				<h2>Soldiers</h2>
+				<h2>All Registered Soldiers</h2>
 			    <div class="content">
 					<div id="soldiers" class="soldiers-panel">
 						<?php filterTroops("soldiers"); ?>
