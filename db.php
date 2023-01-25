@@ -68,10 +68,12 @@ function evaluateText($text){
 				$replacements['Drop Ship'] = 'Filthy Mermaid';
 				$replacements['Drop Ship Initiating'] = 'Filthy Mermaid Entrance';
 				$replacements['Drop Ship Landed'] = 'Filthy Mermaid Doorway';
+				$replacements['drop-ship'] = 'filthy-mermaid';
 			}else{
 				$replacements['Drop Ship'] = 'Oculus Lounge';
 				$replacements['Drop Ship Initiating'] = 'Oculus Lounge Entrance';
 				$replacements['Drop Ship Landed'] = 'Oculus Lounge Doorway';
+				$replacements['drop-ship'] = 'oculus-lounge';
 			}
 			
 			$replacements['SCRIP'] = 'TIDDIES';
