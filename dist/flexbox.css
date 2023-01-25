@@ -673,6 +673,10 @@ li form {
 	padding-top: 20px;
 }
 
+.leaderboard-nfts {
+	width: 100%;
+}
+
 .leaderboard-nft img {
 	width: 25%;
 	float: left;
