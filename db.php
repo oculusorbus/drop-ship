@@ -1288,9 +1288,9 @@ function getResultsSoldiers($conn, $result_id){
 		echo "<div class='leaderboard-nfts'>";
 		while($row = $result->fetch_assoc()) {
 			if($_SESSION['userData']['project_id'] == 1){
-				echo "<span class='leaderboard-nft-image'><img src='images/nfts/".$row["asset_name"].".jpg'/></span>";
+				echo "<span class='leaderboard-nft'><img src='images/nfts/".$row["asset_name"].".jpg'/></span>";
 			}else{
-				echo "<span class='leaderboard-nft-image'><img src='https://image-optimizer.jpgstoreapis.com/".$row["ipfs"]."'/></span>";
+				echo "<span class='leaderboard-nft'><img src='https://image-optimizer.jpgstoreapis.com/".$row["ipfs"]."'/></span>";
 			}
 		}
 		echo "</div>";
