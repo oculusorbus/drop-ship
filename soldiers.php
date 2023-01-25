@@ -11,7 +11,7 @@ include 'header.php';
 					<div id="soldiers" class="soldiers-panel">
 						<?php filterTroops("soldiers"); ?>
 						<div class="nfts">
-						<?php getSoldiers($conn, 2, $filterby, true); ?>
+						<?php getSoldiers($conn, null, $filterby, true); ?>
 						</div>
 					</div>
 				</div>
