@@ -9,7 +9,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 if(isset($_SESSION['userData']['discord_id'])){
 	if($_SESSION['userData']['discord_id'] == $discordid_oculusorbus) {
-		$dbname = "jeremiah_dropshiptest";
+		$dbname = $dbbametest;
 	}
 }
 
