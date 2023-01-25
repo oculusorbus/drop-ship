@@ -370,7 +370,7 @@ function getSoldiers($conn, $active=null, $filterby=""){
 	if($active != null){
 		$active_clause = "AND active = '".$active."' ";
 	}
-	$sql = "SELECT * FROM soldiers WHERE user_id = '".$_SESSION['userData']['user_id']."' "$active_clause.$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, name";
+	$sql = "SELECT * FROM soldiers WHERE user_id = '".$_SESSION['userData']['user_id']."' ".$active_clause.$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, name";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
