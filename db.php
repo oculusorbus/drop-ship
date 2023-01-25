@@ -1285,6 +1285,7 @@ function getResultsSoldiers($conn, $result_id){
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
+		echo "<div class='leaderboard-soldiers'>";
 		while($row = $result->fetch_assoc()) {
 			if($_SESSION['userData']['project_id'] == 1){
 				echo "<span class='nft-image'><img src='images/nfts/".$row["asset_name"].".jpg'/></span>";
@@ -1292,6 +1293,7 @@ function getResultsSoldiers($conn, $result_id){
 				echo "<span class='nft-image'><img src='https://image-optimizer.jpgstoreapis.com/".$row["ipfs"]."'/></span>";
 			}
 		}
+		echo "</div>";
 	} else {
 	  //echo "0 results";
 	}
