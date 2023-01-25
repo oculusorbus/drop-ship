@@ -673,6 +673,11 @@ li form {
 	padding-top: 20px;
 }
 
+.leaderboard-soldiers .nft-image {
+	width: 50px;
+	float: left;
+}
+
 .empty-slot {
 	opacity: 50%;
 }
