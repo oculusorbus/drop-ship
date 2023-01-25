@@ -356,7 +356,7 @@ function deploySoldier($conn, $id, $active){
 }
 
 // Get soldiers for user
-function getSoldiers($conn, $active=null, $filterby="", $all=false){
+function getSoldiers($conn, $active, $filterby="", $all=false){
 	if($filterby != "None"){
 		if($filterby == "Heavy" || $filterby == "Medium" || $filterby == "Light" || $filterby == "Base"){
 			$filterby = "AND armor = '".$filterby."' ";
