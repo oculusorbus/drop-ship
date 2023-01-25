@@ -376,7 +376,7 @@ function getSoldiers($conn, $active, $filterby=""){
 		$troopcounter++;
 	    echo "<div class='nft'><div class='nft-data ".(($row["deceased"]==1)?"deceased":"")."'>";
 	substr("abcdef", -3, 1);
-		echo "<span class='nft-name'>".substr($row["name"], 0, 13)."</span>";
+		echo "<span class='nft-name'>".substr($row["name"], 0, 19)."</span>";
 		if($_SESSION['userData']['project_id'] == 1){
 			echo "<span class='nft-image'><img src='images/nfts/".$row["asset_name"].".jpg'/></span>";
 		}else{
