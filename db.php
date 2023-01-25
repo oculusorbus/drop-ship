@@ -552,6 +552,12 @@ function deleteResult($conn){
 		} else {
 		  //echo "Error: " . $sql . "<br>" . $conn->error;
 		}
+		$sql = "DELETE FROM results_soldiers WHERE result_id = '".$result_id."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+		if ($conn->query($sql) === TRUE) {
+		  //echo "Record deleted successfully";
+		} else {
+		  //echo "Error: " . $sql . "<br>" . $conn->error;
+		}
 	}
 }
 
