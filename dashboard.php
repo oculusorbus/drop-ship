@@ -271,7 +271,7 @@ if($_SESSION['userData']['project_id'] == 1){
 	$squad = "Super Soldier";	
 }
 ?>
-
+		<a name="dashboard" id="dashboard"></a>
 		<!-- The flexible grid (content) -->
 		<div class="row" id="row1">
 		  <div class="main">
