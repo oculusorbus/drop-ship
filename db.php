@@ -395,12 +395,18 @@ function getSoldiers($conn, $active=null, $filterby="", $all=false){
 		<span class='nft-gear'><strong>Gear</strong><br>".evaluateText($row["gear"])."</span>
 		<span class='nft-level'><strong>Level</strong><br>".$row["level"]."</span>";
 		if($row["deceased"] == "0"){
-			if(!$all){
-				if($row["active"] == "0"){
-						renderDeployButton($row["id"], 1);
+			if($row["active"] == "0"){
+				if(!$all){
+					renderDeployButton($row["id"], 1);
 				}else{
+					echo "<span class='status'><strong>Status</strong><br>Inactive</span>";
+				}
+			}else{
+				if(!$all){
 					renderDeployButton($row["id"], 0);
 					setSquadAttributes($row);
+				}else{
+					echo "<span class='status'><strong>Status</strong><br>Active</span>";
 				}
 			}
 		}else{
