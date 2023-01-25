@@ -231,6 +231,10 @@ if(isset($_POST['filterby'])){
 
 // Extracted this function from dashboard so that it can be used on other pages
 function filterTroops($page){
+	$barracks = "";
+	if($page == "dashboard"){
+		$barracks = "#barracks";
+	}
 	echo'
 	<div id="filter-troops">
 		<label for="filterTroops"><strong>Filter By:</strong></label>
@@ -245,7 +249,7 @@ function filterTroops($page){
 			<option value="Demolition">'.evaluateText("Demolition").'</option>
 			<option value="Melee">'.evaluateText("Melee").'</option>
 		</select>
-		<form id="filterTroopsForm" action="'.$page.'.php#barracks" method="post">
+		<form id="filterTroopsForm" action="'.$page.'.php'.$barracks.'" method="post">
 		  <input type="hidden" id="filterby" name="filterby" value="">
 		  <input type="submit" value="Submit" style="display:none;">
 		</form>
