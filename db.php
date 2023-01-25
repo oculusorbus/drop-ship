@@ -1323,6 +1323,7 @@ function checkLeaderboard($conn, $clean) {
 				$leaderboardCounter++;
 		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". <strong>".$row["username"]. "</strong> (" . $row["score"]. ")";
 				checkResultsItems($conn, $row["id"], "false");
+				getResultsSoldiers($conn, $row["id"]);
 				$data = checkXP($conn, $row["user_id"]);
 				$level = $data['level'];
 				// Only show instant replays to players at the same level or below
@@ -1331,7 +1332,7 @@ function checkLeaderboard($conn, $clean) {
 					instantReplayButton($row["id"], true);
 				}
 				echo "</td></tr></table></li>";
-				getResultsSoldiers($conn, $row["id"]);
+				
 		  	}
 			echo "</ul>";
 		}
