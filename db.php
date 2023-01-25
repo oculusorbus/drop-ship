@@ -1291,13 +1291,18 @@ function getResultsSoldiers($conn, $result_id){
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
+		$counter = 0;
 		echo "<div class='leaderboard-nfts'>";
 		while($row = $result->fetch_assoc()) {
+			$counter++;
 			if($_SESSION['userData']['project_id'] == 1){
 				echo "<span class='leaderboard-nft'><img src='images/nfts/".$row["asset_name"].".jpg'/></span>";
 			}else{
 				echo "<span class='leaderboard-nft'><img src='https://image-optimizer.jpgstoreapis.com/".$row["ipfs"]."'/></span>";
 			}
+		}
+		for($i=1; $i<=(4-$counter); $i++){
+			echo "<span class='leaderboard-nft'><img src='images/nfts/placeholder.jpg'></span>";
 		}
 		echo "</div>";
 	} else {
