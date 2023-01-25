@@ -10,7 +10,7 @@ include 'header.php';
 			    <div class="content">
 					<div id="soldiers" class="soldiers-panel">
 						<div class="nfts">
-						<?php getSoldiers($conn); ?>
+						<?php getSoldiers($conn, null, "", true); ?>
 						</div>
 					</div>
 				</div>
