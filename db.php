@@ -376,6 +376,7 @@ function getSoldiers($conn, $active=null, $filterby="", $all=false){
 	}
 
 	$sql = "SELECT name, asset_name, ipfs, rank, armor, gear, level, username, deceased, active, soldiers.id AS soldier_id FROM soldiers INNER JOIN users ON users.id = soldiers.user_id WHERE ".$user_clause.$active_clause.$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, name";
+	echo $sql;
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
