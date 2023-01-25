@@ -12,6 +12,7 @@ if(isset($_SESSION['userData']['discord_id'])){
 		$dbname = "jeremiah_dropshiptest";
 	}
 }
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
