@@ -1327,7 +1327,7 @@ function checkLeaderboard($conn, $clean) {
 					instantReplayButton($row["id"], true);
 				}
 				echo "</td></tr></table></li>";
-				getResultsSoldiers($conn, $result_id);
+				getResultsSoldiers($conn, $row["id"]);
 		  	}
 			echo "</ul>";
 		}
