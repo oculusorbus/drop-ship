@@ -375,7 +375,7 @@ function getSoldiers($conn, $active=null, $filterby="", $all=false){
 		$user_clause = "user_id = '".$_SESSION['userData']['user_id']."' ";
 	}
 
-	$sql = "SELECT * FROM soldiers INNER JOIN users ON users.id = soldiers.user_id WHERE ".$user_clause.$active_clause.$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, name";
+	$sql = "SELECT name, asset_name, ipfs, rank, armor, gear, level, username, deceased, soldiers.id AS soldier_id FROM soldiers INNER JOIN users ON users.id = soldiers.user_id WHERE ".$user_clause.$active_clause.$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, name";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -398,13 +398,13 @@ function getSoldiers($conn, $active=null, $filterby="", $all=false){
 		if($row["deceased"] == "0"){
 			if($row["active"] == "0"){
 				if(!$all){
-					renderDeployButton($row["id"], 1);
+					renderDeployButton($row["soldier_id"], 1);
 				}else{
 					echo "<span class='status'><strong>Status</strong><br>Active</span>";
 				}
 			}else{
 				if(!$all){
-					renderDeployButton($row["id"], 0);
+					renderDeployButton($row["soldier_id"], 0);
 					setSquadAttributes($row);
 				}else{
 					echo "<span class='status'><strong>Status</strong><br>Deployed</span>";
