@@ -399,14 +399,14 @@ function getSoldiers($conn, $active=null, $filterby="", $all=false){
 				if(!$all){
 					renderDeployButton($row["id"], 1);
 				}else{
-					echo "<span class='status'><strong>Status</strong><br>Inactive</span>";
+					echo "<span class='status'><strong>Status</strong><br>Active</span>";
 				}
 			}else{
 				if(!$all){
 					renderDeployButton($row["id"], 0);
 					setSquadAttributes($row);
 				}else{
-					echo "<span class='status'><strong>Status</strong><br>Active</span>";
+					echo "<span class='status'><strong>Status</strong><br>Deployed</span>";
 				}
 			}
 		}else{
