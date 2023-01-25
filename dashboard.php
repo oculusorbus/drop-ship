@@ -50,6 +50,30 @@ if(isset($_POST['filterby'])){
 	$filterby = $_POST['filterby'];
 }
 
+?><?php>
+function filterTroops(){
+	?>
+	<div id="filter-troops">
+		<label for="filterTroops"><strong>Filter By:</strong></label>
+		<select onchange="javascript:filterTroops(this.options[this.selectedIndex].value);" name="filterTroops" id="filterTroops">
+			<option value="None">Attribute</option>
+			<option value="None">All</option>
+			<option value="Heavy"><?php echo evaluateText("Heavy"); ?></option>
+			<option value="Medium"><?php echo evaluateText("Medium"); ?></option>
+			<option value="Light"><?php echo evaluateText("Light"); ?></option>
+			<option value="Base"><?php echo evaluateText("Base"); ?></option>
+			<option value="Medkit"><?php echo evaluateText("Medkit"); ?></option>
+			<option value="Demolition"><?php echo evaluateText("Demolition"); ?></option>
+			<option value="Melee"><?php echo evaluateText("Melee"); ?></option>
+		</select>
+		<form id="filterTroopsForm" action="dashboard.php#barracks" method="post">
+		  <input type="hidden" id="filterby" name="filterby" value="">
+		  <input type="submit" value="Submit" style="display:none;">
+		</form>
+	</div>
+	<?php
+}?>
+
 function renderNFT($nft_data, $ipfs){
 	echo "<div class='nft'><div class='nft-data'>
 	<span class='nft-name'>".$nft_data->name."</span>";
@@ -530,24 +554,7 @@ if($_SESSION['userData']['project_id'] == 1){
 			<?php } ?>
 				<div class="content" id="barracks-panel">
 				<h2><?php echo evaluateText("Barracks"); ?></h2>
-				<div id="filter-troops">
-					<label for="filterTroops"><strong>Filter By:</strong></label>
-					<select onchange="javascript:filterTroops(this.options[this.selectedIndex].value);" name="filterTroops" id="filterTroops">
-						<option value="None">Attribute</option>
-						<option value="None">All</option>
-						<option value="Heavy"><?php echo evaluateText("Heavy"); ?></option>
-						<option value="Medium"><?php echo evaluateText("Medium"); ?></option>
-						<option value="Light"><?php echo evaluateText("Light"); ?></option>
-						<option value="Base"><?php echo evaluateText("Base"); ?></option>
-						<option value="Medkit"><?php echo evaluateText("Medkit"); ?></option>
-						<option value="Demolition"><?php echo evaluateText("Demolition"); ?></option>
-						<option value="Melee"><?php echo evaluateText("Melee"); ?></option>
-					</select>
-					<form id="filterTroopsForm" action="dashboard.php#barracks" method="post">
-					  <input type="hidden" id="filterby" name="filterby" value="">
-					  <input type="submit" value="Submit" style="display:none;">
-					</form>
-				</div>
+					<?php filterTroops(); ?>
 					<div id="nfts" class="nfts">
 						<?php 
 						getSoldiers($conn, 0, $filterby); 
