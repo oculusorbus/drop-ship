@@ -20,6 +20,7 @@
 		  <a class="navbar-first" href="dashboard.php">Dashboard</a>
     	  <a href="dashboard.php#barracks"><?php echo evaluateText("Barracks");?></a>
     	  <a href="dashboard.php#armory"><?php echo evaluateText("Armory");?></a>
+    	  <a href="soldiers.php"><?php echo evaluateText("Soldiers");?></a>
     	  <a href="leaderboards.php">Leaderboards</a>
     	  <a href="achievements.php">Achievements</a>
     	  <a href="transactions.php">Transactions</a>
