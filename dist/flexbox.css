@@ -673,6 +673,10 @@ li form {
 	padding-top: 20px;
 }
 
+.nft-owner {
+    height: 40px;
+}
+
 .leaderboard-nfts {
 	width: 100%;
 	max-height: 107px;
