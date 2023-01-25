@@ -530,7 +530,7 @@ if($_SESSION['userData']['project_id'] == 1){
 			<?php } ?>
 				<div class="content" id="barracks-panel">
 				<h2><?php echo evaluateText("Barracks"); ?></h2>
-					<?php filterTroops(); ?>
+					<?php filterTroops("dashboard"); ?>
 					<div id="nfts" class="nfts">
 						<?php 
 						getSoldiers($conn, 0, $filterby); 

@@ -224,7 +224,7 @@ if($melee == "true") {
 //$roleMarkup .= '</ul>';
 
 // Extracted this function from dashboard so that it can be used on other pages
-function filterTroops(){
+function filterTroops($page){
 	echo'
 	<div id="filter-troops">
 		<label for="filterTroops"><strong>Filter By:</strong></label>
@@ -239,7 +239,7 @@ function filterTroops(){
 			<option value="Demolition">'.evaluateText("Demolition").'</option>
 			<option value="Melee">'.evaluateText("Melee").'</option>
 		</select>
-		<form id="filterTroopsForm" action="dashboard.php#barracks" method="post">
+		<form id="filterTroopsForm" action="'.$page.'.php#barracks" method="post">
 		  <input type="hidden" id="filterby" name="filterby" value="">
 		  <input type="submit" value="Submit" style="display:none;">
 		</form>
