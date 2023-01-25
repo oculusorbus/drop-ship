@@ -26,6 +26,9 @@ include 'header.php';
   </div>
 </body>
 <?php
+if($filterby != ""){
+	echo "<script type='text/javascript'>document.getElementById('filterTroops').value = '".$filterby."';</script>";
+}
 // Close DB Connection
 $conn->close();
 ?>
