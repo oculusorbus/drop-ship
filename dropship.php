@@ -221,8 +221,30 @@ if($demolition == "true") {
 if($melee == "true") {
 	//$roleMarkup.='<li class="'.$roleClass.'"><img class="icon" src="icons/melee.png"/>'."<table width='100%'><tr><td><strong>Melee</strong></td><td align='right'>&nbsp;[".(($melee == "true") ? "&nbsp;✓&nbsp;" : "&nbsp;&nbsp;&nbsp;").']</td></tr></table></li>';	
 }
-
 //$roleMarkup .= '</ul>';
+
+// Extracted this function from dashboard so that it can be used on other pages
+function filterTroops(){
+	echo'
+	<div id="filter-troops">
+		<label for="filterTroops"><strong>Filter By:</strong></label>
+		<select onchange="javascript:filterTroops(this.options[this.selectedIndex].value);" name="filterTroops" id="filterTroops">
+			<option value="None">Attribute</option>
+			<option value="None">All</option>
+			<option value="Heavy">'.evaluateText("Heavy").'</option>
+			<option value="Medium">'.evaluateText("Medium").'</option>
+			<option value="Light">'.evaluateText("Light").'</option>
+			<option value="Base">'.evaluateText("Base").'</option>
+			<option value="Medkit">'.evaluateText("Medkit").'</option>
+			<option value="Demolition">'.evaluateText("Demolition").'</option>
+			<option value="Melee">'.evaluateText("Melee").'</option>
+		</select>
+		<form id="filterTroopsForm" action="dashboard.php#barracks" method="post">
+		  <input type="hidden" id="filterby" name="filterby" value="">
+		  <input type="submit" value="Submit" style="display:none;">
+		</form>
+	</div>';
+}
 
 // Call initial DB functions
 checkUser($conn);
