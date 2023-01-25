@@ -356,7 +356,7 @@ function deploySoldier($conn, $id, $active){
 }
 
 // Get soldiers for user
-function getSoldiers($conn, $active, $filterby=""){
+function getSoldiers($conn, $active=null, $filterby=""){
 	if($filterby != "None"){
 		if($filterby == "Heavy" || $filterby == "Medium" || $filterby == "Light" || $filterby == "Base"){
 			$filterby = "AND armor = '".$filterby."' ";
@@ -366,7 +366,11 @@ function getSoldiers($conn, $active, $filterby=""){
 	}else{
 		$filterby = "";
 	}
-	$sql = "SELECT * FROM soldiers WHERE user_id = '".$_SESSION['userData']['user_id']."' AND active = '".$active."' ".$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, name";
+	$active_clause = "";
+	if($active != null){
+		$active_clause = "AND active = '".$active."' ";
+	}
+	$sql = "SELECT * FROM soldiers WHERE user_id = '".$_SESSION['userData']['user_id']."' "$active_clause.$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, name";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
