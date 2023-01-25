@@ -9,6 +9,7 @@ include 'header.php';
 				<h2>Soldiers</h2>
 			    <div class="content">
 					<div id="soldiers" class="soldiers-panel">
+						<?php filterTroops(); ?>
 						<div class="nfts">
 						<?php getSoldiers($conn, null, "", true); ?>
 						</div>
