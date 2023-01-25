@@ -370,10 +370,11 @@ function getSoldiers($conn, $active=null, $filterby="", $all=false){
 	if($active != null){
 		$active_clause = "AND active = '".$active."' ";
 	}
-	$user_clause = "user_id != 0";
+	$user_clause = "user_id != 0 ";
 	if(!$all){
 		$user_clause = "user_id = '".$_SESSION['userData']['user_id']."' ";
 	}
+	echo $sql;
 	$sql = "SELECT * FROM soldiers INNER JOIN users ON users.id = soldiers.user_id WHERE ".$user_clause.$active_clause.$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, name";
 	$result = $conn->query($sql);
 
