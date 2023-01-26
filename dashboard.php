@@ -350,7 +350,10 @@ if($_SESSION['userData']['project_id'] == 1){
 									echo "Cannot Play Until Fully Developed";
 								}
 							}if($_SESSION['userData']['project_id'] == 4 && $vip == "true"){
-								echo $play_button;
+								echo '<form action="dashboard.php" method="post">
+								  <input type="hidden" id="run" name="run" value="true">
+								  <input class="button" type="submit" value="Play XXX Rated Game">
+								</form>';
 							}else if($_SESSION['userData']['project_id'] == 3){ 
 								echo "<p><strong>You Must Have 5+ NFTs to Play</strong></p>";
 							}else if($_SESSION['userData']['project_id'] == 4){ 
