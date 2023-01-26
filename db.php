@@ -74,6 +74,7 @@ function evaluateText($text){
 				$replacements['Drop Ship Initiating'] = 'Oculus Lounge Entrance';
 				$replacements['Drop Ship Landed'] = 'Oculus Lounge Doorway';
 				$replacements['drop-ship'] = 'oculus-lounge';
+				$replacements['Soldiers'] = 'Citizens';
 			}
 			
 			$replacements['SCRIP'] = 'TIDDIES';
