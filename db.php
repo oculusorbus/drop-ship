@@ -72,10 +72,12 @@ function evaluateText($text){
 			}else{
 				$replacements['Drop Ship'] = 'Oculus Lounge';
 				$replacements['Drop Ship Initiating'] = 'Oculus Lounge Entrance';
-				$replacements['Drop Ship Landed'] = 'Oculus Lounge Doorway';
+				$replacements['Drop Ship Landed'] = 'Oculus Lounge Hallway';
 				$replacements['drop-ship'] = 'oculus-lounge';
 				$replacements['Soldiers'] = 'Citizens';
 				$replacements['Registered Soldiers'] = 'Oculus Lounge VIPs';
+				$replacements['Beach Secured'] = 'Approach Stage';
+				$replacements['Hill Secured'] = 'Enter VIP';
 			}
 			
 			$replacements['SCRIP'] = 'TIDDIES';
@@ -127,6 +129,16 @@ function evaluateText($text){
 			$replacements['Machine Gun'] = 'Money Gun';
 			$replacements['Flamethrower'] = 'Candle';
 			$replacements['Rocket Launcher'] = 'Double Dildo';
+			$replacements['Pull Grenade Pin'] = 'Insert Anal Beads';
+			$replacements['Throw Grenade'] = 'Remove Anal Beads';
+			$replacements['Load Machine Gun'] = 'Load Money Gun';
+			$replacements['Flamethrower Ignition'] = 'Approach Mistress';
+			$replacements['Flamethrower Spray'] = 'Address Mistress';
+			$replacements['Flamethrower Flame'] = 'Drip Candle Wax';
+			$replacements['Flamethrower Fire'] = 'Pour Candle Wax';
+			$replacements['Load Rocket Launcher'] = 'Double Dildo';
+			$replacements['Rocket Launcher Gunfire'] = 'Double Dildo';
+			$replacements['Rocket Launcher Explosion'] = 'Double Dildo Finale';
 			
 			$replacements_description['Tactical Katana'] = 'Dildo';
 			$replacements_description['Sniper Rifle'] = 'Butt Plug';
@@ -154,6 +166,11 @@ function evaluateText($text){
 			$replacements['Jet Pack'] = 'Drugs';
 			$replacements['Drop Box'] = 'Grab Bag';
 			$replacements['Medkit'] = 'Sexy Nurse';
+			$replacements['Reinforcements'] = 'Make It Rain';
+			$replacements['Pilot'] = 'Money';
+			$replacements['Airstrike'] = 'Money';
+			$replacements['Jet Pack Takeoff'] = 'Drugs';
+			$replacements['Jet Pack Fly'] = 'Trippin';
 			
 			$replacements_description['Night Vision Goggles'] = 'Fuzzy Handcuffs';
 			$replacements_description['Radar'] = 'Ball Gag';
