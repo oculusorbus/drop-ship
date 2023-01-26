@@ -168,7 +168,7 @@ function displayRound(project_id) {
 				}else if(project_id == 3){
 					configureAudio(2, "spank");
 				}else if(project_id == 4){
-					configureAudio(2, "spank", 1000);
+					configureAudio(2, "spank", 1500);
 				}
 			}else if(evaluateAudio(currentRound, "Sniper")){
 				if(project_id != 3 && project_id != 4){
