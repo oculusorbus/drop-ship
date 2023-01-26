@@ -300,7 +300,7 @@ function live($dropshipMarkup, $counter) {
 			if($exo_suit == "true"){
 				$random = verifyRandom(1, 2, $beach_exo_random);
 				$beach_exo_random = $random;
-				$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Exo Suit</h3>";
+				$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Exo Suit")."</h3>";
 				$dropshipMarkup.="<img src='".$prefix."images/live/beach/exo/".$random.".gif?var=123'/></div>";
 			}else{
 				$random = verifyRandom(1, 7, $beach_random);
@@ -309,7 +309,7 @@ function live($dropshipMarkup, $counter) {
 				$dropshipMarkup.="<img src='".$prefix."images/live/beach/".$random.".gif?var=123'/></div>";
 			}
 		}else{
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Beach Secured</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Beach Secured")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/live/beach/beach-secured.gif'/></div>";
 		}
 	} else if ($counter <= 12) {
@@ -317,7 +317,7 @@ function live($dropshipMarkup, $counter) {
 			if($exo_suit == "true"){
 				$random = verifyRandom(1, 2, $hill_exo_random);
 				$hill_exo_random = $random;
-				$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Exo Suit</h3>";
+				$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Exo Suit")."</h3>";
 				$dropshipMarkup.="<img src='".$prefix."images/live/hill/exo/".$random.".gif?var=123'/></div>";
 			}else{
 				$random = verifyRandom(1, 6, $hill_random);
@@ -326,14 +326,14 @@ function live($dropshipMarkup, $counter) {
 				$dropshipMarkup.="<img src='".$prefix."images/live/hill/".$random.".gif'/></div>";
 			}
 		}else{
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Hill Secured</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Hill Secured")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/live/hill/hill-secured.gif'/></div>";
 		}
 	} else {
 		if($exo_suit == "true"){
 			$random = verifyRandom(1, 2, $bunker_exo_random);
 			$bunker_exo_random = $random;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Exo Suit</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Exo Suit")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/live/bunker/exo/".$random.".gif?var=123'/></div>";
 		}else{
 			if($counter < 16){
@@ -361,7 +361,7 @@ function verifyRandom($min, $max, $previous_random){
 // Handle player melee sequence
 function melee($dropshipMarkup, $counter) {
 	global $prefix;
-	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Melee</h3>";
+	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Melee")."</h3>";
 	$dropshipMarkup.="<img src='".$prefix."images/weapons/melee.gif'/></div>";
 	return $dropshipMarkup;
 }
@@ -369,10 +369,10 @@ function melee($dropshipMarkup, $counter) {
 // Handle player demolition sequence
 function demolition($dropshipMarkup, $counter) {
 	global $prefix;
-	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Demolition</h3>";
+	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Demolition")."</h3>";
 	$dropshipMarkup.="<img src='".$prefix."images/weapons/demo1.gif'/></div>";
 	$counter++;
-	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Explosion</h3>";
+	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Explosion")."</h3>";
 	$dropshipMarkup.="<img src='".$prefix."images/weapons/demo2.gif'/></div>";
 	return $dropshipMarkup;
 }
@@ -381,70 +381,70 @@ function weapons($dropshipMarkup, $counter, $enuWeapon) {
 	global $prefix;
 	Switch($enuWeapon){
 		case Weapon::TacticalKatana:
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Tactical Katana</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Tactical Katana")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/tactical-katana.gif?var=123'/></div>";
 			$_SESSION['userData']['tactical_katana'] = false;
 			break;
 		case Weapon::SniperRifle:
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Sniper Rifle</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Sniper Rifle")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/sniper-rifle.gif?var=123'/></div>";
 			$_SESSION['userData']['sniper_rifle'] = false;
 			break;
 		case Weapon::Grenade:
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Pull Grenade Pin</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Pull Grenade Pin")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/grenade1.gif?var=123'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Throw Grenade</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Throw Grenade")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/grenade2.gif?var=123'/></div>";
 			$_SESSION['userData']['grenade'] = false;
 			break;
 		case Weapon::SmokeBomb:
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Pull Smoke Bomb Pin</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Pull Smoke Bomb Pin")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/smoke-bomb1.gif?var=123'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Smoke Bomb</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Smoke Bomb")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/smoke-bomb2.gif?var=123'/></div>";
 			$_SESSION['userData']['smoke_bomb'] = false;
 			break;
 		case Weapon::MachineGun:
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Load Machine Gun</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Load Machine Gun")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/machine-gun1.gif'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Machine Gun</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Machine Gun")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/machine-gun2.gif'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Machine Gun</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Machine Gun")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/machine-gun3.gif'/></div>";
 			$_SESSION['userData']['machine_gun'] = false;
 			break;
 		case Weapon::FlameThrower:
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Flamethrower Ignition</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Flamethrower Ignition")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/flamethrower1.gif?var=123'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Flamethrower Spray</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Flamethrower Spray")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/flamethrower2.gif?var=123'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Flamethrower Flames</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Flamethrower Flames")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/flamethrower3.gif?var=123'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Flamethrower Fire</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Flamethrower Fire")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/flamethrower4.gif?var=123'/></div>";
 			$_SESSION['userData']['flamethrower'] = false;
 			break;
 		case Weapon::RocketLauncher:
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Load Rocket Launcher</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Load Rocket Launcher")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/rocket-launcher1.gif'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Rocket Launcher Gunfire</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Rocket Launcher Gunfire")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/rocket-launcher2.gif'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Rocket Launcher Gunfire</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Rocket Launcher Gunfire")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/rocket-launcher3.gif'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Rocket Launcher</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Rocket Launcher")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/rocket-launcher4.gif'/></div>";
 			$counter++;
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Rocket Launcher Explosion</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Rocket Launcher Explosion")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/weapons/rocket-launcher5.gif'/></div>";
 			$_SESSION['userData']['rocket_launcher'] = false;
 			break;
@@ -616,7 +616,7 @@ function extralife($dropshipMarkup, $counter, $extralife, $dead, $melee, $demoli
 // Handle night vision goggles for bunker
 function nightvisiongoggles($dropshipMarkup, $counter) {
 	global $prefix;
-	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Night Vision Goggles</h3>";
+	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Night Vision Goggles")."</h3>";
 	$dropshipMarkup.="<img src='".$prefix."images/equipment/night-vision-goggles.gif?var=123'/></div>";
 	return $dropshipMarkup;
 }
@@ -624,7 +624,7 @@ function nightvisiongoggles($dropshipMarkup, $counter) {
 // Handle radar for hill
 function radar($dropshipMarkup, $counter) {
 	global $prefix;
-	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Radar</h3>";
+	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Radar")."</h3>";
 	$dropshipMarkup.="<img src='".$prefix."images/equipment/radar.gif?var=123'/></div>";
 	return $dropshipMarkup;
 }
@@ -632,19 +632,19 @@ function radar($dropshipMarkup, $counter) {
 // Handle radio for beach or hill
 function radio($dropshipMarkup, $counter) {
 	global $prefix;
-	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Radio</h3>";
+	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Radio")."</h3>";
 	$dropshipMarkup.="<img src='".$prefix."images/equipment/radio.gif?var=123'/></div>";
 	$counter++;
 	// Have to account for using radio at tail end of beach, that is why counter is evaluating 8
 	if ($counter <= 8) {
-		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Reinforcements</h3>";
+		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Reinforcements")."</h3>";
 		$dropshipMarkup.="<img src='".$prefix."images/equipment/reinforcements.gif?var=123'/></div>";
 	// Have to account for using radio at tail end of hill, that is why counter is evaluating 13
 	} else if ($counter <= 13) {
-		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Pilot</h3>";
+		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Pilot")."</h3>";
 		$dropshipMarkup.="<img src='".$prefix."images/equipment/airstrike1.gif?var=123'/></div>";
 		$counter++;
-		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Air Strike</h3>";
+		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Air Strike")."</h3>";
 		$dropshipMarkup.="<img src='".$prefix."images/equipment/airstrike2.gif?var=123'/></div>";
 	} 
 	return $dropshipMarkup;
@@ -653,19 +653,19 @@ function radio($dropshipMarkup, $counter) {
 // Handle jetpack for beach or hill
 function jetpack($dropshipMarkup, $counter) {
 	global $prefix;
-	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Jet Pack Takeoff</h3>";
+	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Jet Pack Takeoff")."</h3>";
 	$dropshipMarkup.="<img src='".$prefix."images/equipment/jet-pack1.gif'/></div>";
 	$counter++;
 	$jetpackcounter = 2;
 	// Have to account for using jetpack at tail end of beach, that is why counter is evaluating 8
 	if ($counter <= 8) {
 		if($counter == 8){
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Jet Pack Fly</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Jet Pack Fly")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/equipment/jet-pack".$jetpackcounter.".gif?var=123'/></div>";
 			$counter++;
 		}
 		while($counter <= 7){
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Jet Pack Fly</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Jet Pack Fly")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/equipment/jet-pack".$jetpackcounter.".gif?var=123'/></div>";
 			$counter++;
 			$jetpackcounter++;
@@ -673,12 +673,12 @@ function jetpack($dropshipMarkup, $counter) {
 	// Have to account for using jetpack at tail end of hill, that is why counter is evaluating 13
 	} else if ($counter <= 13) {
 		if($counter == 13){
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Jet Pack Fly</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Jet Pack Fly")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/equipment/jet-pack".$jetpackcounter.".gif?var=123'/></div>";
 			$counter++;
 		}
 		while($counter <= 12){
-			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Jet Pack Fly</h3>";
+			$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Jet Pack Fly")."</h3>";
 			$dropshipMarkup.="<img src='".$prefix."images/equipment/jet-pack".$jetpackcounter.".gif?var=123'/></div>";
 			$counter++;
 			$jetpackcounter++;
@@ -690,7 +690,7 @@ function jetpack($dropshipMarkup, $counter) {
 // Handle dropbox for beach or hill
 function dropbox($dropshipMarkup, $counter, $items, $melee, $demolition, $conn) {
 	global $prefix;
-	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - Drop Box</h3>";
+	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - ".evaluateText("Drop Box")."</h3>";
 	$dropshipMarkup.="<img src='".$prefix."images/equipment/drop-box.gif'/></div>";
 	$counter++;
 	
