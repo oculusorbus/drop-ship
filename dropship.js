@@ -191,13 +191,13 @@ function displayRound(project_id) {
 			}else if(evaluateRoundAudio(currentRound, 1)){
 				if(project_id != 3 && project_id != 4){
 					configureAudio(2, "dropshipcontra");
-				}else{
+				}else if(project_id == 3){
 					configureAudio(2, "door");
 				}
 			}else if(evaluateRoundAudio(currentRound, 2)){
 				if(project_id != 3 && project_id != 4){
 					configureAudio(2, "gunfirecontra");
-				}else{
+				}else if(project_id == 3){
 					configureAudio(2, "stairs");
 				}
 			}else if(evaluateRoundAudio(currentRound, lastRound-1, "!=")){
