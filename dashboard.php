@@ -511,7 +511,6 @@ if($_SESSION['userData']['project_id'] == 1){
     	
 		<?php if($hideLeaderboard == "false") { ?>
 		<div class="row">
-			<a name="barracks" id="barracks"></a>
 			<div class="soldiers" id="soldiers-panel">
 			<?php if(checkSquadCount($conn) > 0){?>
 			    <div class="content" id="squad-panel">
@@ -523,6 +522,7 @@ if($_SESSION['userData']['project_id'] == 1){
 					</div>
 				</div>
 			<?php } ?>
+				<a name="barracks" id="barracks"></a>
 				<div class="content" id="barracks-panel">
 				<h2><?php echo evaluateText("Barracks"); ?></h2>
 					<?php filterTroops("dashboard"); ?>
