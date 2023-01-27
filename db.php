@@ -215,7 +215,8 @@ function createBattle($conn, $wager) {
 	VALUES ('".$_SESSION['userData']['user_id']."', '".$wager."', '".$_SESSION['userData']['project_id']."', '1')";
 
 	if ($conn->query($sql) === TRUE) {
-	  //echo "New record created successfully";
+		// Remove wager from balance if db insertion is successful
+	  	removeBalance($conn, $wager);
 	} else {
 	  //echo "Error: " . $sql . "<br>" . $conn->error;
 	}
