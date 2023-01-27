@@ -368,7 +368,7 @@ if($_SESSION['userData']['project_id'] == 1){
 					<?php
 					// Display game status or Drop Ship Results
 					} else if(!isset($_SESSION['userData']['current_score']) || checkSquadCount($conn) >= 1) { 
-						if(!isset($_SESSION['userData']['game_id'])) {
+						if(!isset($_SESSION['userData']['game_id']) && !isset($_SESSION['userData']['battle_id'])) {
 							?>
 							<script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/dropship.jpg')";</script>
 							<script>
@@ -380,6 +380,10 @@ if($_SESSION['userData']['project_id'] == 1){
 							<?php
 							echo "<h3>No active game.</h3>";
 						} else { 
+							// If battle id is present, unset it since the player is now viewing their battle results
+							if(isset($_SESSION['userData']['battle_id'])){
+								unset($_SESSION['userData']['battle_id']);
+							}
 							$hideLeaderboard = "true"; 
 							// Unset notification flag
 							unset($_SESSION['userData']['notification']);
