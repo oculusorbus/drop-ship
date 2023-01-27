@@ -224,7 +224,7 @@ function createBattle($conn, $wager) {
 
 // Get current battles
 function getBattles($conn) {
-	$sql = "SELECT battles.id AS battle_id, user_id, wager, username FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY battles.date_created DESC";
+	$sql = "SELECT battles.id AS battle_id, user_id, wager, opponent_score, username FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY battles.date_created DESC";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
