@@ -760,7 +760,6 @@ function dropbox($dropshipMarkup, $counter, $items, $melee, $demolition, $conn) 
 
 // Run Drop Ship
 if(isset($_POST['run'])){
-	echo "Post Run"; exit;
 	// Check for active game OR active battle
 	if(isset($_SESSION['userData']['game_id']) || isset($_SESSION['userData']['battle_id'])) {
 		if(isset($_SESSION['userData']['game_id']) && !isset($_SESSION['userData']['battle_id'])){
