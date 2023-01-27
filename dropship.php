@@ -286,14 +286,14 @@ function kill($dropshipMarkup, $counter) {
 	}else{
 		$opponent = getOpponentUsername($conn, $_SESSION["userData"]["battle_id"]);
 		$opponent_score = getOpponentScore($conn, $_SESSION["userData"]["battle_id"]);
-		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - DEAD ";
+		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - DEAD";
 		$battleMarkup = "";
 		if($counter > $opponent_score){
-			$battleMarkup = "(Defeated ".$opponent." score of ".$opponent_score.")</h3>";
+			$battleMarkup = "<br>Defeated ".$opponent." score of ".$opponent_score.")</h3>";
 		}else if($counter < $opponent_score){
-			$battleMarkup = "(Lost to ".$opponent." score of ".$opponent_score.")</h3>";
+			$battleMarkup = "<br>Lost to ".$opponent." score of ".$opponent_score.")</h3>";
 		}else if($counter < $opponent_score){
-			$battleMarkup = "(Tied with ".$opponent." score of ".$opponent_score.")</h3>";
+			$battleMarkup = "<br>Tied with ".$opponent." score of ".$opponent_score.")</h3>";
 		}
 		$dropshipMarkup.=$battleMarkup;
 	}
