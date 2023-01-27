@@ -307,10 +307,11 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 	$creator = getCreatorUsername($conn, $_SESSION["userData"]["battle_id"]);
 	
 	$title = "Dead on Round ".$_SESSION['userData']['score']." during PvP ".evaluateText("Battle");
-	ob_start(); // Start output buffering
-	checkPlayerItems($conn);
-	$list = ob_get_contents(); // Store buffer in variable
-	ob_end_clean(); // End buffering and clean up
+	// Disabling inventory list for battles because it's tied to results and game id
+	//ob_start(); // Start output buffering
+	//checkPlayerItems($conn);
+	//$list = ob_get_contents(); // Store buffer in variable
+	//ob_end_clean(); // End buffering and clean up
 	
 	if($type == "opponent"){
 		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']." in battle with ".$creator."\n".evaluateText($list);
