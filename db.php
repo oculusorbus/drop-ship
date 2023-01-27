@@ -224,7 +224,7 @@ function createBattle($conn, $wager) {
 
 // Get current battles
 function getBattles($conn) {
-	$sql = "SELECT id, user_id, wager, username FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY battles.date_created DESC";
+	$sql = "SELECT battles.id AS battle_id, user_id, wager, username FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY battles.date_created DESC";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -236,7 +236,7 @@ function getBattles($conn) {
 		echo "</ul>";
 		
 		echo '<form id="opponentForm" action="battles.php" method="post">
-		  <input id="battle_id" name="battle_id" value="'.$row["id"].'"><br><br>
+		  <input id="battle_id" name="battle_id" value="'.$row["battle_id"].'"><br><br>
 		  <input class="small-button" type="submit" value="Accept">
 		</form>';
 	  }
