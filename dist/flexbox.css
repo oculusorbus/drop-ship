@@ -710,6 +710,10 @@ li form {
 	top: -60px;
 }
 
+#battles h3 {
+	text-align: left;
+}
+
 #back-to-top-button {
   display: none;
   position: fixed;
