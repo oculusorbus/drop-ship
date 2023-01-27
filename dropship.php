@@ -293,7 +293,7 @@ function kill($dropshipMarkup, $counter) {
 				$battleMarkup = "(Defeated ".$opponent." score of ".$opponent_score.")</h3>";
 			}else if($counter < $opponent_score){
 				$battleMarkup = "(Lost to ".$opponent." score of ".$opponent_score.")</h3>";
-			}else if($counter < $opponent_score){
+			}else if($counter == $opponent_score){
 				$battleMarkup = "(Tied with ".$opponent." score of ".$opponent_score.")</h3>";
 			}
 		}else if(isset($_SESSION["userData"]["opponent_id"])){
