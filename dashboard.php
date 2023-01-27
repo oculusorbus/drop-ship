@@ -334,7 +334,7 @@ if($_SESSION['userData']['project_id'] == 1){
 				<?php 
 				if(!isset($_POST['instant_replay'])){
 					// Display button to play Drop Ship
-					if(!isset($_POST['run']) && !isset($_SESSION['userData']['current_score']) || (checkSquadCount($conn) >= 1 && isset($_SESSION['userData']['game_id'])) ) { ?>
+					if(!isset($_POST['run']) && !isset($_SESSION['userData']['current_score']) || (checkSquadCount($conn) >= 1 && isset($_SESSION['userData']['game_id'] && !isset($_SESSION['userData']['battle_id'])) ) { ?>
 						<br>
 						<?php
 						$battle = "";
@@ -402,7 +402,6 @@ if($_SESSION['userData']['project_id'] == 1){
 					?><script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/reset/intro.jpg')";</script><?php
 					// Do not display instant replay button if play button is rendered
 					echo $view_results;
-												echo "here"; exit;
 					echo "<script type='text/javascript'>document.getElementById('disableMessage').innerHTML = 'true';</script>";
 					$dropshipMarkup = getReplay($conn, $_POST['result_id']);
 				}  
