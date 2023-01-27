@@ -238,7 +238,7 @@ function getBattles($conn) {
 		echo '<form id="opponentForm" action="battles.php" method="post">
 		  <input id="battle_id" name="battle_id" value="'.$row["id"].'"><br><br>
 		  <input class="small-button" type="submit" value="Accept">
-		</form>'
+		</form>';
 	  }
 	}
 }
