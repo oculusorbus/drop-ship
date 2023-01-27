@@ -278,6 +278,17 @@ function getOpponentUsername($conn, $battle_id){
 	}
 }
 
+// Get creator username for a specific battle
+function getCreatorUsername($conn, $battle_id){
+	$sql = "SELECT username FROM battles INNER JOIN users ON battles.user_id = users.id WHERE battles.id = '".$battle_id."'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+			return $row["username"];
+		}
+	}
+}
+
 // Log battle score for opponent or creator. If creator, assign wager to the winner of the battle
 function logBattleScore($conn, $type, $user_id, $battle_id){
 	$wager = getWager($conn, $battle_id);
