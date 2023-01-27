@@ -283,7 +283,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		}
 	}else if($type == "creator"){
 		$creator_id = $user_id;
-		$sql = "UPDATE battles SET creator_score ='".$_SESSION['userData']['score']."', active = '0' WHERE id='".$battle_id."'";
+		$sql = "UPDATE battles SET user_score ='".$_SESSION['userData']['score']."', active = '0' WHERE id='".$battle_id."'";
 		if ($conn->query($sql) === TRUE) {
 			$opponent_score = getOpponentScore($conn, $battle_id);
 			$opponent_id = getOpponentID($conn, $battle_id);
