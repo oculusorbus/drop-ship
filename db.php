@@ -330,7 +330,6 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 			$title = "TIE: ".$title;
 			$battle_markup = " and kept ".$wager." $".evaluateText("SCRIP")." by tying with score of ".$opponent_score;
 		}
-		$title = "Dead on Round ".$_SESSION['userData']['score']." during PvP ".evaluateText("Battle");
 		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score'].$battle_markup." by ".$opponent;
 	}
 	$imageurl = "https://www.madballs.net".$prefix."images/die/".rand(1,3).".gif?var=123";
