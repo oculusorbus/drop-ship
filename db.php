@@ -291,6 +291,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 			if($_SESSION['userData']['score'] > $opponent_score){
 				addBalance($conn, ($wager*2), $_SESSION['userData']['user_id']);
 				removeBalance($conn, $wager, $opponent_id);
+				echo "SCRIP Awarded: ".($wager*2);
 				echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You beat the opponent score of ".$opponent_score."');</script>";
 			}else{
 				addBalance($conn, $wager, $opponent_id);
