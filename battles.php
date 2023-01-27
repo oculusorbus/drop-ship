@@ -8,7 +8,7 @@ include 'header.php';
 if(isset($_POST['wager'])) {
 	if($_POST['wager'] >= 1 && is_numeric($_POST['wager'])){
 		if($_POST['wager'] <= checkBalance($conn)){
-			createBattle($conn, $wager);
+			createBattle($conn, $_POST['wager']);
 		}else{
 			echo "<script type='text/javascript'>alert('You do not have enough funds to place this wager and create a battle.');</script>";
 		}
