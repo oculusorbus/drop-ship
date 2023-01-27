@@ -318,7 +318,7 @@ function getBattles($conn) {
 		echo "<li class='role'><strong>Battle:</strong>&nbsp;".$row["username"]."&nbsp;";
 		echo "<strong>Wager:</strong>&nbsp;".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."&nbsp;";
 		// Show accept button if player didn't create the battle, they have enough currency and they're not currently battling
-		echo $_SESSION['userData']['battle_id'];
+
 		//$row["user_id"] != $_SESSION['userData']['user_id'] && 
 		if(checkBalance($conn) >= $row["wager"] && !isset($_SESSION['userData']['battle_id'])){
 			echo '<form id="opponentForm" action="dashboard.php#barracks" method="post">
