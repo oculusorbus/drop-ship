@@ -768,6 +768,7 @@ if(isset($_POST['run'])){
 		$squadTotal = checkSquadCount($conn);
 		// Check if there is no current score and a squad is formed OR a battle is accepted and a squad is formed
 		if((!isset($_SESSION['userData']['current_score']) && $squadTotal >= 1) || (isset($_SESSION['userData']['battle_id']) && $squadTotal >= 1)) {
+			echo "In game"; exit;
 			// Populate global NFT attribute variables based on squad
 			setSquad($conn);
 			// If there is no battle, remove current score
