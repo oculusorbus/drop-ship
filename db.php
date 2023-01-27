@@ -313,8 +313,10 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 	//$list = ob_get_contents(); // Store buffer in variable
 	//ob_end_clean(); // End buffering and clean up
 	
+	// Append this to description variable if you get it working
+	// "\n".evaluateText($list)
 	if($type == "opponent"){
-		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']." in battle with ".$creator."\n".evaluateText($list);
+		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']." in battle with ".$creator;
 	}else if($type == "creator"){
 		$opponent_score = getOpponentScore($conn, $_SESSION["userData"]["battle_id"]);
 		$battle_markup = "";
@@ -329,7 +331,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 			$battle_markup = " and kept ".$wager." $".evaluateText("SCRIP")." by tying with score of ".$opponent_score;
 		}
 		$title = "Dead on Round ".$_SESSION['userData']['score']." during PvP ".evaluateText("Battle");
-		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score'].$battle_markup." by ".$opponent."\n".evaluateText($list);
+		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score'].$battle_markup." by ".$opponent;
 	}
 	$imageurl = "https://www.madballs.net".$prefix."images/die/".rand(1,3).".gif?var=123";
 	discordmsg($title, $description, $imageurl);
