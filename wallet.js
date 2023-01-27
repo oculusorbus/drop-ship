@@ -63,7 +63,7 @@ function capitalizeFirstLetter(string) {
 					select.appendChild(option);
                 });
 				// Update dropdown with selected wallet after wallet options finish populating
-				updateWallet();
+				//updateWallet();
             } else {
             }
         }
