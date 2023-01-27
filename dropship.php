@@ -281,7 +281,7 @@ $prefix = "/".strtolower(str_replace(" ", "-", getProjectName($conn)))."/";
 // Kill player
 function kill($dropshipMarkup, $counter) {
 	global $prefix, $conn;
-	if(!isset($_SESSION["userData"]["creator_id"]) && !isset($_SESSION["userData"]["battle_id"])){
+	if(!isset($_SESSION["userData"]["creator_id"])){
 		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - DEAD</h3>";
 	}else{
 		$opponent = getOpponentUsername($conn, $_SESSION["userData"]["battle_id"]);
