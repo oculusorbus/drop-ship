@@ -3,6 +3,15 @@ include 'db.php';
 include 'webhooks.php';
 include 'dropship.php';
 include 'header.php';
+
+// Handle wager form submission
+if(isset($_POST['wager'])) {
+	if($_POST['wager'] >= 1){
+		
+	}else{
+		echo "<script type='text/javascript'>alert('Please enter a valid wager amount.');</script>";
+	}
+}
 ?>
 		<div class="row" id="row3">
 			<div class="main">
