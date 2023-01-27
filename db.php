@@ -303,8 +303,8 @@ function announceBattle($wager){
 function announceBattleResults($conn, $type, $user_id, $battle_id){
 	global $prefix;
 	$wager = getWager($conn, $battle_id);
-	$opponent = getOpponentUsername($conn, $_SESSION["userData"]["battle_id"]);
-	$creator = getCreatorUsername($conn, $_SESSION["userData"]["battle_id"]);
+	$opponent = getOpponentUsername($conn, $battle_id);
+	$creator = getCreatorUsername($conn, $battle_id);
 	
 	$title = "Dead on Round ".$_SESSION['userData']['score']." during PvP ".evaluateText("Battle");
 	// Disabling inventory list for battles because it's tied to results and game id
@@ -318,7 +318,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 	if($type == "opponent"){
 		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']." in battle with ".$creator;
 	}else if($type == "creator"){
-		$opponent_score = getOpponentScore($conn, $_SESSION["userData"]["battle_id"]);
+		$opponent_score = getOpponentScore($conn, $battle_id);
 		$battle_markup = "";
 		if($_SESSION['userData']['score'] > $opponent_score){
 			$title = "WINNER: ".$title;
