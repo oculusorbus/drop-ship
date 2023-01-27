@@ -274,10 +274,10 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		$sql = "UPDATE battles SET opponent_score ='".$_SESSION['userData']['score']."' WHERE id='".$battle_id."'";
 		if ($conn->query($sql) === TRUE) {
 		  //echo "New record created successfully";
+		  echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged.');</script>";
 		  unset($_SESSION['userData']['score']);
 		  unset($_SESSION['userData']['battle_id']);
 		  unset($_SESSION['userData']['opponent_id']);
-		  echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged.');</script>";
 		} else {
 		  //echo "Error: " . $sql . "<br>" . $conn->error;
 		}
