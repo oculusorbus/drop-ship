@@ -209,6 +209,18 @@ function evaluateText($text){
 	return $text;
 }
 
+// Create battle with wager
+function createBattle($conn, $wager) {
+	$sql = "INSERT INTO battles (user_id, wager, project_id, active)
+	VALUES ('".$_SESSION['userData']['user_id']."', '".$wager."', '".$_SESSION['userData']['project_id']."', '1')";
+
+	if ($conn->query($sql) === TRUE) {
+	  //echo "New record created successfully";
+	} else {
+	  //echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+}
+
 // Get participating NFT projects
 function getProjects($conn) {
 	$sql = "SELECT id, name FROM projects";
