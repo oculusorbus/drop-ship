@@ -371,7 +371,7 @@ if($_SESSION['userData']['project_id'] == 1){
 						}?>
 					<?php
 					// Display game status or Drop Ship Results
-					} else if(!isset($_SESSION['userData']['current_score']) || checkSquadCount($conn) >= 1) { 
+					} else if((!isset($_SESSION['userData']['current_score']) || checkSquadCount($conn) >= 1) || isset($_SESSION['userData']['battle_id'])) { 
 						if(!isset($_SESSION['userData']['game_id']) && !isset($_SESSION['userData']['battle_id'])) {
 							?>
 							<script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/dropship.jpg')";</script>
