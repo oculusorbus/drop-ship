@@ -257,6 +257,17 @@ function getOpponentScore($conn, $battle_id){
 	}
 }
 
+// Get creator score for a specific battle
+function getCreatorScore($conn, $battle_id){
+	$sql = "SELECT user_score FROM battles WHERE id = '".$battle_id."'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+			return $row["user_score"];
+		}
+	}
+}
+
 // Get opponent id for a specific battle
 function getOpponentID($conn, $battle_id){
 	$sql = "SELECT opponent_id FROM battles WHERE id = '".$battle_id."'";
@@ -322,7 +333,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 		$battle_markup = "";
 		if($_SESSION['userData']['score'] > $opponent_score){
 			$title = "WINNER: ".$title;
-			$battle_markup = " and won ".$wager." $".evaluateText("SCRIP")." against score of ".$_SESSION['userData']['score'];
+			$battle_markup = " and won ".$wager." $".evaluateText("SCRIP")." against score of ".$opponent_score;
 		}else if($_SESSION['userData']['score'] < $opponent_score){
 			$title = "LOSER: ".$title;
 			$battle_markup = " and lost ".$wager." $".evaluateText("SCRIP")." against score of ".$opponent_score;
@@ -369,8 +380,8 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 				//echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You lost to the opponent score of ".$opponent_score."');</script>";
 			// In the case of a tie, give wager back to both players
 			}else if($_SESSION['userData']['score'] == $opponent_score){
-				addBalance($conn, ($wager), $_SESSION['userData']['user_id']);
-				addBalance($conn, ($wager), $opponent_id);
+				addBalance($conn, $wager, $_SESSION['userData']['user_id']);
+				addBalance($conn, $wager, $opponent_id);
 			}
 			//echo "New record created successfully";
 			unset($_SESSION['userData']['score']);
