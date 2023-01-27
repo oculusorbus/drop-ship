@@ -337,9 +337,12 @@ if($_SESSION['userData']['project_id'] == 1){
 					if(!isset($_POST['run']) && !isset($_SESSION['userData']['current_score']) || (checkSquadCount($conn) >= 1 && isset($_SESSION['userData']['game_id'])) ) { ?>
 						<br>
 						<?php
+						if(isset($_SESSION['userData']['battle_id'])){
+							$battle = " Battle";
+						}
 						$play_button = '<form action="dashboard.php" method="post">
 						  <input type="hidden" id="run" name="run" value="true">
-						  <input class="button" type="submit" value="Play">
+						  <input class="button" type="submit" value="Play'.$battle.'">
 						</form>';
 						?>
 						<?php if(checkSquadCount($conn) >= 1) { ?>
@@ -352,7 +355,7 @@ if($_SESSION['userData']['project_id'] == 1){
 							}if($_SESSION['userData']['project_id'] == 4 && $vip == "true"){
 								echo '<form action="dashboard.php" method="post">
 								  <input type="hidden" id="run" name="run" value="true">
-								  <input class="button" type="submit" value="Play XXX Rated Game">
+								  <input class="button" type="submit" value="Play XXX Rated Game'.$battle.'">
 								</form>';
 							}else if($_SESSION['userData']['project_id'] == 3){ 
 								echo "<p><strong>You Must Have 5+ NFTs to Play</strong></p>";
