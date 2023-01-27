@@ -24,7 +24,7 @@ if(isset($_POST['wager'])) {
 		</div>
 		<div class="row">
 			<div class="side">
-				<div class="content" id="battles">
+				<div class="content" id="wager">
 					<p><strong>Current Balance: </strong><?php echo number_format(checkBalance($conn))." $".evaluateText("SCRIP"); ?></p>
 					<form id="wagerForm" action="battles.php" method="post">
 					  <label for="wager">Enter <?php echo "$".evaluateText("SCRIP");?> Wager:</label>
@@ -34,7 +34,9 @@ if(isset($_POST['wager'])) {
 				</div>
 			</div>
 			<div class="main">
-				<?php getBattles($conn); ?>
+				<div class="content" id="battles">
+					<?php getBattles($conn); ?>
+				</div>
 			</div>
 		</div>
 
