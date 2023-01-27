@@ -334,7 +334,8 @@ if($_SESSION['userData']['project_id'] == 1){
 				<?php 
 				if(!isset($_POST['instant_replay'])){
 					// Display button to play Drop Ship
-					if(!isset($_POST['run']) && !isset($_SESSION['userData']['current_score']) || (checkSquadCount($conn) >= 1 && isset($_SESSION['userData']['game_id'])) && !isset($_SESSION['userData']['battle_id']) ) { ?>
+					//  && isset($_SESSION['userData']['battle_id'])
+					if(!isset($_POST['run']) && !isset($_SESSION['userData']['current_score']) || (checkSquadCount($conn) >= 1 && isset($_SESSION['userData']['game_id'])) ) { ?>
 						<br>
 						<?php
 						$battle = "";
