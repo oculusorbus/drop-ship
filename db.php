@@ -217,6 +217,7 @@ function createBattle($conn, $wager) {
 	if ($conn->query($sql) === TRUE) {
 		// Remove wager from balance if db insertion is successful
 	  	removeBalance($conn, $wager, $_SESSION['userData']['user_id']);
+		announceBattle($wager);
 	} else {
 	  //echo "Error: " . $sql . "<br>" . $conn->error;
 	}
@@ -289,6 +290,14 @@ function getCreatorUsername($conn, $battle_id){
 	}
 }
 
+// Announce battle
+function announceBattle($wager){
+	$title = "New Battle Created";
+	$description = $_SESSION['userData']['name']." created a new battle wagering ".$wager." $".evaluateText("SCRIP");
+	$imageurl = "https://www.madballs.net".$prefix."images/dropship.jpg";
+	discordmsg($title, $description, $imageurl);
+}
+
 // Announce battle results
 function announceBattleResults($conn, $type, $user_id, $battle_id){
 	global $preix;
@@ -309,13 +318,13 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 		$battle_markup = "";
 		if($_SESSION['userData']['score'] > $opponent_score){
 			$title = "WINNER: ".$title;
-			$battle_markup = " and won ".$wager."$".evaluateText("SCRIP")." against score of ".$_SESSION['userData']['score'];
+			$battle_markup = " and won ".$wager." $".evaluateText("SCRIP")." against score of ".$_SESSION['userData']['score'];
 		}else if($_SESSION['userData']['score'] < $opponent_score){
 			$title = "LOSER: ".$title;
-			$battle_markup = " and lost ".$wager."$".evaluateText("SCRIP")." against score of ".$opponent_score;
+			$battle_markup = " and lost ".$wager." $".evaluateText("SCRIP")." against score of ".$opponent_score;
 		}else if($_SESSION['userData']['score'] == $opponent_score){
 			$title = "TIE: ".$title;
-			$battle_markup = " and kept ".$wager."$".evaluateText("SCRIP")." by tying with score of ".$opponent_score;
+			$battle_markup = " and kept ".$wager." $".evaluateText("SCRIP")." by tying with score of ".$opponent_score;
 		}
 		$title = "Dead on Round ".$_SESSION['userData']['score']." during PvP ".evaluateText("Battle");
 		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score'].$battle_markup." by ".$opponent."\n".evaluateText($list);
