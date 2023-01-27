@@ -513,7 +513,7 @@ if($_SESSION['userData']['project_id'] == 1){
 				<form id="wagerForm" action="dashboard.php" method="post">
 				  <label for="wager">Enter $SCRIP Wager:</label>
 				  <input id="wager" name="wager" value="">
-				  <input class="small-button" type="submit" value="Submit Wager & Create PvP Battle">
+				  <input class="small-button" type="submit" value="Create PvP Battle">
 				</form>
 			</div>
 		  </div>
