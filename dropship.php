@@ -743,7 +743,9 @@ $currentScoreMarkup = "";
 if(isset($_POST['run'])){
 	// Check for active game OR active battle
 	if(isset($_SESSION['userData']['game_id']) || isset($_SESSION['userData']['battle_id'])) {
-		checkScore($conn);
+		if(isset($_SESSION['userData']['game_id']){
+			checkScore($conn);
+		}
 		$squadTotal = checkSquadCount($conn);
 		// Check if there is no current score and a squad is formed OR a battle is accepted and a squad is formed
 		if((!isset($_SESSION['userData']['current_score']) && $squadTotal >= 1) || (isset($_SESSION['userData']['battle_id']) && $squadTotal >= 1)) {
