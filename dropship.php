@@ -289,11 +289,11 @@ function kill($dropshipMarkup, $counter) {
 		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - DEAD ";
 		$battleMarkup = "";
 		if($counter > $opponent_score){
-			$battleMarkup = "(Defeated ".$opponent." score of ".$opponent_score.")";
+			$battleMarkup = "(Defeated ".$opponent." score of ".$opponent_score.")</h3>";
 		}else if($counter < $opponent_score){
-			$battleMarkup = "(Lost to ".$opponent." score of ".$opponent_score.")";
+			$battleMarkup = "(Lost to ".$opponent." score of ".$opponent_score.")</h3>";
 		}else if($counter < $opponent_score){
-			$battleMarkup = "(Tied with ".$opponent." score of ".$opponent_score.")";
+			$battleMarkup = "(Tied with ".$opponent." score of ".$opponent_score.")</h3>";
 		}
 		$dropshipMarkup.=$battleMarkup;
 	}
