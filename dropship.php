@@ -281,7 +281,22 @@ $prefix = "/".strtolower(str_replace(" ", "-", getProjectName($conn)))."/";
 // Kill player
 function kill($dropshipMarkup, $counter) {
 	global $prefix;
-	$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - DEAD</h3>";
+	if(!isset($_SESSION["userData"]["creator_id"]) && !isset($_SESSION["userData"]["battle_id"])){
+		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - DEAD</h3>";
+	}else{
+		$opponent = getOpponentUsername($conn, $_SESSION["userData"]["battle_id"]);
+		$opponent_score = getOpponentScore($conn, $battle_id);
+		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - DEAD ";
+		$battleMarkup = "";
+		if($counter > $opponent_score){
+			$battleMarkup = "(Defeated ".$opponent." score of ".$opponent_score.")";
+		}else if($counter < $opponent_score){
+			$battleMarkup = "(Lost to ".$opponent." score of ".$opponent_score.")";
+		}else if($counter < $opponent_score){
+			$battleMarkup = "(Tied with ".$opponent." score of ".$opponent_score.")";
+		}
+		$dropshipMarkup = $dropshipMarkup + $battleMarkup;
+	}
 	if($counter == 3){
 		$dropshipMarkup.="<img src='".$prefix."images/die/beach.gif?var=123'/></div>";
 	}else if($counter >= 4 && $counter <= 7){

@@ -267,6 +267,17 @@ function getOpponentID($conn, $battle_id){
 	}
 }
 
+// Get opponent username for a specific battle
+function getOpponentUsername($conn, $battle_id){
+	$sql = "SELECT username FROM battles INNER JOIN users ON battles.opponent_id = users.id WHERE id = '".$battle_id."'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+			return $row["username"];
+		}
+	}
+}
+
 // Log battle score for opponent or creator. If creator, assign wager to the winner of the battle
 function logBattleScore($conn, $type, $user_id, $battle_id){
 	$wager = getWager($conn, $battle_id);
@@ -293,9 +304,13 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 			if($_SESSION['userData']['score'] > $opponent_score){
 				addBalance($conn, ($wager*2), $_SESSION['userData']['user_id']);
 				//echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You beat the opponent score of ".$opponent_score."');</script>";
-			}else{
+			}else if($_SESSION['userData']['score'] < $opponent_score){
 				addBalance($conn, ($wager*2), $opponent_id);
 				//echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You lost to the opponent score of ".$opponent_score."');</script>";
+			// In the case of a tie, give wager back to both players
+			}else if($_SESSION['userData']['score'] < $opponent_score){
+				addBalance($conn, ($wager), $_SESSION['userData']['user_id']);
+				addBalance($conn, ($wager), $opponent_id);
 			}
 			//echo "New record created successfully";
 			unset($_SESSION['userData']['score']);
