@@ -292,6 +292,7 @@ function getCreatorUsername($conn, $battle_id){
 
 // Announce battle
 function announceBattle($wager){
+	global $prefix;
 	$title = "New Battle Created";
 	$description = $_SESSION['userData']['name']." created a new battle wagering ".$wager." $".evaluateText("SCRIP");
 	$imageurl = "https://www.madballs.net".$prefix."images/dropship.jpg";
