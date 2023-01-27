@@ -696,6 +696,11 @@ li form {
 	padding: 20px;
 }
 
+#wagerForm label{
+	color: #D6DDDE;
+	font-weight: bold;
+}
+
 #back-to-top-button {
   display: none;
   position: fixed;
