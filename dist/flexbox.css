@@ -701,6 +701,10 @@ li form {
 	font-weight: bold;
 }
 
+#wager {
+	width: 15px;
+}
+
 #back-to-top-button {
   display: none;
   position: fixed;
