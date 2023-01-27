@@ -301,7 +301,7 @@ function announceBattle($wager){
 
 // Announce battle results
 function announceBattleResults($conn, $type, $user_id, $battle_id){
-	global $preix;
+	global $prefix;
 	$wager = getWager($conn, $battle_id);
 	$opponent = getOpponentUsername($conn, $_SESSION["userData"]["battle_id"]);
 	$creator = getCreatorUsername($conn, $_SESSION["userData"]["battle_id"]);
