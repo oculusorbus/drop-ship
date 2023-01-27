@@ -232,7 +232,7 @@ function getBattles($conn) {
 	  while($row = $result->fetch_assoc()) {
 		echo "<ul class='roles'>";
 		echo "<li class='role'><strong>Battle:</strong>&nbsp;".$row["username"]."&nbsp;";
-		echo "<strong>Wager:</strong>&nbsp;".$row["wager"]."</li>";
+		echo "<strong>Wager:</strong>&nbsp;".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."</li>";
 		echo "</ul>";
 	  }
 	}
