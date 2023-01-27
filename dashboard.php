@@ -508,14 +508,6 @@ if($_SESSION['userData']['project_id'] == 1){
 					</li>
 				</ul>
 			</div>
-			<div class="content" id="battles">
-				<h2>PvP Battles</h2>
-				<form id="wagerForm" action="dashboard.php" method="post">
-				  <label for="wager">Enter <?php echo "$".evaluateText("SCRIP");?> Wager:</label>
-				  <input id="wager" name="wager" value=""><br><br>
-				  <input class="button" type="submit" value="Create PvP Battle">
-				</form>
-			</div>
 		  </div>
 		
 		</div>
