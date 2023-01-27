@@ -18,8 +18,8 @@ if(isset($_POST['wager'])) {
 }
 ?>
 		<div class="row" id="row3">
-			<h2><?php echo evaluateText("PvP Battles");?></h2>
 			<div class="side">
+				<h2><?php echo evaluateText("PvP Battles");?></h2>
 				<div class="content" id="battles">
 					<p><strong>Current Balance: </strong><?php echo number_format(checkBalance($conn))." $".evaluateText("SCRIP"); ?></p>
 					<form id="wagerForm" action="battles.php" method="post">
