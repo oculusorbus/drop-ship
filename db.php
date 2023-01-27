@@ -222,6 +222,27 @@ function createBattle($conn, $wager) {
 	}
 }
 
+function deleteBattle($conn, $battle_id) {
+	$wager = getWager($conn, $battle_id);
+	$sql = "DELETE FROM battles WHERE id = '".$battle_id."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+	if ($conn->query($sql) === TRUE) {
+	  //echo "Record deleted successfully";
+		addBalance($conn, $wager);
+	} else {
+	  //echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+}
+
+function getWager($conn, $battle_id){
+	$sql = "SELECT wager FROM battles WHERE battle_id = '".$_SESSION['userData']['battle_id']."' AND active = '1'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+			return $row["wager"];
+		}
+	}
+}
+
 // Get current battles
 function getBattles($conn) {
 	$sql = "SELECT battles.id AS battle_id, user_id, wager, opponent_score, username FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY battles.date_created DESC";
@@ -1242,6 +1263,26 @@ function removeBalance($conn, $itemCost) {
 		while($row = $result->fetch_assoc()) {
 			// Add current score to existing balance
 			$balance = $row["balance"] - $itemCost;
+			// If user does exist, update record for calculated balance
+			$sql = "UPDATE balances SET balance='".$balance."' WHERE user_id='".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+			if ($conn->query($sql) === TRUE) {
+			  //echo "Record updated successfully";
+			} else {
+			  //echo "Error updating record: " . $conn->error;
+			}
+		}
+	}
+}
+
+// Add amount for a specific user's balance
+function addBalance($conn, $amount) {
+	$sql = "SELECT user_id, balance FROM balances WHERE user_id='".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			// Add current score to existing balance
+			$balance = $row["balance"] + $amount;
 			// If user does exist, update record for calculated balance
 			$sql = "UPDATE balances SET balance='".$balance."' WHERE user_id='".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."'";
 			if ($conn->query($sql) === TRUE) {
