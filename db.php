@@ -269,7 +269,7 @@ function getOpponentID($conn, $battle_id){
 
 // Get opponent username for a specific battle
 function getOpponentUsername($conn, $battle_id){
-	$sql = "SELECT username FROM battles INNER JOIN users ON battles.opponent_id = users.id WHERE id = '".$battle_id."'";
+	$sql = "SELECT username FROM battles INNER JOIN users ON battles.opponent_id = users.id WHERE battles.id = '".$battle_id."'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	    while($row = $result->fetch_assoc()) {
