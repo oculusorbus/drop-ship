@@ -276,7 +276,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		if ($conn->query($sql) === TRUE) {
    		  removeBalance($conn, $wager, $opponent_id);
 		  //echo "New record created successfully";
-		  echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged.');</script>";
+		  //echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged.');</script>";
 		  unset($_SESSION['userData']['score']);
 		  //unset($_SESSION['userData']['battle_id']);
 		  unset($_SESSION['userData']['opponent_id']);
@@ -292,10 +292,10 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 			$opponent_id = getOpponentID($conn, $battle_id);
 			if($_SESSION['userData']['score'] > $opponent_score){
 				addBalance($conn, ($wager*2), $_SESSION['userData']['user_id']);
-				echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You beat the opponent score of ".$opponent_score."');</script>";
+				//echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You beat the opponent score of ".$opponent_score."');</script>";
 			}else{
 				addBalance($conn, ($wager*2), $opponent_id);
-				echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You lost to the opponent score of ".$opponent_score."');</script>";
+				//echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You lost to the opponent score of ".$opponent_score."');</script>";
 			}
 			//echo "New record created successfully";
 			unset($_SESSION['userData']['score']);
