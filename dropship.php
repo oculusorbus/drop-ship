@@ -760,13 +760,13 @@ function dropbox($dropshipMarkup, $counter, $items, $melee, $demolition, $conn) 
 
 // Run Drop Ship
 if(isset($_POST['run'])){
+	echo "Post Run"; exit;
 	// Check for active game OR active battle
 	if(isset($_SESSION['userData']['game_id']) || isset($_SESSION['userData']['battle_id'])) {
 		if(isset($_SESSION['userData']['game_id']) && !isset($_SESSION['userData']['battle_id'])){
 			checkScore($conn);
 		}
 		$squadTotal = checkSquadCount($conn);
-		echo "Before game logic"; exit;
 		// Check if there is no current score and a squad is formed OR a battle is accepted and a squad is formed
 		if((!isset($_SESSION['userData']['current_score']) && $squadTotal >= 1) || (isset($_SESSION['userData']['battle_id']) && $squadTotal >= 1)) {
 			// Populate global NFT attribute variables based on squad
