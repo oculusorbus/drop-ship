@@ -222,6 +222,22 @@ function createBattle($conn, $wager) {
 	}
 }
 
+// Get current battles
+function getBattles($conn, $wager) {
+	$sql = "SELECT user_id, wager, username FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY date_created DESC";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+	  // output data of each row
+	  while($row = $result->fetch_assoc()) {
+		echo "<ul class='roles'>";
+		echo "<li class='role'>Battle: ".$row["username"]."</li>";
+		echo "<li class='role'>Wager: ".$row["wager"]."</li>";
+		echo "</ul>";
+	  }
+	}
+}
+
 // Get participating NFT projects
 function getProjects($conn) {
 	$sql = "SELECT id, name FROM projects";
