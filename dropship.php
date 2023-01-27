@@ -40,6 +40,14 @@ if(isset($_POST['project_id'])){
 if(isset($_POST['battle_id'])) {
 	// Need to check once again if player has enough currency to prevent hacking HTML form
 	$_SESSION["userData"]["battle_id"] = $_POST['battle_id'];
+	if(isset($_POST['opponent_id'])) {
+		$_SESSION["userData"]["opponent_id"] = $_SESSION['userData']['user_id'];
+	}else if(isset($_POST['creator_id'])) {
+		$_SESSION["userData"]["creator_id"] = $_SESSION['userData']['user_id'];
+	}else{
+		// Delete battle and return wager to creator
+		deleteBattle($conn, $_POST['battle_id']);
+	}
 }
 
 // Initiate variables
