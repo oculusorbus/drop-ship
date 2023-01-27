@@ -289,7 +289,6 @@ function getCreatorUsername($conn, $battle_id){
 	}
 }
 
-
 // Announce battle results
 function announceBattleResults($conn, $type, $user_id, $battle_id){
 	global $preix;
@@ -332,6 +331,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		$opponent_id = $user_id;
 		$sql = "UPDATE battles SET opponent_score ='".$_SESSION['userData']['score']."', opponent_id = '".$user_id."' WHERE id='".$battle_id."'";
 		if ($conn->query($sql) === TRUE) {
+		  announceBattleResults($conn, "opponent", $user_id, $battle_id);
    		  removeBalance($conn, $wager, $opponent_id);
 		  //echo "New record created successfully";
 		  //echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged.');</script>";
@@ -346,6 +346,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		$creator_id = $user_id;
 		$sql = "UPDATE battles SET user_score ='".$_SESSION['userData']['score']."', active = '0' WHERE id='".$battle_id."'";
 		if ($conn->query($sql) === TRUE) {
+			announceBattleResults($conn, "creator", $user_id, $battle_id);
 			$opponent_score = getOpponentScore($conn, $battle_id);
 			$opponent_id = getOpponentID($conn, $battle_id);
 			if($_SESSION['userData']['score'] > $opponent_score){
