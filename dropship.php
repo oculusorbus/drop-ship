@@ -919,7 +919,12 @@ if(isset($_POST['run'])){
 				if(!isset($_SESSION['userData']['battle_id'])){
 					logScore($conn, $dropshipMarkup);
 				}else{
-					// Log Battle Score (Opponent or Creator), award wager to winner after creator plays
+					// Log Battle Score (Opponent or Creator)
+					if(isset($_SESSION["userData"]["opponent_id"]){
+						logBattleScore($conn, "opponent", $_SESSION["userData"]["opponent_id"], $_SESSION["userData"]["battle_id"]);
+					}else if(isset($_SESSION["userData"]["creator_id"]){
+						logBattleScore($conn, "creator", $_SESSION["userData"]["creator_id"], $_SESSION["userData"]["battle_id"]);
+					}
 				}
 			}else{
 				echo "<script type='text/javascript'>alert('Something went wrong with your game and no results markup was generated. Your score was not logged and your squad is still intact. Please try again and let Oculus Orbus know if you continue to experience issues.');</script>";

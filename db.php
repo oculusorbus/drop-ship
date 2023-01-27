@@ -216,29 +216,92 @@ function createBattle($conn, $wager) {
 
 	if ($conn->query($sql) === TRUE) {
 		// Remove wager from balance if db insertion is successful
-	  	removeBalance($conn, $wager);
+	  	removeBalance($conn, $wager, $_SESSION['userData']['user_id']);
 	} else {
 	  //echo "Error: " . $sql . "<br>" . $conn->error;
 	}
 }
 
+// Delete a battle for a creator and retrieve wager is no opponent score has been logged
 function deleteBattle($conn, $battle_id) {
 	$wager = getWager($conn, $battle_id);
-	$sql = "DELETE FROM battles WHERE id = '".$battle_id."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+	$sql = "DELETE FROM battles WHERE id = '".$battle_id."' AND project_id = '".$_SESSION['userData']['project_id']."' AND opponent_score = '0'";
 	if ($conn->query($sql) === TRUE) {
 	  //echo "Record deleted successfully";
-		addBalance($conn, $wager);
+		addBalance($conn, $wager, $_SESSION['userData']['user_id']);
 	} else {
-	  //echo "Error: " . $sql . "<br>" . $conn->error;
+	    echo "<script type='text/javascript'>alert('An opponent logged a score before you canceled. Please defend in your battle.');</script>";
 	}
 }
 
+// Get wager amount for a specific battle
 function getWager($conn, $battle_id){
 	$sql = "SELECT wager FROM battles WHERE id = '".$battle_id."' AND active = '1'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	    while($row = $result->fetch_assoc()) {
 			return $row["wager"];
+		}
+	}
+}
+
+// Get opponent score for a specific battle
+function getOpponentScore($conn, $battle_id){
+	$sql = "SELECT opponent_score FROM battles WHERE id = '".$battle_id."'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+			return $row["opponent_score"];
+		}
+	}
+}
+
+// Get opponent id for a specific battle
+function getOpponentID($conn, $battle_id){
+	$sql = "SELECT opponent_id FROM battles WHERE id = '".$battle_id."'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+			return $row["opponent_id"];
+		}
+	}
+}
+
+// Log battle score for opponent or creator. If creator, assign wager to the winner of the battle
+function logBattleScore($conn, $type, $user_id, $battle_id){
+	if($type == "opponent"){
+		$opponent_id = $user_id;
+		$sql = "UPDATE battles SET opponent_score ='".$_SESSION['userData']['score']."' WHERE id='".$battle_id."'";
+		if ($conn->query($sql) === TRUE) {
+		  //echo "New record created successfully";
+		  unset($_SESSION['userData']['score']);
+		  unset($_SESSION['userData']['battle_id']);
+		  unset($_SESSION['userData']['opponent_id']);
+		  echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged.');</script>";
+		} else {
+		  //echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}else if($type == "creator"){
+		$creator_id = $user_id;
+		$sql = "UPDATE battles SET creator_score ='".$_SESSION['userData']['score']."', active = '0' WHERE id='".$battle_id."'";
+		if ($conn->query($sql) === TRUE) {
+			$opponent_score = getOpponentScore($conn, $battle_id);
+			$opponent_id = getOpponentID($conn, $battle_id);
+			$wager = getWager($conn, $battle_id);
+			if($_SESSION['userData']['score'] > $oppoonent_score){
+				addBalance($conn, $wager+$wager, $_SESSION['userData']['user_id']);
+				removeBalance($conn, $wager, $opponent_id);
+				echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You beat the opponent score of ".."');</script>";
+			}else{
+				addBalance($conn, $wager, $opponent_id);
+				echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You lost to the opponent score of ".."');</script>";
+			}
+			//echo "New record created successfully";
+			unset($_SESSION['userData']['score']);
+			unset($_SESSION['userData']['battle_id']);
+			unset($_SESSION['userData']['creator_id']);
+		} else {
+		  //echo "Error: " . $sql . "<br>" . $conn->error;
 		}
 	}
 }
@@ -1133,7 +1196,7 @@ function buyItem ($conn, $item_id, $drop_box){
 			$result = $conn->query($sql);
 			
 			if($itemCost > 0){
-				removeBalance($conn, $itemCost);
+				removeBalance($conn, $itemCost, $_SESSION['userData']['user_id']);
 			}
 			logDebit($conn, $_SESSION['userData']['user_id'], $item_id, $itemCost);
 			if ($result->num_rows > 0) {
@@ -1255,8 +1318,8 @@ function checkInventoryItemType($conn, $item_type) {
 }
 
 // Remove amount from a specific user's balance
-function removeBalance($conn, $itemCost) {
-	$sql = "SELECT user_id, balance FROM balances WHERE user_id='".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+function removeBalance($conn, $itemCost, $user_id) {
+	$sql = "SELECT user_id, balance FROM balances WHERE user_id='".$user_id."' AND project_id = '".$_SESSION['userData']['project_id']."'";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -1264,7 +1327,7 @@ function removeBalance($conn, $itemCost) {
 			// Add current score to existing balance
 			$balance = $row["balance"] - $itemCost;
 			// If user does exist, update record for calculated balance
-			$sql = "UPDATE balances SET balance='".$balance."' WHERE user_id='".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+			$sql = "UPDATE balances SET balance='".$balance."' WHERE user_id='".$user_id."' AND project_id = '".$_SESSION['userData']['project_id']."'";
 			if ($conn->query($sql) === TRUE) {
 			  //echo "Record updated successfully";
 			} else {
@@ -1275,8 +1338,8 @@ function removeBalance($conn, $itemCost) {
 }
 
 // Add amount for a specific user's balance
-function addBalance($conn, $amount) {
-	$sql = "SELECT user_id, balance FROM balances WHERE user_id='".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+function addBalance($conn, $amount, $user_id) {
+	$sql = "SELECT user_id, balance FROM balances WHERE user_id='".$user_id."' AND project_id = '".$_SESSION['userData']['project_id']."'";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -1284,7 +1347,7 @@ function addBalance($conn, $amount) {
 			// Add current score to existing balance
 			$balance = $row["balance"] + $amount;
 			// If user does exist, update record for calculated balance
-			$sql = "UPDATE balances SET balance='".$balance."' WHERE user_id='".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+			$sql = "UPDATE balances SET balance='".$balance."' WHERE user_id='".$user_id."' AND project_id = '".$_SESSION['userData']['project_id']."'";
 			if ($conn->query($sql) === TRUE) {
 			  //echo "Record updated successfully";
 			} else {
