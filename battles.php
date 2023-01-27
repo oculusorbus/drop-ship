@@ -34,8 +34,8 @@ if(isset($_POST['wager'])) {
 				</div>
 			</div>
 			<div class="main">
-				<h3>Available Battles</h3><br>
 				<div class="content" id="battles">
+					<h3>Available Battles</h3>
 					<?php getBattles($conn); ?>
 				</div>
 			</div>
