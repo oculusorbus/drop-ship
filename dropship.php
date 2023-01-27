@@ -285,7 +285,7 @@ function kill($dropshipMarkup, $counter) {
 		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - DEAD</h3>";
 	}else{
 		$opponent = getOpponentUsername($conn, $_SESSION["userData"]["battle_id"]);
-		$opponent_score = getOpponentScore($conn, $battle_id);
+		$opponent_score = getOpponentScore($conn, $_SESSION["userData"]["battle_id"]);
 		$dropshipMarkup.="<div class='round' id='".$counter."'><h3>Round ".$counter." - DEAD ";
 		$battleMarkup = "";
 		if($counter > $opponent_score){
