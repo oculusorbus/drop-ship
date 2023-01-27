@@ -316,12 +316,14 @@ function getBattles($conn) {
 	  while($row = $result->fetch_assoc()) {
 		echo "<ul class='roles'>";
 		echo "<li class='role'><strong>Battle:</strong>&nbsp;".$row["username"]."&nbsp;";
-		echo "<strong>Wager:</strong>&nbsp;".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."&nbsp;";	
-		echo '<form id="opponentForm" action="dashboard.php#barracks" method="post">
-		  <input type="hidden" id="opponent_id" name="opponent_id" value="'.$_SESSION['userData']['user_id'].'">
-		  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
-		  <input class="small-button" type="submit" value="Accept">
-		</form>';
+		echo "<strong>Wager:</strong>&nbsp;".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."&nbsp;";
+		if($row["user_id"] != $_SESSION['userData']['user_id']){
+			echo '<form id="opponentForm" action="dashboard.php#barracks" method="post">
+			  <input type="hidden" id="opponent_id" name="opponent_id" value="'.$_SESSION['userData']['user_id'].'">
+			  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
+			  <input class="small-button" type="submit" value="Accept">
+			</form>';
+		}
 		// Check if user created game, if so provide cancellation form if an opponent hasn't logged a score yet.
 		if($row["user_id"] == $_SESSION['userData']['user_id'] && $row["opponent_score"] == 0){
 			echo '<form id="cancelForm" action="battles.php" method="post">
