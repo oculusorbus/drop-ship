@@ -738,8 +738,6 @@ function dropbox($dropshipMarkup, $counter, $items, $melee, $demolition, $conn) 
 	return $dropshipMarkup;
 }
 
-$currentScoreMarkup = "";
-
 // Run Drop Ship
 if(isset($_POST['run'])){
 	// Check for active game OR active battle
