@@ -705,6 +705,11 @@ li form {
 	width: 50px;
 }
 
+#wagers, #battles {
+	position: relative;
+	top: -60px;
+}
+
 #back-to-top-button {
   display: none;
   position: fixed;
