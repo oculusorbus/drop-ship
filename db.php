@@ -289,6 +289,42 @@ function getCreatorUsername($conn, $battle_id){
 	}
 }
 
+
+// Announce battle results
+function announceBattleResults($conn, $type, $user_id, $battle_id){
+	global $preix;
+	$wager = getWager($conn, $battle_id);
+	$opponent = getOpponentUsername($conn, $_SESSION["userData"]["battle_id"]);
+	$creator = getCreatorUsername($conn, $_SESSION["userData"]["battle_id"]);
+	
+	$title = "Dead on Round ".$_SESSION['userData']['score']." during PvP ".evaluateText("Battle");
+	ob_start(); // Start output buffering
+	checkPlayerItems($conn);
+	$list = ob_get_contents(); // Store buffer in variable
+	ob_end_clean(); // End buffering and clean up
+	
+	if($type == "opponent"){
+		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']." in battle with ".$creator."\n".evaluateText($list);
+	}else if($type == "creator"){
+		$opponent_score = getOpponentScore($conn, $_SESSION["userData"]["battle_id"]);
+		$battle_markup = "";
+		if($_SESSION['userData']['score'] > $opponent_score){
+			$title = "WINNER: ".$title;
+			$battle_markup = " and won ".$wager."$".evaluateText("SCRIP")." against score of ".$_SESSION['userData']['score'];
+		}else if($_SESSION['userData']['score'] < $opponent_score){
+			$title = "LOSER: ".$title;
+			$battle_markup = " and lost ".$wager."$".evaluateText("SCRIP")." against score of ".$opponent_score;
+		}else if($_SESSION['userData']['score'] == $opponent_score){
+			$title = "TIE: ".$title;
+			$battle_markup = " and kept ".$wager."$".evaluateText("SCRIP")." by tying with score of ".$opponent_score;
+		}
+		$title = "Dead on Round ".$_SESSION['userData']['score']." during PvP ".evaluateText("Battle");
+		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score'].$battle_markup." by ".$opponent."\n".evaluateText($list);
+	}
+	$imageurl = "https://www.madballs.net".$prefix."images/die/".rand(1,3).".gif?var=123";
+	discordmsg($title, $description, $imageurl);
+}
+
 // Log battle score for opponent or creator. If creator, assign wager to the winner of the battle
 function logBattleScore($conn, $type, $user_id, $battle_id){
 	$wager = getWager($conn, $battle_id);
