@@ -389,7 +389,6 @@ if($_SESSION['userData']['project_id'] == 1){
 							unset($_SESSION['userData']['notification']);
 							echo $view_results;
 							// If battle id is present, unset it since the player is now viewing their battle results and disable send results to discord so that it displays refresh
-							echo "here"; exit;
 							if(isset($_SESSION['userData']['battle_id'])){
 								unset($_SESSION['userData']['battle_id']);
 								echo "<script type='text/javascript'>document.getElementById('disableMessage').innerHTML = 'true';</script>";
@@ -403,6 +402,7 @@ if($_SESSION['userData']['project_id'] == 1){
 					?><script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/reset/intro.jpg')";</script><?php
 					// Do not display instant replay button if play button is rendered
 					echo $view_results;
+												echo "here"; exit;
 					echo "<script type='text/javascript'>document.getElementById('disableMessage').innerHTML = 'true';</script>";
 					$dropshipMarkup = getReplay($conn, $_POST['result_id']);
 				}  
