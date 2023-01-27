@@ -6,7 +6,7 @@ include 'header.php';
 
 // Handle wager form submission
 if(isset($_POST['wager'])) {
-	if($_POST['wager'] >= 1){
+	if($_POST['wager'] >= 1 && is_numeric($_POST['wager'])){
 		
 	}else{
 		echo "<script type='text/javascript'>alert('Please enter a valid wager amount.');</script>";
