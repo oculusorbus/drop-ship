@@ -234,7 +234,7 @@ function deleteBattle($conn, $battle_id) {
 }
 
 function getWager($conn, $battle_id){
-	$sql = "SELECT wager FROM battles WHERE battle_id = '".$_SESSION['userData']['battle_id']."' AND active = '1'";
+	$sql = "SELECT wager FROM battles WHERE id = '".$battle_id."' AND active = '1'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	    while($row = $result->fetch_assoc()) {
