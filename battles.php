@@ -17,7 +17,7 @@ if(isset($_POST['wager'])) {
 			<div class="main">
 				<h2><?php echo evaluateText("PvP Battles");?></h2>
 			    <div class="content" id="battles">
-					<form id="wagerForm" action="dashboard.php" method="post">
+					<form id="wagerForm" action="battles.php" method="post">
 					  <label for="wager">Enter <?php echo "$".evaluateText("SCRIP");?> Wager:</label>
 					  <input id="wager" name="wager" value=""><br><br>
 					  <input class="button" type="submit" value="Create PvP Battle">
