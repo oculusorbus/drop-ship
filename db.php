@@ -236,7 +236,7 @@ function deleteBattle($conn, $battle_id) {
 
 // Get wager amount for a specific battle
 function getWager($conn, $battle_id){
-	$sql = "SELECT wager FROM battles WHERE id = '".$battle_id."' AND active = '1'";
+	$sql = "SELECT wager FROM battles WHERE id = '".$battle_id."'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	    while($row = $result->fetch_assoc()) {
@@ -291,7 +291,6 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 			if($_SESSION['userData']['score'] > $opponent_score){
 				addBalance($conn, ($wager*2), $_SESSION['userData']['user_id']);
 				removeBalance($conn, $wager, $opponent_id);
-				echo "SCRIP Awarded: ".getWager($conn, $battle_id);
 				echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You beat the opponent score of ".$opponent_score."');</script>";
 			}else{
 				addBalance($conn, $wager, $opponent_id);
