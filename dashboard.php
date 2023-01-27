@@ -1,7 +1,7 @@
 <?php
 include 'db.php';
-include 'dropship.php';
 include 'webhooks.php';
+include 'dropship.php';
 include 'header.php';
 
 // Handle post actions at the top of the page to ensure data is accurate before rendering HTML
