@@ -231,7 +231,7 @@ function getBattles($conn) {
 	  // output data of each row
 	  while($row = $result->fetch_assoc()) {
 		echo "<ul class='roles'>";
-		echo "<li class='role'>Battle: ".$row["username"]."</li>";
+		echo "<li class='role'>Battle: ".$row["username"]."<br>";
 		echo "<li class='role'>Wager: ".$row["wager"]."</li>";
 		echo "</ul>";
 	  }
