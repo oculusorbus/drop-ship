@@ -280,6 +280,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		  unset($_SESSION['userData']['score']);
 		  //unset($_SESSION['userData']['battle_id']);
 		  unset($_SESSION['userData']['opponent_id']);
+   		  removeInventory($conn);
 		} else {
 		  //echo "Error: " . $sql . "<br>" . $conn->error;
 		}
@@ -300,6 +301,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 			unset($_SESSION['userData']['score']);
 			//unset($_SESSION['userData']['battle_id']);
 			unset($_SESSION['userData']['creator_id']);
+ 			removeInventory($conn);
 		} else {
 		  //echo "Error: " . $sql . "<br>" . $conn->error;
 		}
