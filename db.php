@@ -308,7 +308,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 				addBalance($conn, ($wager*2), $opponent_id);
 				//echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged. You lost to the opponent score of ".$opponent_score."');</script>";
 			// In the case of a tie, give wager back to both players
-			}else if($_SESSION['userData']['score'] < $opponent_score){
+			}else if($_SESSION['userData']['score'] == $opponent_score){
 				addBalance($conn, ($wager), $_SESSION['userData']['user_id']);
 				addBalance($conn, ($wager), $opponent_id);
 			}
