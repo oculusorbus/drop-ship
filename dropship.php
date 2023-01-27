@@ -922,7 +922,7 @@ if(isset($_POST['run'])){
 					// Log Battle Score (Opponent or Creator)
 					if(isset($_SESSION["userData"]["opponent_id"])){
 						logBattleScore($conn, "opponent", $_SESSION["userData"]["opponent_id"], $_SESSION["userData"]["battle_id"]);
-					}else if(isset($_SESSION["userData"]["creator_id"]){
+					}else if(isset($_SESSION["userData"]["creator_id"])){
 						logBattleScore($conn, "creator", $_SESSION["userData"]["creator_id"], $_SESSION["userData"]["battle_id"]);
 					}
 				}
