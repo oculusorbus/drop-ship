@@ -295,7 +295,7 @@ function kill($dropshipMarkup, $counter) {
 		}else if($counter < $opponent_score){
 			$battleMarkup = "(Tied with ".$opponent." score of ".$opponent_score.")";
 		}
-		$dropshipMarkup = $dropshipMarkup + $battleMarkup;
+		$dropshipMarkup = $dropshipMarkup.$battleMarkup;
 	}
 	if($counter == 3){
 		$dropshipMarkup.="<img src='".$prefix."images/die/beach.gif?var=123'/></div>";
