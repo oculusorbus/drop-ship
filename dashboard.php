@@ -508,6 +508,9 @@ if($_SESSION['userData']['project_id'] == 1){
 					</li>
 				</ul>
 			</div>
+			<div class="content" id="battles">
+				<h2>PvP Battles</h2>
+			</div>
 		  </div>
 		
 		</div>
