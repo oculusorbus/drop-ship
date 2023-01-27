@@ -384,9 +384,10 @@ if($_SESSION['userData']['project_id'] == 1){
 							<?php
 							echo "<h3>No active game.</h3>";
 						} else { 
-							// If battle id is present, unset it since the player is now viewing their battle results
+							// If battle id is present, unset it since the player is now viewing their battle results and disable send results to discord so that it displays refresh
 							if(isset($_SESSION['userData']['battle_id'])){
 								unset($_SESSION['userData']['battle_id']);
+								echo "<script type='text/javascript'>document.getElementById('disableMessage').innerHTML = 'true';</script>";
 							}
 							$hideLeaderboard = "true"; 
 							// Unset notification flag
