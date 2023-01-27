@@ -27,6 +27,7 @@ if(isset($_POST['wager'])) {
 					  <input id="wager" name="wager" value=""><br><br>
 					  <input class="button" type="submit" value="Create PvP Battle">
 					</form>
+					<?php getBattles($conn); ?>
 				</div>
 			</div>
 		</div>
