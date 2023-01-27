@@ -7,7 +7,11 @@ include 'header.php';
 // Handle wager form submission
 if(isset($_POST['wager'])) {
 	if($_POST['wager'] >= 1 && is_numeric($_POST['wager'])){
-		createBattle($conn, $wager);
+		if($_POST['wager'] <= checkBalance($conn)){
+			createBattle($conn, $wager);
+		}else{
+			echo "<script type='text/javascript'>alert('You do not have enough funds to place this wager and create a battle.');</script>";
+		}
 	}else{
 		echo "<script type='text/javascript'>alert('Please enter a valid wager amount.');</script>";
 	}
