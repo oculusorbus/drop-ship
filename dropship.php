@@ -36,6 +36,12 @@ if(isset($_POST['project_id'])){
 	$project_id = 1;
 }
 
+// Handle accept battle request to override game functionality
+if(isset($_POST['battle_id'])) {
+	// Need to check once again if player has enough currency to prevent hacking HTML form
+	$_SESSION["userData"]["battle_id"] = $_POST['battle_id'];
+}
+
 // Initiate variables
 $roles = $_SESSION['userData']['roles'];
 $roleMarkup = '<ul>';
@@ -727,15 +733,16 @@ $currentScoreMarkup = "";
 
 // Run Drop Ship
 if(isset($_POST['run'])){
-	if(isset($_SESSION['userData']['game_id'])) {
+	// Check for active game OR active battle
+	if(isset($_SESSION['userData']['game_id']) || isset($_SESSION['userData']['battle_id'])) {
 		checkScore($conn);
 		$squadTotal = checkSquadCount($conn);
-		if(isset($_SESSION['userData']['current_score']) && $squadTotal < 1) {
-			$currentScoreMarkup = "Final Score: ".$_SESSION['userData']['current_score'];
-		} else {
-			// If a squad exists, populate global NFT attribute variables based on squad and remove current score
-			if($squadTotal >= 1){
-				setSquad($conn);
+		// Check if there is no current score and a squad is formed OR a battle is accepted and a squad is formed
+		if((!isset($_SESSION['userData']['current_score']) && $squadTotal >= 1) || (isset($_SESSION['userData']['battle_id']) && $squadTotal >= 1)) {
+			// Populate global NFT attribute variables based on squad
+			setSquad($conn);
+			// If there is no battle, remove current score
+			if(!isset($_SESSION['userData']['battle_id'])){
 				unset($_SESSION['userData']['current_score']);
 			}
 			$threshold = 0;
@@ -900,7 +907,12 @@ if(isset($_POST['run'])){
 				}	
 			}
 			if(isset($dropshipMarkup)){
-				logScore($conn, $dropshipMarkup);
+				// Log game score if no battle is active
+				if(!isset($_SESSION['userData']['battle_id'])){
+					logScore($conn, $dropshipMarkup);
+				}else{
+					// Log Battle Score (Opponent or Creator), award wager to winner after creator plays
+				}
 			}else{
 				echo "<script type='text/javascript'>alert('Something went wrong with your game and no results markup was generated. Your score was not logged and your squad is still intact. Please try again and let Oculus Orbus know if you continue to experience issues.');</script>";
 			}

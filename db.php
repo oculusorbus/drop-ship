@@ -232,11 +232,19 @@ function getBattles($conn) {
 	  while($row = $result->fetch_assoc()) {
 		echo "<ul class='roles'>";
 		echo "<li class='role'><strong>Battle:</strong>&nbsp;".$row["username"]."&nbsp;";
-		echo "<strong>Wager:</strong>&nbsp;".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."&nbsp;";		
+		echo "<strong>Wager:</strong>&nbsp;".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."&nbsp;";	
 		echo '<form id="opponentForm" action="dashboard.php" method="post">
+		  <input type="hidden" id="opponent_id" name="opponent_id" value="'.$_SESSION['userData']['user_id'].'">
 		  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
 		  <input class="small-button" type="submit" value="Accept">
 		</form>';
+		if($row["user_id"] == $_SESSION['userData']['user_id']){
+			echo '<form id="creatorForm" action="dashboard.php" method="post">
+			  <input type="hidden" id="creator_id" name="creator_id" value="'.$_SESSION['userData']['user_id'].'">
+			  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
+			  <input class="small-button" type="submit" value="Cancel">
+			</form>';
+		}
 		echo "</li>";
 		echo "</ul>";
 	  }
