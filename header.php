@@ -9,9 +9,11 @@
   <link href="dist/flexbox.css?var=<?php echo rand(0,999); ?>" rel="stylesheet">
 </head>
 <body>
+	<?php if (!isset($_POST['run'])){ ?>
 	<div id="loading">
-	  <img id="loading-image" src="images/loading.gif" alt="Loading..." <?php echo (isset($_POST['run']))?'style="display:none"':""; ?> />
+	  <img id="loading-image" src="images/loading.gif" alt="Loading..." />
 	</div>
+	<?php } ?>
 	<div class="container">
 		<!-- Navigation Bar -->
 		<div class="navbar">
