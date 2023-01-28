@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="loading">
-	  <img id="loading-image" src="images/loading.gif" alt="Loading..." />
+	  <img id="loading-image" src="images/loading.gif" alt="Loading..." <?php echo (isset($_POST['run']))?'style="display:none"':""; ?> />
 	</div>
 	<div class="container">
 		<!-- Navigation Bar -->
