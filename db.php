@@ -300,13 +300,13 @@ function getCreatorUsername($conn, $battle_id){
 		}
 	}
 }
-
+//$avatar_url = "https://cdn.discordapp.com/avatars/$discord_id/$avatar.jpg";
 // Announce battle
 function announceBattle($wager){
-	global $prefix;
+	global $prefix, $avatar_url;
 	$title = "New Battle Created";
 	$description = $_SESSION['userData']['name']." created a new battle wagering ".$wager." $".evaluateText("SCRIP");
-	$imageurl = "https://www.madballs.net".$prefix."images/dropship.jpg";
+	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl);
 }
 
