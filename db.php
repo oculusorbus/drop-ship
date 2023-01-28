@@ -403,8 +403,8 @@ function getBattles($conn) {
 	  // output data of each row
 	  while($row = $result->fetch_assoc()) {
 		echo "<ul class='roles'>";
-		echo "<li class='role'><table><tr><td><strong>Battle:</strong>&nbsp;".$row["username"]."&nbsp;</td>";
-		echo "<td><strong>Wager:</strong>&nbsp;".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."&nbsp;</td>";
+		echo "<li class='role'><table><tr><td><strong>".$row["username"]."</strong></td>";
+		echo "<td><strong>".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."</strong></td>";
 		// Show accept button if player didn't create the battle, they have enough currency and they're not currently battling
 		// $row["user_id"] != $_SESSION['userData']['user_id'] && 
 		echo "<td>";
