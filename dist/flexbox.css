@@ -715,6 +715,10 @@ li form {
 	text-align: left;
 }
 
+#battles td{
+	width: 33.33%;
+}
+
 #battles h3 {
 	text-align: left;
 	padding-left: 10px;
