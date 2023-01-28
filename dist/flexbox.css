@@ -724,6 +724,14 @@ li form {
 	padding-left: 10px;
 }
 
+.cancel {
+    filter: hue-rotate(180deg);
+}
+
+.defend {
+    filter: hue-rotate(90deg);
+}
+
 #back-to-top-button {
   display: none;
   position: fixed;
