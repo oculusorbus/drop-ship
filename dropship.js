@@ -66,7 +66,7 @@ function displayRound(project_id) {
 		document.getElementById('audio1').load();
 		document.getElementById('audio1').play();
 		// Extra function call to try and force music to play
-		loadAudio(1, "8bit"+randomInt(1, 4));
+		loadAudio(1, "8bit"+randomInt(1, 5));
 		if(project_id == 1){
 			loadAudio(2, "alarm");
 		}else if(project_id == 3 || project_id == 4){
