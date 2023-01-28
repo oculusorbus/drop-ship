@@ -307,7 +307,7 @@ function announceBattle($wager){
 	$title = "New Battle Created";
 	$description = $_SESSION['userData']['name']." created a new battle wagering ".$wager." $".evaluateText("SCRIP");
 	$imageurl = $avatar_url;
-	discordmsg($title, $description, $imageurl);
+	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
 }
 
 // Announce battle results
@@ -344,7 +344,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score'].$battle_markup." by ".$opponent;
 	}
 	$imageurl = $avatar_url;
-	discordmsg($title, $description, $imageurl);
+	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
 }
 
 // Log battle score for opponent or creator. If creator, assign wager to the winner of the battle

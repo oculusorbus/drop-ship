@@ -3,10 +3,12 @@ include('credentials/webhooks_credentials.php');
 //
 //-- https://gist.github.com/Mo45/cb0813cb8a6ebcd6524f6a36d4f8862c
 //
-    function discordmsg($title, $description, $imageurl, $project_id=0) {
+    function discordmsg($title, $description, $imageurl, $url="") {
 		global $prefix;
 		// Delay execution by 1 minute to allow the player to finish their game before sending results to Discord
-		
+		if($url == ""){
+			$url = "https://madballs.net/drop-ship/index.php";
+		}
 		$webhook = getWebhook();
 	    $timestamp = date("c", strtotime("now"));
 	    $msg = json_encode([
@@ -39,7 +41,7 @@ include('credentials/webhooks_credentials.php');
 		            "description" => $description,
 
 		            // Link in title
-		            "url" => "https://madballs.net/drop-ship/index.php",
+		            "url" => $url,
 
 		            // Timestamp, only ISO8601
 		            "timestamp" => $timestamp,
