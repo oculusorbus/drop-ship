@@ -300,7 +300,7 @@ function getCreatorUsername($conn, $battle_id){
 		}
 	}
 }
-//$avatar_url = "https://cdn.discordapp.com/avatars/$discord_id/$avatar.jpg";
+
 // Announce battle
 function announceBattle($wager){
 	global $prefix, $avatar_url;
@@ -312,7 +312,7 @@ function announceBattle($wager){
 
 // Announce battle results
 function announceBattleResults($conn, $type, $user_id, $battle_id){
-	global $prefix;
+	global $prefix, $avatar_url;
 	$wager = getWager($conn, $battle_id);
 	$opponent = getOpponentUsername($conn, $battle_id);
 	$creator = getCreatorUsername($conn, $battle_id);
@@ -343,7 +343,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 		}
 		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score'].$battle_markup." by ".$opponent;
 	}
-	$imageurl = "https://www.madballs.net".$prefix."images/die/".rand(1,3).".gif?var=123";
+	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl);
 }
 
