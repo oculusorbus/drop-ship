@@ -317,7 +317,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 	$opponent = getOpponentUsername($conn, $battle_id);
 	$creator = getCreatorUsername($conn, $battle_id);
 	
-	$title = "Dead on Round ".$_SESSION['userData']['score']." during PvP ".evaluateText("Battle");
+	$title = "PvP ".evaluateText("Battle").": Dead on Round ".$_SESSION['userData']['score'];
 	// Disabling inventory list for battles because it's tied to results and game id
 	//ob_start(); // Start output buffering
 	//checkPlayerItems($conn);
