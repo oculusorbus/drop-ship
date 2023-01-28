@@ -39,7 +39,7 @@ include('credentials/webhooks_credentials.php');
 		            "description" => $description,
 
 		            // Link in title
-		            "url" => "https://madballs.net/drop-ship/index.php",
+		            "url" => "https://madballs.net/".$prefix."/index.php",
 
 		            // Timestamp, only ISO8601
 		            "timestamp" => $timestamp,
