@@ -407,27 +407,29 @@ function getBattles($conn) {
 		echo "<td><strong>Wager:</strong>&nbsp;".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."&nbsp;</td>";
 		// Show accept button if player didn't create the battle, they have enough currency and they're not currently battling
 		// $row["user_id"] != $_SESSION['userData']['user_id'] && 
+		echo "<td>";
 		if($row["user_id"] != $_SESSION['userData']['user_id'] && $row["opponent_score"] == 0 && checkBalance($conn) >= $row["wager"] && !isset($_SESSION['userData']['battle_id'])){
-			echo '<td><form id="opponentForm" action="dashboard.php#barracks" method="post">
+			echo '<form id="opponentForm" action="dashboard.php#barracks" method="post">
 			  <input type="hidden" id="opponent_id" name="opponent_id" value="'.$_SESSION['userData']['user_id'].'">
 			  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
 			  <input class="small-button" type="submit" value="Accept">
-			</form></td>';
+			</form>';
 		}
 		// Check if user created game, if so provide cancellation form if an opponent hasn't logged a score yet.
 		if($row["user_id"] == $_SESSION['userData']['user_id'] && $row["opponent_score"] == 0){
-			echo '<td><form id="cancelForm" action="battles.php" method="post">
+			echo '<form id="cancelForm" action="battles.php" method="post">
 			  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
 			  <input class="small-button" type="submit" value="Cancel">
-			</form></td>';
+			</form>';
 		}
 		if($row["user_id"] == $_SESSION['userData']['user_id'] && $row["opponent_score"] != 0){
-			echo '<td><form id="creatorForm" action="dashboard.php#barracks" method="post">
+			echo '<form id="creatorForm" action="dashboard.php#barracks" method="post">
 			  <input type="hidden" id="creator_id" name="creator_id" value="'.$_SESSION['userData']['user_id'].'">
 			  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
 			  <input class="small-button" type="submit" value="Defend">
-			</form></td>';
+			</form>';
 		}
+		echo "</td>";
 		echo "</tr></table>";
 		echo "</li>";
 		echo "</ul>";
