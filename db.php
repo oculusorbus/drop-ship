@@ -327,7 +327,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 	// Append this to description variable if you get it working
 	// "\n".evaluateText($list)
 	if($type == "opponent"){
-		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']." in battle with ".$creator;
+		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']." in battle with ".$creator." for ".$wager." $".evaluateText("SCRIP");
 	}else if($type == "creator"){
 		$opponent_score = getOpponentScore($conn, $battle_id);
 		$battle_markup = "";
