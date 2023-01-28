@@ -705,14 +705,14 @@ li form {
 	width: 50px;
 }
 
-#wagers table{
-	width: 100%;
-	text-align: left;
-}
-
 #wagers, #battles {
 	position: relative;
 	top: -60px;
+}
+
+#battles table{
+	width: 100%;
+	text-align: left;
 }
 
 #battles h3 {
