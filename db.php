@@ -412,7 +412,7 @@ function getBattles($conn) {
 			echo '<form id="opponentForm" action="dashboard.php#barracks" method="post">
 			  <input type="hidden" id="opponent_id" name="opponent_id" value="'.$_SESSION['userData']['user_id'].'">
 			  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
-			  <input class="small-button" type="submit" value="Accept">
+			  <input class="small-button" type="submit" value="Attack">
 			</form>';
 		}
 		// Check if user created game, if so provide cancellation form if an opponent hasn't logged a score yet.
