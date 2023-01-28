@@ -9,11 +9,9 @@
   <link href="dist/flexbox.css?var=<?php echo rand(0,999); ?>" rel="stylesheet">
 </head>
 <body>
-	<?php if (!isset($_POST['instant_replay'])){ ?>
 	<div id="loading">
-	  <img id="loading-image" src="images/loading.gif" alt="Loading..." />
+	  <img id="loading-image" src="images/loading.gif" alt="Loading..." <?php echo (isset($_POST['instant_replay']))?'style="display:none"':""; ?> />
 	</div>
-	<?php } ?>
 	<div class="container">
 		<!-- Navigation Bar -->
 		<div class="navbar">
