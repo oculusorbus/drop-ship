@@ -9,7 +9,7 @@
   <link href="dist/flexbox.css?var=<?php echo rand(0,999); ?>" rel="stylesheet">
 </head>
 <body>
-	<div id="loading" <?php echo (isset($_POST['instant_replay']))?'style="display:none"':""; ?>>
+	<div id="loading" <?php echo (isset($_POST['run']) || isset($_POST['instant_replay']))?'style="display:none"':""; ?>>
 	  <img id="loading-image" src="images/loading.gif" alt="Loading..." />
 	</div>
 	<div class="container">
