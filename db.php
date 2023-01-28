@@ -304,7 +304,7 @@ function getCreatorUsername($conn, $battle_id){
 // Announce battle
 function announceBattle($wager){
 	global $prefix, $avatar_url;
-	$title = "New Battle Created";
+	$title = "New Battle Created [Click to Attack]";
 	$description = $_SESSION['userData']['name']." created a new battle wagering ".$wager." $".evaluateText("SCRIP");
 	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
