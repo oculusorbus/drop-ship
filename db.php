@@ -1917,10 +1917,10 @@ function transactionHistory($conn) {
 				echo "</td><td>";
 				if($row["battle_id"] != 0){
 					if($row["creator_id"] == $_SESSION['userData']['user_id']){
-						$score = $row["user_score"]."|".$row["opponent_score"];
+						$score = $row["user_score"].":".$row["opponent_score"];
 						$username = getOpponentUsername($conn, $row["battle_id"]);
 					}else{
-						$score = $row["opponent_score"]."|".$row["user_score"];
+						$score = $row["opponent_score"].":".$row["user_score"];
 						$username = getCreatorUsername($conn, $row["battle_id"]);
 					}
 					echo $username;
@@ -1933,10 +1933,10 @@ function transactionHistory($conn) {
 				echo "<td>".$date."</td><td>".$time."</td><td align='center'>".$type."</td><td align='center'>".$row["amount"]."</td>";
 				if($row["battle_id"] != 0){
 					if($row["creator_id"] == $_SESSION['userData']['user_id']){
-						$score = $row["user_score"]."|".$row["opponent_score"];
+						$score = $row["user_score"].":".$row["opponent_score"];
 						$username = getOpponentUsername($conn, $row["battle_id"]);
 					}else{
-						$score = $row["opponent_score"]."|".$row["user_score"];
+						$score = $row["opponent_score"].":".$row["user_score"];
 						$username = getCreatorUsername($conn, $row["battle_id"]);
 					}
 					echo "<td align='center'>".$scrip."</td><td>".$username."</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$score."</td>";
