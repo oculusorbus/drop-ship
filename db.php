@@ -430,18 +430,20 @@ function getBattles($conn) {
 			</form>';
 		}
 		// Check if user created game, if so provide cancellation form if an opponent hasn't logged a score yet.
-		if($row["user_id"] == $_SESSION['userData']['user_id'] && $row["opponent_score"] == 0){
+		else if($row["user_id"] == $_SESSION['userData']['user_id'] && $row["opponent_score"] == 0){
 			echo '<form id="cancelForm" action="battles.php" method="post">
 			  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
 			  <input class="small-button cancel" type="submit" value="Retreat">
 			</form>';
 		}
-		if($row["user_id"] == $_SESSION['userData']['user_id'] && $row["opponent_score"] != 0){
+		else if($row["user_id"] == $_SESSION['userData']['user_id'] && $row["opponent_score"] != 0){
 			echo '<form id="creatorForm" action="dashboard.php#barracks" method="post">
 			  <input type="hidden" id="creator_id" name="creator_id" value="'.$_SESSION['userData']['user_id'].'">
 			  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
 			  <input class="small-button defend" type="submit" value="Defend">
 			</form>';
+		}else{
+			echo "[Ineligible]";
 		}
 		echo "</td>";
 		echo "</tr></table>";
