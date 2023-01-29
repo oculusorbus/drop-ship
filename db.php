@@ -371,6 +371,7 @@ function announce($type, $user_id, $battle_id){
 	"&prefix=".$prefix.
 	"&avatar_url=".$avatar_url);*/
 	echo "<script type='text/javascript'>";
+	echo "var xhttp = new XMLHttpRequest();";
 	echo "xhttp.open('GET', 'announcements.php?type=".$type;
 	echo "&user_id=".$user_id;
 	echo "&battle_id=".$battle_id;
