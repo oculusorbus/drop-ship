@@ -6,8 +6,6 @@ include 'webhooks.php';
 //include 'dropship.php';
 //sleep(60);
 
-print_r($_GET);
-/*
 announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"], $_GET["name"], $_GET["score"], $_GET["prefix"], $_GET["avatar_url"]);
 
 // Announce battle results
@@ -26,6 +24,7 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 	
 	// Append this to description variable if you get it working
 	// "\n".evaluateText($list)
+	/*
 	if($type == "opponent"){
 		$description = $name." died during Round ".$score." in battle with ".$creator." for ".$wager." $".evaluateText("SCRIP").". It is now ".$creator."'s turn to defend.";
 	}else if($type == "creator"){
@@ -44,7 +43,7 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 		$description = $name." died during Round ".$score.$battle_markup." by ".$opponent;
 	}
 	$imageurl = $avatar_url;
-	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
+	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");*/
 }
-*/
+
 ?>
