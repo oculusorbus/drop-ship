@@ -16,10 +16,10 @@ $prefix = $_GET["prefix"];
 $avatar_url = $_GET["avatar_url"];
 
 
-//announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url);
+announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url);
 
 // Announce battle results
-//function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
+function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
 	/*
 	global $conn;
 	$wager = getWager($conn, $battle_id);
@@ -54,7 +54,7 @@ $avatar_url = $_GET["avatar_url"];
 		$description = $name." died during Round ".$score.$battle_markup." by ".$opponent;
 	}
 	$imageurl = $avatar_url;
-	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
-}*/
+	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");*/
+}
 
 ?>
