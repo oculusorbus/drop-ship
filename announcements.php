@@ -3,7 +3,7 @@ include 'db.php';
 include 'webhooks.php';
 //include 'dropship.php';
 
-announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"]);
+announceBattleResults($_POST["type"], $_POST["user_id"], $_POST["battle_id"]);
 
 // Announce battle results
 function announceBattleResults($type, $user_id, $battle_id){
