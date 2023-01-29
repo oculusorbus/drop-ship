@@ -24,6 +24,8 @@ announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avat
 // Announce battle results
 function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $srip){
 	//global $conn;
+	echo "here";
+	exit;
 	
 	$title = "PvP ".$battle.": Dead on Round ".$score;
 	// Disabling inventory list for battles because it's tied to results and game id
