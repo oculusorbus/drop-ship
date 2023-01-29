@@ -13,7 +13,7 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 	$opponent = getOpponentUsername($conn, $battle_id);
 	$creator = getCreatorUsername($conn, $battle_id);
 	
-	$title = "PvP ".evaluateText("Battle").": Dead on Round ".$_SESSION['userData']['score'];
+	$title = "PvP ".evaluateText("Battle").": Dead on Round ".$score;
 	// Disabling inventory list for battles because it's tied to results and game id
 	//ob_start(); // Start output buffering
 	//checkPlayerItems($conn);
@@ -23,7 +23,7 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 	// Append this to description variable if you get it working
 	// "\n".evaluateText($list)
 	if($type == "opponent"){
-		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']." in battle with ".$creator." for ".$wager." $".evaluateText("SCRIP").". It is now ".$creator."'s turn to defend.";
+		$description = $name." died during Round ".$score." in battle with ".$creator." for ".$wager." $".evaluateText("SCRIP").". It is now ".$creator."'s turn to defend.";
 	}else if($type == "creator"){
 		$opponent_score = getOpponentScore($conn, $battle_id);
 		$battle_markup = "";
@@ -37,7 +37,7 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 			$title = "TIE - ".$title;
 			$battle_markup = " and kept ".$wager." $".evaluateText("SCRIP")." by tying with score of ".$opponent_score;
 		}
-		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score'].$battle_markup." by ".$opponent;
+		$description = $name." died during Round ".$score.$battle_markup." by ".$opponent;
 	}
 	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
