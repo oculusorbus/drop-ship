@@ -1,6 +1,7 @@
 <?php
 include 'db.php';
-$_SESSION['userData']['project_id'] = $_POST["project_id"]; 
+$_SESSION['userData']['project_id'] = $_POST["project_id"];
+$prefix = $_POST["prefix"];
 include 'webhooks.php';
 //include 'dropship.php';
 sleep(60);
