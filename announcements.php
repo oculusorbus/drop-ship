@@ -12,12 +12,12 @@ flush();
 sleep(5); //wait 5 seconds
 
 include 'db.php';
-$_SESSION['userData']['project_id'] = $_POST["project_id"];
-$prefix = $_POST["prefix"];
+$_SESSION['userData']['project_id'] = $_GET["project_id"];
+$prefix = $_GET["prefix"];
 include 'webhooks.php';
 //include 'dropship.php';
 //sleep(60);
-announceBattleResults($_POST["type"], $_POST["user_id"], $_POST["battle_id"], $_POST["name"], $_POST["score"], $_POST["prefix"], $_POST["avatar_url"]);
+announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"], $_GET["name"], $_GET["score"], $_GET["prefix"], $_GET["avatar_url"]);
 
 // Announce battle results
 function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
