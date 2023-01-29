@@ -1922,7 +1922,7 @@ function transactionHistory($conn) {
 						$score = $row["opponent_score"]."/".$row["user_score"];
 						$username = getCreatorUsername($conn, $row["battle_id"]);
 					}
-					echo "Defeated ".$username;
+					echo $username;
 					echo "</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$score."</td>";
 				}else{
 					echo ($row["amount"] == "0") ? "Winner" : "Reward";
@@ -1937,7 +1937,7 @@ function transactionHistory($conn) {
 						$score = $row["opponent_score"]."/".$row["user_score"];
 						$username = getCreatorUsername($conn, $row["battle_id"]);
 					}
-					echo "<td>".$date."</td><td>".$time."</td><td align='center'>".ucfirst($row["type"])."</td><td align='center'>".$row["amount"]."</td><td align='center'>".$scrip."</td><td>Lost to ".$username."</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$score."</td>";
+					echo "<td>".$date."</td><td>".$time."</td><td align='center'>".ucfirst($row["type"])."</td><td align='center'>".$row["amount"]."</td><td align='center'>".$scrip."</td><td>".$username."</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$score."</td>";
 				}else{
 					echo "<td>".$date."</td><td>".$time."</td><td align='center'>".ucfirst($row["type"])."</td><td align='center'>".$row["amount"]."</td><td align='center'><img class='icon' src='icons/".evaluateText(strtolower(str_replace(" ", "-", $row["name"]))).".png'/></td><td>".evaluateText($row["name"])."</td><td>&nbsp;</td><td>&nbsp;</td>";
 				}
