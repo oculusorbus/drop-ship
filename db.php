@@ -1896,7 +1896,7 @@ function logBattleDebit($conn, $user_id, $battle_id, $amount) {
 
 function transactionHistory($conn) {
 	if(isset($_SESSION['userData']['user_id'])){
-		$sql = "SELECT transactions.type, amount, items.name, transactions.date_created, results.game_id AS game_id, results.score AS score, battle_id, user_score, opponent_score FROM transactions LEFT JOIN results ON transactions.result_id=results.id LEFT JOIN items ON transactions.item_id = items.id LEFT JOIN battles ON transactions.battle_id = battles.id WHERE transactions.user_id='".$_SESSION['userData']['user_id']."' AND transactions.project_id = '".$_SESSION['userData']['project_id']."' ORDER BY date_created DESC";
+		$sql = "SELECT transactions.type, amount, items.name, transactions.date_created, results.game_id AS game_id, results.score AS score, battle_id, user_score, opponent_score, battles.user_id AS creator_id FROM transactions LEFT JOIN results ON transactions.result_id=results.id LEFT JOIN items ON transactions.item_id = items.id LEFT JOIN battles ON transactions.battle_id = battles.id WHERE transactions.user_id='".$_SESSION['userData']['user_id']."' AND transactions.project_id = '".$_SESSION['userData']['project_id']."' ORDER BY date_created DESC";
 		$result = $conn->query($sql);
 	
 		echo "<table cellspacing='0' id='transactions'><tr><th>Date</th><th>Time</th><th align='center'>Type</th><th align='center'>\$".evaluateText("SCRIP")."</th><th align='center'>Icon</th><th>Description</th><th align='center'>Game</th><th align='center'>Score</th></tr>";
@@ -1915,14 +1915,25 @@ function transactionHistory($conn) {
 				echo ($row["amount"] == "0")?$xp:$scrip;
 				echo "</td><td>";
 				if($row["battle_id"] != 0){
+					if($row["creator_id"] == $_SESSION['userData']['user_id']){
+						$score = $row["user_score"]."/".$row["opponent_score"];
+					}else{
+						$score = $row["opponent_score"]."/".$row["user_score"];
+					}
 					echo "Won Battle";
+					echo "</td><td align='center'>".$row["game_id"]."</td><td align='center'>".$score."</td>";
 				}else{
 					echo ($row["amount"] == "0") ? "Winner" : "Reward";
+					echo "</td><td align='center'>".$row["game_id"]."</td><td align='center'>".$row["score"]."</td>";
 				}
-				echo "</td><td align='center'>".$row["game_id"]."</td><td align='center'>".$row["score"]."</td>";
 			}else if ($row["type"] == "debit"){
 				if($row["battle_id"] != 0){
-					echo "<td>".$date."</td><td>".$time."</td><td align='center'>".ucfirst($row["type"])."</td><td align='center'>".$row["amount"]."</td><td align='center'>".$scrip."</td><td>Lost Battle</td><td>&nbsp;</td><td>&nbsp;</td>";
+					if($row["creator_id"] == $_SESSION['userData']['user_id']){
+						$score = $row["user_score"]."/".$row["opponent_score"];
+					}else{
+						$score = $row["opponent_score"]."/".$row["user_score"];
+					}
+					echo "<td>".$date."</td><td>".$time."</td><td align='center'>".ucfirst($row["type"])."</td><td align='center'>".$row["amount"]."</td><td align='center'>".$scrip."</td><td>Lost Battle</td><td>&nbsp;</td><td>".$score."</td>";
 				}else{
 					echo "<td>".$date."</td><td>".$time."</td><td align='center'>".ucfirst($row["type"])."</td><td align='center'>".$row["amount"]."</td><td align='center'><img class='icon' src='icons/".evaluateText(strtolower(str_replace(" ", "-", $row["name"]))).".png'/></td><td>".evaluateText($row["name"])."</td><td>&nbsp;</td><td>&nbsp;</td>";
 				}
