@@ -37,6 +37,7 @@ if(isset($_POST['wager'])) {
 				<div class="content" id="battles">
 					<ul class='roles'>
 					 <li class='role'>
+						<img class="icon" src="icons/dropship.png">
 					<h3>Available Battles</h3>
 					 </li>
 					</ul>
