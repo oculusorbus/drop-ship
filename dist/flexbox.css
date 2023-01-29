@@ -724,7 +724,11 @@ li form {
 	padding-left: 10px;
 }
 
-.battle {
+.battle-credit {
+	filter: hue-rotate(30deg);
+}
+
+.battle-debit {
 	filter: hue-rotate(330deg);
 }
 

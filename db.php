@@ -1908,7 +1908,7 @@ function transactionHistory($conn) {
 				echo "<tr class='winner'>";
 			} else {
 				if($row["battle_id"] != 0){
-					echo "<tr class='".$row["type"]." battle'>";
+					echo "<tr class='".$row["type"]." battle-".$row["type"]."'>";
 				}else{
 					echo "<tr class='".$row["type"]."'>";
 				}
