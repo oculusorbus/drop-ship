@@ -27,13 +27,13 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 	}else if($type == "creator"){
 		$opponent_score = getOpponentScore($conn, $battle_id);
 		$battle_markup = "";
-		if($_SESSION['userData']['score'] > $opponent_score){
+		if($score > $opponent_score){
 			$title = "WINNER - ".$title;
 			$battle_markup = " and won ".$wager." $".evaluateText("SCRIP")." against score of ".$opponent_score;
-		}else if($_SESSION['userData']['score'] < $opponent_score){
+		}else if($score < $opponent_score){
 			$title = "LOSER - ".$title;
 			$battle_markup = " and lost ".$wager." $".evaluateText("SCRIP")." against score of ".$opponent_score;
-		}else if($_SESSION['userData']['score'] == $opponent_score){
+		}else if($score == $opponent_score){
 			$title = "TIE - ".$title;
 			$battle_markup = " and kept ".$wager." $".evaluateText("SCRIP")." by tying with score of ".$opponent_score;
 		}
