@@ -230,6 +230,7 @@ function deleteBattle($conn, $battle_id) {
 	if ($conn->query($sql) === TRUE) {
 	  //echo "Record deleted successfully";
 		addBalance($conn, $wager, $_SESSION['userData']['user_id']);
+		announceRetreat($wager);
 	} else {
 	    echo "<script type='text/javascript'>alert('An opponent logged a score before you canceled. Please defend in your battle.');</script>";
 	}
@@ -306,6 +307,15 @@ function announceBattle($wager){
 	global $prefix, $avatar_url;
 	$title = "New Battle Created [Click to Attack]";
 	$description = $_SESSION['userData']['name']." created a new battle wagering ".$wager." $".evaluateText("SCRIP");
+	$imageurl = $avatar_url;
+	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
+}
+
+// Announce retreat
+function announceRetreat($wager){
+	global $prefix, $avatar_url;
+	$title = "Retreat";
+	$description = $_SESSION['userData']['name']." retreated from battle retrieving a wager of ".$wager." $".evaluateText("SCRIP");
 	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
 }
