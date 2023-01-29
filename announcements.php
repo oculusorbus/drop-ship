@@ -3,11 +3,9 @@ include 'db.php';
 $_SESSION['userData']['project_id'] = $_GET["project_id"];
 $prefix = $_GET["prefix"];
 include 'webhooks.php';
-
-echo "here";
 //include 'dropship.php';
 //sleep(60);
-/*
+
 announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"], $_GET["name"], $_GET["score"], $_GET["prefix"], $_GET["avatar_url"]);
 
 // Announce battle results
@@ -46,5 +44,5 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
 }
-*/
+
 ?>
