@@ -10,6 +10,7 @@ $battle_id = $_GET["battle_id"];
 $name = $_GET["name"];
 $score = $_GET["score"];
 $avatar_url = $_GET["avatar_url"];
+$project_id = $_GET["project_id"];
 $wager = $_GET["wager"];
 $opponent = $_GET["opponent"];
 $creator = $_GET["creator"];
