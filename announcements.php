@@ -14,10 +14,16 @@ $score = $_GET["score"];
 $prefix = $_GET["prefix"];
 $avatar_url = $_GET["avatar_url"];
 
-announceBattleResults($type);
+test();
+
+function test(){
+	
+}
+
+//announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url);
 
 // Announce battle results
-function announceBattleResults($type){
+//function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
 	/*
 	global $conn;
 	$wager = getWager($conn, $battle_id);
