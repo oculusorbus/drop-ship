@@ -20,10 +20,10 @@ $scrip = $_GET["scrip"];
 
 sleep($score*2);
 
-announceBattleResults($type, $user_id, $battle_id, $name, $score, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $srip);
+announceBattleResults($type, $user_id, $battle_id, $name, $score, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $scrip);
 
 // Announce battle results
-function announceBattleResults($type, $user_id, $battle_id, $name, $score, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $srip){
+function announceBattleResults($type, $user_id, $battle_id, $name, $score, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $scrip){
 	//global $conn;
 	
 	$title = "PvP ".$battle.": Dead on Round ".$score;
