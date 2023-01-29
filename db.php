@@ -327,7 +327,7 @@ function announce($type, $user_id, $battle_id){
 	$wager = getWager($conn, $battle_id);
 	$opponent = getOpponentUsername($conn, $battle_id);
 	$creator = getCreatorUsername($conn, $battle_id);
-	$opponent_score = getOpponentScore($conn, $battle_id)
+	$opponent_score = getOpponentScore($conn, $battle_id);
 
 	echo "<script type='text/javascript'>";
 	echo "var xhttp = new XMLHttpRequest();";
