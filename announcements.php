@@ -15,7 +15,7 @@ $opponent = $_GET["opponent"];
 $creator = $_GET["creator"];
 $opponent_score = $_GET["opponent_score"];
 
-sleep($score*2);
+//sleep($score*2);
 
 announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score);
 
