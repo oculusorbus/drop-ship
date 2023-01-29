@@ -5,7 +5,7 @@ $prefix = $_GET["prefix"];
 include 'webhooks.php';
 //include 'dropship.php';
 //sleep(60);
-
+echo "here";
 // Announce battle results
 function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
 	global $conn;
