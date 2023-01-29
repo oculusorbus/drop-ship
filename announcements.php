@@ -16,7 +16,7 @@ $prefix = $_GET["prefix"];
 $avatar_url = $_GET["avatar_url"];
 
 
-announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url);
+//announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url);
 
 // Announce battle results
 function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
