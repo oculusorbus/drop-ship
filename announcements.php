@@ -1,4 +1,16 @@
 <?php
+ignore_user_abort(true); //continue script if connetions become close by webbrowser(client) within working script
+
+ob_end_clean(); // this 4 lines just extra sending to web about close connect it just in case
+header("Connection: close\r\n"); //send to website close connect 
+header("Content-Encoding: none\r\n"); 
+header("Content-Length: 1"); //
+
+fastcgi_finish_request(); //close nginx,apache connect to php-fpm (php working but nginx or apache stop communication with php)
+//continue scripting 
+// ...DO HERE WHAT YOU WANT ...
+//check test with your mongo or mysql to sure php still keep connection with db
+
 include 'db.php';
 $_SESSION['userData']['project_id'] = $_POST["project_id"];
 $prefix = $_POST["prefix"];
