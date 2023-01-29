@@ -320,41 +320,28 @@ function announceRetreat($wager){
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
 }
 
-// Announce battle results
-function announceBattleResults($conn, $type, $user_id, $battle_id){
-	global $prefix, $avatar_url;
-	$wager = getWager($conn, $battle_id);
-	$opponent = getOpponentUsername($conn, $battle_id);
-	$creator = getCreatorUsername($conn, $battle_id);
-	
-	$title = "PvP ".evaluateText("Battle").": Dead on Round ".$_SESSION['userData']['score'];
-	// Disabling inventory list for battles because it's tied to results and game id
-	//ob_start(); // Start output buffering
-	//checkPlayerItems($conn);
-	//$list = ob_get_contents(); // Store buffer in variable
-	//ob_end_clean(); // End buffering and clean up
-	
-	// Append this to description variable if you get it working
-	// "\n".evaluateText($list)
-	if($type == "opponent"){
-		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']." in battle with ".$creator." for ".$wager." $".evaluateText("SCRIP").". It is now ".$creator."'s turn to defend.";
-	}else if($type == "creator"){
-		$opponent_score = getOpponentScore($conn, $battle_id);
-		$battle_markup = "";
-		if($_SESSION['userData']['score'] > $opponent_score){
-			$title = "WINNER - ".$title;
-			$battle_markup = " and won ".$wager." $".evaluateText("SCRIP")." against score of ".$opponent_score;
-		}else if($_SESSION['userData']['score'] < $opponent_score){
-			$title = "LOSER - ".$title;
-			$battle_markup = " and lost ".$wager." $".evaluateText("SCRIP")." against score of ".$opponent_score;
-		}else if($_SESSION['userData']['score'] == $opponent_score){
-			$title = "TIE - ".$title;
-			$battle_markup = " and kept ".$wager." $".evaluateText("SCRIP")." by tying with score of ".$opponent_score;
-		}
-		$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score'].$battle_markup." by ".$opponent;
-	}
-	$imageurl = $avatar_url;
-	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
+function announce($type, $user_id, $battle_id){
+	//
+	// A very simple PHP example that sends a HTTP POST to a remote site
+	//
+
+	$ch = curl_init();
+
+	curl_setopt($ch, CURLOPT_URL,"http://www.madballs.net/drop-ship/announcements.php");
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS,
+	            "type=".$type."&user_id=".$user_id."&battle_id=".$battle_id);
+
+	// In real life you should use something like:
+	// curl_setopt($ch, CURLOPT_POSTFIELDS, 
+	//          http_build_query(array('postvar1' => 'value1')));
+
+	// Receive server response ...
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+	$server_output = curl_exec($ch);
+
+	curl_close($ch);
 }
 
 // Log battle score for opponent or creator. If creator, assign wager to the winner of the battle
@@ -364,7 +351,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		$opponent_id = $user_id;
 		$sql = "UPDATE battles SET opponent_score ='".$_SESSION['userData']['score']."', opponent_id = '".$user_id."' WHERE id='".$battle_id."'";
 		if ($conn->query($sql) === TRUE) {
-		  announceBattleResults($conn, "opponent", $user_id, $battle_id);
+		  announce("opponent", $user_id, $battle_id);
    		  removeBalance($conn, $wager, $opponent_id);
 		  //echo "New record created successfully";
 		  //echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged.');</script>";
@@ -379,7 +366,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		$creator_id = $user_id;
 		$sql = "UPDATE battles SET user_score ='".$_SESSION['userData']['score']."', active = '0' WHERE id='".$battle_id."'";
 		if ($conn->query($sql) === TRUE) {
-			announceBattleResults($conn, "creator", $user_id, $battle_id);
+			announce("creator", $user_id, $battle_id);
 			$opponent_score = getOpponentScore($conn, $battle_id);
 			$opponent_id = getOpponentID($conn, $battle_id);
 			if($_SESSION['userData']['score'] > $opponent_score){
