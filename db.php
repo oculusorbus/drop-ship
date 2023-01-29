@@ -308,7 +308,7 @@ function announceBattle($wager){
 	$title = "New Battle Created [Click to Attack]";
 	$description = $_SESSION['userData']['name']." created a new battle wagering ".$wager." $".evaluateText("SCRIP");
 	$imageurl = $avatar_url;
-	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
+	discordmsg($title, $description, $imageurl, $_SESSION['userData']['project_id'], "https://madballs.net/drop-ship/battles.php");
 }
 
 // Announce retreat
