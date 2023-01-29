@@ -33,7 +33,7 @@ if($_SESSION['userData']['discord_id'] == "772831523899965440") {
 		ob_end_clean(); // End buffering and clean up
 		$description = $list;
 		$imageurl = "https://www.madballs.net/".$prefix."/images/dropship.jpg";
-		discordmsg($title, evaluateText($description), $imageurl);
+		discordmsg($title, evaluateText($description), $imageurl, $_SESSION['userData']['project_id']);
 		deactivateGame($conn);
 	}
 	if(isset($_POST['newgame']) && !isset($_SESSION['userData']['game_id'])) {
@@ -41,7 +41,7 @@ if($_SESSION['userData']['discord_id'] == "772831523899965440") {
 		$title = "New Game ".$_POST['name'];
 		$description = "A new game of ".getProjectName($conn)." has been created.";
 		$imageurl = "https://www.madballs.net/".$prefix."/images/dropship.jpg";
-		discordmsg($title, $description, $imageurl);
+		discordmsg($title, $description, $imageurl, $_SESSION['userData']['project_id']);
 	}
 }
 
