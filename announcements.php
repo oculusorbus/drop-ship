@@ -1,15 +1,15 @@
 <?php
-ignore_user_abort(true); //continue script if connetions become close by webbrowser(client) within working script
+ob_end_clean();
+ignore_user_abort(true);
+ob_start();
+header("Connection: close");
+header("Content-Length: " . ob_get_length());
+ob_end_flush();
+flush();
 
-ob_end_clean(); // this 4 lines just extra sending to web about close connect it just in case
-header("Connection: close\r\n"); //send to website close connect 
-header("Content-Encoding: none\r\n"); 
-header("Content-Length: 1"); //
+// from here the response has been sent. you can now wait as long as you want and do some tracking stuff 
 
-fastcgi_finish_request(); //close nginx,apache connect to php-fpm (php working but nginx or apache stop communication with php)
-//continue scripting 
-// ...DO HERE WHAT YOU WANT ...
-//check test with your mongo or mysql to sure php still keep connection with db
+sleep(5); //wait 5 seconds
 
 include 'db.php';
 $_SESSION['userData']['project_id'] = $_POST["project_id"];

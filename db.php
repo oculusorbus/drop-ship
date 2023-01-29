@@ -357,9 +357,19 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
 }
 
-/* Failed announcement delay
+
 function announce($type, $user_id, $battle_id){
 	global $prefix, $avatar_url;
+	
+	get_headers("http://www.madballs.net?type=".$type.
+	"&user_id=".$user_id.
+	"&battle_id=".$battle_id.
+	"&project_id=".$_SESSION['userData']['project_id'].
+	"&name=".$_SESSION['userData']['name'].
+	"&score=".$_SESSION['userData']['score'].
+	"&prefix=".$prefix.
+	"&avatar_url=".$avatar_url);
+/*
 	//
 	// A very simple PHP example that sends a HTTP POST to a remote site
 	//
@@ -390,8 +400,8 @@ function announce($type, $user_id, $battle_id){
 	//$server_output = curl_exec($ch);
 	curl_exec($ch);
 	
-	//curl_close($ch);
-}*/
+	//curl_close($ch);*/
+}
 
 // Log battle score for opponent or creator. If creator, assign wager to the winner of the battle
 function logBattleScore($conn, $type, $user_id, $battle_id){
@@ -400,7 +410,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		$opponent_id = $user_id;
 		$sql = "UPDATE battles SET opponent_score ='".$_SESSION['userData']['score']."', opponent_id = '".$user_id."' WHERE id='".$battle_id."'";
 		if ($conn->query($sql) === TRUE) {
-		  announceBattleResults($conn, "opponent", $user_id, $battle_id);
+		  announce("opponent", $user_id, $battle_id);
    		  removeBalance($conn, $wager, $opponent_id);
 		  //echo "New record created successfully";
 		  //echo "<script type='text/javascript'>alert('Your battle score of ".$_SESSION['userData']['score']." has been logged.');</script>";
@@ -415,7 +425,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 		$creator_id = $user_id;
 		$sql = "UPDATE battles SET user_score ='".$_SESSION['userData']['score']."', active = '0' WHERE id='".$battle_id."'";
 		if ($conn->query($sql) === TRUE) {
-			announceBattleResults($conn, "creator", $user_id, $battle_id);
+			announce("creator", $user_id, $battle_id);
 			$opponent_score = getOpponentScore($conn, $battle_id);
 			$opponent_id = getOpponentID($conn, $battle_id);
 			if($_SESSION['userData']['score'] > $opponent_score){
