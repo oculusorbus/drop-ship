@@ -6,7 +6,8 @@ include 'webhooks.php';
 //include 'dropship.php';
 //sleep(60);
 
-print_r($_GET);
+$type = $_GET["type"];
+echo $type;
 
 /*
 announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"], $_GET["name"], $_GET["score"], $_GET["prefix"], $_GET["avatar_url"]);
