@@ -368,8 +368,8 @@ function announce($type, $user_id, $battle_id){
 
 	curl_setopt($ch, CURLOPT_URL,"http://www.madballs.net/drop-ship/announcements.php");
 	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($curl, CURLOPT_TIMEOUT_MS, 1); //HERE MAGIC (We wait only 1ms on connection) Script waiting but (processing of send package to $curl is continue up to successful) so after 1ms we continue scripting and in background php continue already package to destiny. This is like apple on tree, we cut and go, but apple still fallow to destiny but we don't care what happened when fall down :) 
-    curl_setopt($curl, CURLOPT_NOSIGNAL, 1); // i'dont know just it works together read manual ;)
+	curl_setopt($ch, CURLOPT_TIMEOUT_MS, 1); //HERE MAGIC (We wait only 1ms on connection) Script waiting but (processing of send package to $curl is continue up to successful) so after 1ms we continue scripting and in background php continue already package to destiny. This is like apple on tree, we cut and go, but apple still fallow to destiny but we don't care what happened when fall down :) 
+    curl_setopt($ch, CURLOPT_NOSIGNAL, 1); // i'dont know just it works together read manual ;)
 	curl_setopt($ch, CURLOPT_POSTFIELDS,
 	"type=".$type.
 	"&user_id=".$user_id.
