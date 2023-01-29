@@ -335,7 +335,6 @@ function announce($type, $user_id, $battle_id){
 	echo "&prefix=".$prefix;
 	echo "&avatar_url=".$avatar_url."', true);";
 	echo "xhttp.send();";
-	echo "xhttp.abort();";
 	echo "</script>";
 }
 
