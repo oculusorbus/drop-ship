@@ -1041,7 +1041,7 @@ function loadAchievements($conn, $heavy_armor, $medium_armor, $light_armor, $bas
 	if ($result->num_rows > 0) {
 	  // output data of each row
 	  while($row = $result->fetch_assoc()) {
-			$sql = "SELECT inventory.item_id AS item_id FROM inventory INNER JOIN results_items ON inventory.item_id = results_items.item_id WHERE results_items.user_id = '".$_SESSION['userData']['user_id']."' AND inventory.item_id = '".$row["id"]."' AND inventory.project_id = '".$_SESSION['userData']['project_id']."'";
+			$sql = "SELECT inventory.item_id AS item_id FROM inventory INNER JOIN results_items ON inventory.item_id = results_items.item_id WHERE inventory.user_id = '".$_SESSION['userData']['user_id']."' AND inventory.item_id = '".$row["id"]."' AND results_items.project_id = '".$_SESSION['userData']['project_id']."'";
 			$inventory_result = $conn->query($sql);
 			if ($inventory_result->num_rows > 0) {
 				$status = "Unlocked";
