@@ -13,7 +13,6 @@ $user_id = $_GET["user_id"];
 $battle_id = $_GET["battle_id"];
 $name = $_GET["name"];
 $score = $_GET["score"];
-$prefix = $_GET["prefix"];
 $avatar_url = $_GET["avatar_url"];
 
 /* For some ungodly reason, functions aren't working so I've commented them out.
