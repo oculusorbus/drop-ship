@@ -1,7 +1,7 @@
 <?php
 include 'db.php';
 include 'webhooks.php';
-include 'dropship.php';
+//include 'dropship.php';
 
 announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"]);
 
