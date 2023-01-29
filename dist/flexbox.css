@@ -725,11 +725,11 @@ li form {
 }
 
 .battle-credit {
-	filter: hue-rotate(30deg);
+	filter: hue-rotate(145deg);
 }
 
 .battle-debit {
-	filter: hue-rotate(330deg);
+	filter: hue-rotate(65deg);
 }
 
 .cancel {
