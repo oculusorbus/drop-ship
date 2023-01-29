@@ -360,16 +360,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 
 function announce($type, $user_id, $battle_id){
 	global $prefix, $avatar_url;
-	
-	/*
-	get_headers("http://www.madballs.net?type=".$type.
-	"&user_id=".$user_id.
-	"&battle_id=".$battle_id.
-	"&project_id=".$_SESSION['userData']['project_id'].
-	"&name=".$_SESSION['userData']['name'].
-	"&score=".$_SESSION['userData']['score'].
-	"&prefix=".$prefix.
-	"&avatar_url=".$avatar_url);*/
+
 	echo "<script type='text/javascript'>";
 	echo "var xhttp = new XMLHttpRequest();";
 	echo "xhttp.open('GET', 'announcements.php?type=".$type;
@@ -382,38 +373,6 @@ function announce($type, $user_id, $battle_id){
 	echo "&avatar_url=".$avatar_url."', true);";
 	echo "xhttp.send();";
 	echo "</script>";
-/*
-	//
-	// A very simple PHP example that sends a HTTP POST to a remote site
-	//
-
-	$ch = curl_init();
-
-	curl_setopt($ch, CURLOPT_URL,"http://www.madballs.net/drop-ship/announcements.php");
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_TIMEOUT_MS, 1); //HERE MAGIC (We wait only 1ms on connection) Script waiting but (processing of send package to $curl is continue up to successful) so after 1ms we continue scripting and in background php continue already package to destiny. This is like apple on tree, we cut and go, but apple still fallow to destiny but we don't care what happened when fall down :) 
-    curl_setopt($ch, CURLOPT_NOSIGNAL, 1); // i'dont know just it works together read manual ;)
-	curl_setopt($ch, CURLOPT_POSTFIELDS,
-	"type=".$type.
-	"&user_id=".$user_id.
-	"&battle_id=".$battle_id.
-	"&project_id=".$_SESSION['userData']['project_id'].
-	"&name=".$_SESSION['userData']['name'].
-	"&score=".$_SESSION['userData']['score'].
-	"&prefix=".$prefix.
-	"&avatar_url=".$avatar_url);
-
-	// In real life you should use something like:
-	// curl_setopt($ch, CURLOPT_POSTFIELDS, 
-	//          http_build_query(array('postvar1' => 'value1')));
-
-	// Receive server response ...
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-	//$server_output = curl_exec($ch);
-	curl_exec($ch);
-	
-	//curl_close($ch);*/
 }
 
 // Log battle score for opponent or creator. If creator, assign wager to the winner of the battle
