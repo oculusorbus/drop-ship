@@ -4,14 +4,14 @@ $_SESSION['userData']['project_id'] = $_GET["project_id"];
 $prefix = $_GET["prefix"];
 include 'webhooks.php';
 
-sleep(60);
-
 $type = $_GET["type"];
 $user_id = $_GET["user_id"];
 $battle_id = $_GET["battle_id"];
 $name = $_GET["name"];
 $score = $_GET["score"];
 $avatar_url = $_GET["avatar_url"];
+
+sleep($score*2);
 
 // For some ungodly reason, functions aren't working so I've commented them out.
 announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url);
