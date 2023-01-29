@@ -3,7 +3,7 @@ include 'db.php';
 $_SESSION['userData']['project_id'] = $_POST["project_id"]; 
 include 'webhooks.php';
 //include 'dropship.php';
-
+sleep(60);
 announceBattleResults($_POST["type"], $_POST["user_id"], $_POST["battle_id"], $_POST["name"], $_POST["score"], $_POST["prefix"], $_POST["avatar_url"]);
 
 // Announce battle results
