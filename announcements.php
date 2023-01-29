@@ -1,16 +1,4 @@
 <?php
-ob_end_clean();
-ignore_user_abort(true);
-ob_start();
-header("Connection: close");
-header("Content-Length: " . ob_get_length());
-ob_end_flush();
-flush();
-
-// from here the response has been sent. you can now wait as long as you want and do some tracking stuff 
-
-sleep(5); //wait 5 seconds
-
 include 'db.php';
 $_SESSION['userData']['project_id'] = $_GET["project_id"];
 $prefix = $_GET["prefix"];

@@ -361,6 +361,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 function announce($type, $user_id, $battle_id){
 	global $prefix, $avatar_url;
 	
+	/*
 	get_headers("http://www.madballs.net?type=".$type.
 	"&user_id=".$user_id.
 	"&battle_id=".$battle_id.
@@ -368,7 +369,18 @@ function announce($type, $user_id, $battle_id){
 	"&name=".$_SESSION['userData']['name'].
 	"&score=".$_SESSION['userData']['score'].
 	"&prefix=".$prefix.
-	"&avatar_url=".$avatar_url);
+	"&avatar_url=".$avatar_url);*/
+	echo "<script type='text/javascript'>";
+	echo "xhttp.open('GET', 'announcements.php?type=".$type;
+	echo "&user_id=".$user_id;
+	echo "&battle_id=".$battle_id;
+	echo "&project_id=".$_SESSION['userData']['project_id'];
+	echo "&name=".$_SESSION['userData']['name'];
+	echo "&score=".$_SESSION['userData']['score'];
+	echo "&prefix=".$prefix;
+	echo "&avatar_url=".$avatar_url."', true);";
+	echo "xhttp.send();";
+	echo "</script>";
 /*
 	//
 	// A very simple PHP example that sends a HTTP POST to a remote site
