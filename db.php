@@ -341,7 +341,8 @@ function announce($type, $user_id, $battle_id){
 	
 	//curl_exec($ch);
 	$server_output = curl_exec($ch);
-
+	echo $server_output;
+	
 	curl_close($ch);
 }
 
