@@ -328,6 +328,8 @@ function announce($type, $user_id, $battle_id){
 	$opponent = getOpponentUsername($conn, $battle_id);
 	$creator = getCreatorUsername($conn, $battle_id);
 	$opponent_score = getOpponentScore($conn, $battle_id);
+	$battle = evaluateText("Battle");
+	$scrip = evaluateText("SCRIP");
 
 	echo "<script type='text/javascript'>";
 	echo "var xhttp = new XMLHttpRequest();";
@@ -342,6 +344,8 @@ function announce($type, $user_id, $battle_id){
 	echo "&opponent=".$opponent;
 	echo "&creator=".$creator;
 	echo "&opponent_score=".$opponent_score;
+	echo "&battle=".$battle;
+	echo "&scrip=".$scrip;
 	echo "&avatar_url=".$avatar_url."', true);";
 	echo "xhttp.send();";
 	echo "</script>";
