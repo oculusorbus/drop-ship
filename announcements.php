@@ -18,7 +18,7 @@ $opponent_score = $_GET["opponent_score"];
 $battle = $_GET["battle"];
 $scrip = $_GET["scrip"];
 
-//sleep($score*2);
+sleep($score*2);
 
 announceBattleResults($type, $user_id, $battle_id, $name, $score, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $srip);
 
