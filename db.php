@@ -359,6 +359,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 }*/
 
 function announce($type, $user_id, $battle_id){
+	global $prefix, $avatar_url;
 	//
 	// A very simple PHP example that sends a HTTP POST to a remote site
 	//
@@ -368,7 +369,14 @@ function announce($type, $user_id, $battle_id){
 	curl_setopt($ch, CURLOPT_URL,"http://www.madballs.net/drop-ship/announcements.php");
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS,
-	            "type=".$type."&user_id=".$user_id."&battle_id=".$battle_id);
+	"type=".$type.
+	"&user_id=".$user_id.
+	"&battle_id=".$battle_id.
+	"&project_id=".$_SESSION['userData']['project_id'].
+	"&name=".$_SESSION['userData']['name'].
+	"&score=".$_SESSION['userData']['score'].
+	"&prefix=".$prefix.
+	"&avatar_url=".$avatar_url);
 
 	// In real life you should use something like:
 	// curl_setopt($ch, CURLOPT_POSTFIELDS, 
