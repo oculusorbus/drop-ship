@@ -10,6 +10,7 @@ announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"], $_GET
 
 // Announce battle results
 function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
+	/*
 	global $conn;
 	$wager = getWager($conn, $battle_id);
 	$opponent = getOpponentUsername($conn, $battle_id);
@@ -24,7 +25,7 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 	
 	// Append this to description variable if you get it working
 	// "\n".evaluateText($list)
-	/*
+	
 	if($type == "opponent"){
 		$description = $name." died during Round ".$score." in battle with ".$creator." for ".$wager." $".evaluateText("SCRIP").". It is now ".$creator."'s turn to defend.";
 	}else if($type == "creator"){
