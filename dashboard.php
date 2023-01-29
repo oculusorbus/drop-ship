@@ -291,7 +291,7 @@ if($_SESSION['userData']['project_id'] == 1){
 							ob_end_clean(); // End buffering and clean up
 							$description = $_SESSION['userData']['name']." died during Round ".$_SESSION['userData']['score']."\n".evaluateText($list);
 							$imageurl = "https://www.madballs.net".$prefix."images/die/".rand(1,3).".gif?var=123";
-							discordmsg($title, $description, $imageurl); 
+							discordmsg($title, $description, $imageurl, $_SESSION['userData']['project_id']); 
 							$_SESSION['userData']['notification'] = "true";
 						}
 						?>

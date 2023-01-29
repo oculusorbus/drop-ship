@@ -317,12 +317,17 @@ function announceRetreat($wager){
 	$title = "Retreat";
 	$description = $_SESSION['userData']['name']." retreated from battle retrieving a wager of ".$wager." $".evaluateText("SCRIP");
 	$imageurl = $avatar_url;
-	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
+	discordmsg($title, $description, $imageurl, $_SESSION['userData']['project_id'], "https://madballs.net/drop-ship/battles.php");
 }
 
 // Announce battle results using AJAX via separate PHP file in order to delay the Discord message
 function announce($type, $user_id, $battle_id){
-	global $prefix, $avatar_url;
+	global $conn, $prefix, $avatar_url;
+	
+	$wager = getWager($conn, $battle_id);
+	$opponent = getOpponentUsername($conn, $battle_id);
+	$creator = getCreatorUsername($conn, $battle_id);
+	$opponent_score = getOpponentScore($conn, $battle_id)
 
 	echo "<script type='text/javascript'>";
 	echo "var xhttp = new XMLHttpRequest();";
@@ -333,6 +338,10 @@ function announce($type, $user_id, $battle_id){
 	echo "&name=".$_SESSION['userData']['name'];
 	echo "&score=".$_SESSION['userData']['score'];
 	echo "&prefix=".$prefix;
+	echo "&wager=".$wager;
+	echo "&opponent=".$opponent;
+	echo "&creator=".$creator;
+	echo "&opponent_score=".$opponent_score;
 	echo "&avatar_url=".$avatar_url."', true);";
 	echo "xhttp.send();";
 	echo "</script>";
