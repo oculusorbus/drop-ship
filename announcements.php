@@ -6,10 +6,10 @@ include 'webhooks.php';
 //include 'dropship.php';
 //sleep(60);
 
-announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"], $_GET["name"], $_GET["score"], $_GET["prefix"], $_GET["avatar_url"]);
+announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"], $_GET["name"], $_GET["score"]);
 
 // Announce battle results
-function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
+function announceBattleResults($type, $user_id, $battle_id, $name, $score){
 /*
 	global $conn;
 	$wager = getWager($conn, $battle_id);
