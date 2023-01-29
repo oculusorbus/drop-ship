@@ -3,7 +3,7 @@ include 'db.php';
 include 'webhooks.php';
 include 'dropship.php';
 include 'header.php';
-
+print_r($_SESSION);
 // Handle wager form submission
 if(isset($_POST['wager'])) {
 	if($_POST['wager'] >= 1 && is_numeric($_POST['wager'])){

@@ -1,7 +1,7 @@
 <?php
 include 'db.php';
 include 'webhooks.php';
-$_SESSION["logged_in"] = 1;
+//$_SESSION["userData"]["logged_in"] = 1;
 include 'dropship.php';
 
 announceBattleResults($_POST["type"], $_POST["user_id"], $_POST["battle_id"]);
