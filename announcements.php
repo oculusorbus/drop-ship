@@ -3,9 +3,8 @@ include 'db.php';
 $_SESSION['userData']['project_id'] = $_GET["project_id"];
 $prefix = $_GET["prefix"];
 include 'webhooks.php';
-//include 'dropship.php';
 
-sleep(10);
+sleep(60);
 
 $type = $_GET["type"];
 $user_id = $_GET["user_id"];
