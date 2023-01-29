@@ -5,12 +5,11 @@ $prefix = $_GET["prefix"];
 include 'webhooks.php';
 //include 'dropship.php';
 //sleep(60);
-
-announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"], $_GET["name"], $_GET["score"]);
+/*
+announceBattleResults($_GET["type"], $_GET["user_id"], $_GET["battle_id"], $_GET["name"], $_GET["score"], $_GET["prefix"], $_GET["avatar_url"]);
 
 // Announce battle results
-function announceBattleResults($type, $user_id, $battle_id, $name, $score){
-/*
+function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
 	global $conn;
 	$wager = getWager($conn, $battle_id);
 	$opponent = getOpponentUsername($conn, $battle_id);
@@ -44,7 +43,7 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score){
 		$description = $name." died during Round ".$score.$battle_markup." by ".$opponent;
 	}
 	$imageurl = $avatar_url;
-	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");*/
-}
+	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
+}*/
 
 ?>
