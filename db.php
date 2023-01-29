@@ -1921,10 +1921,10 @@ function transactionHistory($conn) {
 						$score = $row["opponent_score"]."/".$row["user_score"];
 					}
 					echo "Won Battle";
-					echo "</td><td align='center'>".$row["game_id"]."</td><td align='center'>".$score."</td>";
+					echo "</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$score."</td>";
 				}else{
 					echo ($row["amount"] == "0") ? "Winner" : "Reward";
-					echo "</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$row["score"]."</td>";
+					echo "</td><td align='center'>".$row["game_id"]."</td><td align='center'>".$row["score"]."</td>";
 				}
 			}else if ($row["type"] == "debit"){
 				if($row["battle_id"] != 0){
