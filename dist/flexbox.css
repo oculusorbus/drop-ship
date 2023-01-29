@@ -715,7 +715,7 @@ li form {
 	text-align: left;
 }
 
-#battles td{
+#battles td, #battles th{
 	width: 33.33%;
 }
 
