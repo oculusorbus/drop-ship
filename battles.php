@@ -38,7 +38,7 @@ if(isset($_POST['wager'])) {
 					<ul class='roles'>
 					 <li class='role'>
 						<img class="icon" src="icons/dropship.png">
-					<h2>Available Battles</h2>
+						<h3>Available Battles</h3>
 					 </li>
 					</ul>
 					<?php getBattles($conn); ?>
