@@ -439,7 +439,7 @@ function getBattles($conn) {
 			  <input class="small-button defend" type="submit" value="Defend">
 			</form>';
 		}else{
-			echo "[&nbsp;NA&nbsp;]";
+			echo "[&nbsp;&nbsp;NA&nbsp;&nbsp;]";
 		}
 		echo "</td>";
 		echo "</tr></table>";
