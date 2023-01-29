@@ -319,7 +319,7 @@ function announceRetreat($wager){
 	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
 }
-
+/*
 // Announce battle results
 function announceBattleResults($conn, $type, $user_id, $battle_id){
 	global $prefix, $avatar_url;
@@ -355,7 +355,7 @@ function announceBattleResults($conn, $type, $user_id, $battle_id){
 	}
 	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
-}
+}*/
 
 
 function announce($type, $user_id, $battle_id){

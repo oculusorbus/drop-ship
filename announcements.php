@@ -5,7 +5,7 @@ $prefix = $_GET["prefix"];
 include 'webhooks.php';
 //include 'dropship.php';
 
-sleep(60);
+//sleep(60);
 
 $type = $_GET["type"];
 $user_id = $_GET["user_id"];
@@ -14,13 +14,12 @@ $name = $_GET["name"];
 $score = $_GET["score"];
 $avatar_url = $_GET["avatar_url"];
 
-/* For some ungodly reason, functions aren't working so I've commented them out.
+// For some ungodly reason, functions aren't working so I've commented them out.
 announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url);
 
 // Announce battle results
-function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){*/
-	
-	//global $conn;
+function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
+	global $conn;
 	$wager = getWager($conn, $battle_id);
 	$opponent = getOpponentUsername($conn, $battle_id);
 	$creator = getCreatorUsername($conn, $battle_id);
@@ -54,5 +53,5 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 	}
 	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
-//}
+}
 ?>
