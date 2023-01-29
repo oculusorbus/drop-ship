@@ -1902,6 +1902,7 @@ function transactionHistory($conn) {
 		echo "<table cellspacing='0' id='transactions'><tr><th>Date</th><th>Time</th><th align='center'>Type</th><th align='center'>\$".evaluateText("SCRIP")."</th><th align='center'>Icon</th><th>Description</th><th align='center'>Game</th><th align='center'>Score</th></tr>";
 	  	$xp = "<img class='icon' src='icons/xp.png'/>";
 		$scrip = "<img class='icon' src='icons/scrip.png'/>";
+		$weapon = "<img class='icon' src='icons/weapon.png'/>";
 		while($row = $result->fetch_assoc()) {
 			$type = "<img class='icon' src='icons/".$row["type"].".png'/>";
 			if($row["amount"] == "0" && isset($row["game_id"])){
@@ -1917,13 +1918,15 @@ function transactionHistory($conn) {
 			$time = date("g:ia",strtotime("-1 hour", strtotime($row["date_created"])));
 			if ($row["type"] == "credit"){
 	    		echo "<td>".$date."</td><td>".$time."</td><td align='center'>".$type."</td><td align='center'>".$row["amount"]."</td><td align='center'>";
-				echo ($row["amount"] == "0")?$xp:$scrip;
-				echo "</td><td>";
 				if($row["battle_id"] != 0){
 					if($row["creator_id"] == $_SESSION['userData']['user_id']){
+						echo $weapon;
+						echo "</td><td>";
 						$score = $row["user_score"]."-".$row["opponent_score"];
 						$username = getOpponentUsername($conn, $row["battle_id"]);
 					}else{
+						echo ($row["amount"] == "0")?$xp:$scrip;
+						echo "</td><td>";
 						$score = $row["opponent_score"]."-".$row["user_score"];
 						$username = getCreatorUsername($conn, $row["battle_id"]);
 					}
@@ -1943,7 +1946,7 @@ function transactionHistory($conn) {
 						$score = $row["opponent_score"]."-".$row["user_score"];
 						$username = getCreatorUsername($conn, $row["battle_id"]);
 					}
-					echo "<td align='center'>".$scrip."</td><td>".$username."</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$score."</td>";
+					echo "<td align='center'>".$weapon."</td><td>".$username."</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$score."</td>";
 				}else{
 					echo "<td align='center'><img class='icon' src='icons/".evaluateText(strtolower(str_replace(" ", "-", $row["name"]))).".png'/></td><td>".evaluateText($row["name"])."</td><td>&nbsp;</td><td>&nbsp;</td>";
 				}
