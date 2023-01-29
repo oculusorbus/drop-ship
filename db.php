@@ -1907,7 +1907,11 @@ function transactionHistory($conn) {
 			if($row["amount"] == "0" && isset($row["game_id"])){
 				echo "<tr class='winner'>";
 			} else {
-				echo "<tr class='".$row["type"]."'>";
+				if($row["battle_id"] != 0){
+					echo "<tr class='".$row["type"]." battle'>";
+				}else{
+					echo "<tr class='".$row["type"]."'>";
+				}
 			}
 			$date = date("n-j-Y",strtotime("-1 hour", strtotime($row["date_created"])));
 			$time = date("g:ia",strtotime("-1 hour", strtotime($row["date_created"])));
