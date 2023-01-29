@@ -7,7 +7,6 @@ include 'webhooks.php';
 
 sleep(60);
 
-
 $type = $_GET["type"];
 $user_id = $_GET["user_id"];
 $battle_id = $_GET["battle_id"];
