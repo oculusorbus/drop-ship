@@ -17,8 +17,10 @@ $opponent_score = $_GET["opponent_score"];
 $battle = $_GET["battle"];
 $scrip = $_GET["scrip"];
 
-//sleep($score*2);
+print_r($_GET);
 
+//sleep($score*2);
+/*
 announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $srip);
 
 // Announce battle results
@@ -53,5 +55,5 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 	}
 	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl, $project_id, "https://madballs.net/drop-ship/battles.php");
-}
+}*/
 ?>
