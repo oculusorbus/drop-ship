@@ -1902,7 +1902,7 @@ function transactionHistory($conn) {
 		echo "<table cellspacing='0' id='transactions'><tr><th>Date</th><th>Time</th><th align='center'>Type</th><th align='center'>\$".evaluateText("SCRIP")."</th><th align='center'>Icon</th><th>Description</th><th align='center'>Game</th><th align='center'>Score</th></tr>";
 	  	$xp = "<img class='icon' src='icons/xp.png'/>";
 		$scrip = "<img class='icon' src='icons/scrip.png'/>";
-		$weapon = "<img class='icon' src='icons/weapon.png'/>";
+		$weapon = "<img class='icon' src='icons/weapons.png'/>";
 		while($row = $result->fetch_assoc()) {
 			$type = "<img class='icon' src='icons/".$row["type"].".png'/>";
 			if($row["amount"] == "0" && isset($row["game_id"])){
