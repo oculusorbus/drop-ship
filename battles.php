@@ -35,7 +35,11 @@ if(isset($_POST['wager'])) {
 			</div>
 			<div class="main">
 				<div class="content" id="battles">
+					<ul class='roles'>
+					 <li class='role'>
 					<h3>Available Battles</h3>
+					 </li>
+					</ul>
 					<?php getBattles($conn); ?>
 				</div>
 			</div>
