@@ -1,9 +1,9 @@
 <?php
 //include 'db.php';
 //$_SESSION['userData']['project_id'] = $_GET["project_id"];
+$prefix = $_GET["prefix"];
 include 'webhooks.php';
 
-$prefix = $_GET["prefix"];
 $type = $_GET["type"];
 $user_id = $_GET["user_id"];
 $battle_id = $_GET["battle_id"];
@@ -19,13 +19,11 @@ $scrip = $_GET["scrip"];
 
 //sleep($score*2);
 
-announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $srip);
+announceBattleResults($type, $user_id, $battle_id, $name, $score, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $srip);
 
 // Announce battle results
-function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $srip){
+function announceBattleResults($type, $user_id, $battle_id, $name, $score, $avatar_url, $project_id, $wager, $opponent, $creator, $opponent_score, $battle, $srip){
 	//global $conn;
-	echo "here";
-	exit;
 	
 	$title = "PvP ".$battle.": Dead on Round ".$score;
 	// Disabling inventory list for battles because it's tied to results and game id
