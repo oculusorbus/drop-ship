@@ -410,7 +410,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 
 // Get current battles
 function getBattles($conn) {
-	$sql = "SELECT battles.id AS battle_id, user_id, wager, opponent_score, username, discord_id FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY wager DESC";
+	$sql = "SELECT battles.id AS battle_id, user_id, wager, opponent_score, username FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY wager DESC";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -419,7 +419,7 @@ function getBattles($conn) {
       echo "<ul class='roles'>";
 	  echo "<li class='role'><table><tr><th>Creator</th><th>Wager</th><th>Action</th></tr></table></li>";
 	  while($row = $result->fetch_assoc()) {
-		echo "<li class='role'><table><tr><td><img class='rounded-full' src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/avatar.jpg'/><strong>".$row["username"]."</strong></td>";
+		echo "<li class='role'><table><tr><td><strong>".$row["username"]."</strong></td>";
 		echo "<td><strong>".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."</strong></td>";
 		// Show accept button if player didn't create the battle, they have enough currency and they're not currently battling
 		// $row["user_id"] != $_SESSION['userData']['user_id'] && 
