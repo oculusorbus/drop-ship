@@ -1924,7 +1924,7 @@ function transactionHistory($conn) {
 					echo "</td><td align='center'>".$row["game_id"]."</td><td align='center'>".$score."</td>";
 				}else{
 					echo ($row["amount"] == "0") ? "Winner" : "Reward";
-					echo "</td><td align='center'>".$row["game_id"]."</td><td align='center'>".$row["score"]."</td>";
+					echo "</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$row["score"]."</td>";
 				}
 			}else if ($row["type"] == "debit"){
 				if($row["battle_id"] != 0){
@@ -1933,7 +1933,7 @@ function transactionHistory($conn) {
 					}else{
 						$score = $row["opponent_score"]."/".$row["user_score"];
 					}
-					echo "<td>".$date."</td><td>".$time."</td><td align='center'>".ucfirst($row["type"])."</td><td align='center'>".$row["amount"]."</td><td align='center'>".$scrip."</td><td>Lost Battle</td><td>&nbsp;</td><td align='center'>".$score."</td>";
+					echo "<td>".$date."</td><td>".$time."</td><td align='center'>".ucfirst($row["type"])."</td><td align='center'>".$row["amount"]."</td><td align='center'>".$scrip."</td><td>Lost Battle</td><td align='center'>".$row["battle_id"]."</td><td align='center'>".$score."</td>";
 				}else{
 					echo "<td>".$date."</td><td>".$time."</td><td align='center'>".ucfirst($row["type"])."</td><td align='center'>".$row["amount"]."</td><td align='center'><img class='icon' src='icons/".evaluateText(strtolower(str_replace(" ", "-", $row["name"]))).".png'/></td><td>".evaluateText($row["name"])."</td><td>&nbsp;</td><td>&nbsp;</td>";
 				}
