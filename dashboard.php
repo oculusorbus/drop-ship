@@ -384,7 +384,13 @@ if($_SESSION['userData']['project_id'] == 1){
 							<script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/dropship.jpg')";</script>
 							<script>
 							var videoContent = "";
-							videoContent ='<video id="dropshipPromoVideo" onloadstart="this.volume=0.15" autoplay controls><source src="videos/dropship.mp4" type="video/mp4">Your browser does not support the video tag.</video>';
+							var video = "";
+							if(Math.floor(Math.random() * 3) == 0){
+								video = "easteregg";
+							}else{
+								video = "dropship";
+							}
+							videoContent ='<video id="dropshipPromoVideo" onloadstart="this.volume=0.15" autoplay controls><source src="videos/'+video+'.mp4" type="video/mp4">Your browser does not support the video tag.</video>';
 							document.getElementById("results").innerHTML = videoContent;
 							document.getElementById("dropshipPromoVideo").style.height = (document.getElementById("results").offsetHeight-10)+"px";
 							</script>
