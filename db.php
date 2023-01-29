@@ -434,6 +434,13 @@ function getBattles($conn) {
 		echo "</li>";
 	  }
 	  echo "</ul>";
+	}else{
+		echo"
+		<ul class='roles'>
+		 <li class='role'>
+			No Battles Created
+		 </li>
+		</ul>";
 	}
 }
 
