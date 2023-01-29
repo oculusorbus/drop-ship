@@ -19,9 +19,9 @@ $avatar_url = $_GET["avatar_url"];
 announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url);
 
 // Announce battle results
-function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){
-	/*
-	global $conn;
+function announceBattleResults($type, $user_id, $battle_id, $name, $score, $prefix, $avatar_url){*/
+	
+	//global $conn;
 	$wager = getWager($conn, $battle_id);
 	$opponent = getOpponentUsername($conn, $battle_id);
 	$creator = getCreatorUsername($conn, $battle_id);
@@ -55,5 +55,5 @@ function announceBattleResults($type, $user_id, $battle_id, $name, $score, $pref
 	}
 	$imageurl = $avatar_url;
 	discordmsg($title, $description, $imageurl, "https://madballs.net/drop-ship/battles.php");
-}*/
+//}
 ?>
