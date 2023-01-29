@@ -339,9 +339,9 @@ function announce($type, $user_id, $battle_id){
 	// Receive server response ...
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-	$server_output = curl_exec($ch);
+	curl_exec($ch);
 
-	curl_close($ch);
+	//curl_close($ch);
 }
 
 // Log battle score for opponent or creator. If creator, assign wager to the winner of the battle
