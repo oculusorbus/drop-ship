@@ -5,7 +5,7 @@ $prefix = $_GET["prefix"];
 include 'webhooks.php';
 //include 'dropship.php';
 
-//sleep(60);
+sleep(10);
 
 $type = $_GET["type"];
 $user_id = $_GET["user_id"];
