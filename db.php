@@ -338,10 +338,11 @@ function announce($type, $user_id, $battle_id){
 
 	// Receive server response ...
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	
+	//curl_exec($ch);
+	$server_output = curl_exec($ch);
 
-	curl_exec($ch);
-
-	//curl_close($ch);
+	curl_close($ch);
 }
 
 // Log battle score for opponent or creator. If creator, assign wager to the winner of the battle
@@ -411,7 +412,8 @@ function getBattles($conn) {
 		// Show accept button if player didn't create the battle, they have enough currency and they're not currently battling
 		// $row["user_id"] != $_SESSION['userData']['user_id'] && 
 		echo "<td>";
-		if($row["user_id"] != $_SESSION['userData']['user_id'] && $row["opponent_score"] == 0 && checkBalance($conn) >= $row["wager"] && !isset($_SESSION['userData']['battle_id'])){
+		//$row["user_id"] != $_SESSION['userData']['user_id'] && 
+		if($row["opponent_score"] == 0 && checkBalance($conn) >= $row["wager"] && !isset($_SESSION['userData']['battle_id'])){
 			echo '<form id="opponentForm" action="dashboard.php#barracks" method="post">
 			  <input type="hidden" id="opponent_id" name="opponent_id" value="'.$_SESSION['userData']['user_id'].'">
 			  <input type="hidden" id="battle_id" name="battle_id" value="'.$row["battle_id"].'">
