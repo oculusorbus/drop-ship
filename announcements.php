@@ -4,7 +4,8 @@ $_SESSION['userData']['project_id'] = $_GET["project_id"];
 $prefix = $_GET["prefix"];
 include 'webhooks.php';
 //include 'dropship.php';
-//sleep(60);
+
+sleep(60);
 
 
 $type = $_GET["type"];
