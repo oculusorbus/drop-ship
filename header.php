@@ -8,7 +8,7 @@
   <!--<link href="dist/output.css" rel="stylesheet">-->
   <link href="dist/flexbox.css?var=<?php echo rand(0,999); ?>" rel="stylesheet">
   <?php
-  if($_SESSION["userData"]["project_id"] == 4){?>
+  if($_SESSION["userData"]["project_id"] == 4 && !str_contains($_SERVER['PHP_SELF'], "battles.php")){?>
 	<style>
 		.button, .small-button{
 			filter: hue-rotate(145deg);
