@@ -625,6 +625,7 @@ function deploySoldier($conn, $id, $active){
 
 // Get soldiers for user
 function getSoldiers($conn, $active, $filterby="", $all=false){
+	global $prefix;
 	if($filterby != "None"){
 		if($filterby == "Heavy" || $filterby == "Medium" || $filterby == "Light" || $filterby == "Base"){
 			$filterby = "AND armor = '".$filterby."' ";
@@ -690,7 +691,7 @@ function getSoldiers($conn, $active, $filterby="", $all=false){
 		for ($i = 1; $i < 5-$troopcounter; $i++) {
 		    echo "<div class='nft empty-slot'><div class='nft-data'>
 			<span class='nft-name'>EMPTY SLOT #".$i."</span>
-			<span class='nft-image'><img src='images/nfts/placeholder.jpg'></span>
+			<span class='nft-image'><img src='".$prefix."images/nfts/placeholder.jpg'></span>
 			<span class='nft-rank'><strong>Rank</strong><br>Grunt</span>
 			<span class='nft-armor'><strong>Armor</strong><br>None</span>
 			<span class='nft-gear'><strong>Gear</strong><br>None</span>
