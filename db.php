@@ -83,6 +83,8 @@ function evaluateText($text){
 			$replacements['SCRIP'] = 'TIDDIES';
 			$replacements['supersoldier'] = 'vip';
 			$replacements['Super Soldier'] = 'VIP';
+			$replacements['Grunt'] = 'Slave';
+			
 			if($_SESSION['userData']['project_id'] == 3){
 				$replacements['Barracks'] = 'Hideout';
 				$replacements['Armory'] = 'Sex Shop';
@@ -697,7 +699,7 @@ function getSoldiers($conn, $active, $filterby="", $all=false){
 		    echo "<div class='nft empty-slot'><div class='nft-data'>
 			<span class='nft-name'>EMPTY SLOT #".$i."</span>
 			<span class='nft-image'><img src='".$prefix."images/nfts/placeholder.jpg'></span>
-			<span class='nft-rank'><strong>Rank</strong><br>Grunt</span>
+			<span class='nft-rank'><strong>Rank</strong><br>".evaluateText("Grunt")."</span>
 			<span class='nft-armor'><strong>Armor</strong><br>None</span>
 			<span class='nft-gear'><strong>Gear</strong><br>None</span>
 			<span class='nft-level'><strong>Level</strong><br>0</span><br><br><br>
