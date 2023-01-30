@@ -139,7 +139,7 @@ body {
 }
 
 .wallet-connect select {
-	width: 143px;
+	width: 148px;
     border-radius: 0.5rem;
     height: 30px;
     font-weight: bold;
@@ -152,7 +152,7 @@ body {
 }
 
 .select-project select {
-	width: 165px;
+	width: 170px;
 }
 
 #player-stats {
