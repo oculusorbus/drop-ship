@@ -20,6 +20,9 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+// Set project folder prefix
+$prefix = "/".strtolower(str_replace(" ", "-", getProjectName($conn)))."/";
+
 function evaluateText($text){
 	// Moving inside function because session doesn't exist until after text evaluation is called
 	$replacements = array();
