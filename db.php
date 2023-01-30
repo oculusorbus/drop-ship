@@ -1109,11 +1109,11 @@ function loadAchievements($conn, $heavy_armor, $medium_armor, $light_armor, $bas
 			$all = false;
 		}
 		if($index == 7){
-			loadAchievement($status, "beach", evaluateText("Stormed the Beach"));
+			loadAchievement($status, evaluateText("beach"), evaluateText("Stormed the Beach"));
 		}else if($index == 12){
-			loadAchievement($status, "hill", evaluateText("Climbed the Hill"));
+			loadAchievement($status, evaluateText("hill"), evaluateText("Climbed the Hill"));
 		}else if($index == 17){
-			loadAchievement($status, "bunker", evaluateText("Entered the Bunker"));
+			loadAchievement($status, evaluateText("bunker"), evaluateText("Entered the Bunker"));
 		}
 	}
 	
