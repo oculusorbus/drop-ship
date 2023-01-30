@@ -19,7 +19,7 @@ if(isset($_POST['wager'])) {
 ?>
 		<div class="row">
 			<div class="main">
-				<h2><?php echo evaluateText("PvP Battles");?></h2>
+				<h2><?php echo "PvP ".evaluateText("Battles");?></h2>
 			</div>
 		</div>
 		<div class="row">
