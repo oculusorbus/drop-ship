@@ -101,7 +101,7 @@ function evaluateText($text){
 
 			$replacements_description['beach'] = 'lobby';
 			$replacements_description['hill'] = 'stage';
-			$replacements_description['bunker'] = 'VIP Room';
+			$replacements_description['bunker'] = 'VIP room';
 
 			$replacements['Base'] = 'Boxer Briefs';
 			$replacements['Light'] = 'Basketball Shorts';
