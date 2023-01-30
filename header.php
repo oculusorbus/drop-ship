@@ -20,6 +20,9 @@
 			.button, .small-button{
 				filter: hue-rotate(145deg);
 			}
+			.credit{
+				filter: hue-rotate(45deg);
+			}
 		</style>
 	  <?php } ?>
   <?php } ?>
