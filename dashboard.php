@@ -523,7 +523,7 @@ if($_SESSION['userData']['project_id'] == 1){
 							<?php echo "<strong>".$_SESSION["userData"]["rank"]."</strong>";?>
 						</li>
 					<?php } ?>
-				    <?php echo "<li class='role' id='super-soldier'><img class='icon' src='icons/supersoldier.png'/><strong>Super Soldier</strong></li>"; ?>
+				    <?php echo "<li class='role' id='super-soldier'><img class='icon' src='icons/".evaluateText("supersoldier").".png'/><strong>".evaluateText("Super Soldier")."</strong></li>"; ?>
 					<?php $scrip=number_format(checkBalance($conn)); ?>
 					<li class="role"><img class="icon" src="icons/scrip.png"/>
 						<?php echo $scrip; ?> <?php echo "$".$currency ?>
