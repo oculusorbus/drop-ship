@@ -85,29 +85,23 @@ function displayRound(project_id) {
 			document.getElementById("results").style.backgroundImage = "url('"+document.getElementById(currentRound).getElementsByTagName('img')[0].src+"')";
 			
 			if(evaluateAudio(currentRound, "Melee")){
-				if(project_id != 3 && project_id != 4){
-					configureAudio(2, "melee");
-				}else{
-					configureAudio(2, "vibrator");
-				}
+				configureAudio(2, "melee");
+			}else if(evaluateAudio(currentRound, "Vibrator")){
+				configureAudio(2, "vibrator");
 			}else if(evaluateAudio(currentRound, "Tactical Katana")){
-				if(project_id != 3 && project_id != 4){
-					configureAudio(2, "melee", 1000);
-				}
+				configureAudio(2, "melee", 1000);
+			}else if(evaluateAudio(currentRound, "Dildo")){
+				configureAudio(2, "melee", 1000);
 			}else if(evaluateAudio(currentRound, "Extra Life")){
 				configureAudio(2, "extralife");
 			}else if(evaluateAudio(currentRound, "Pull Smoke Bomb Pin")){
-				if(project_id != 3 && project_id != 4){
-					configureAudio(2, "grenadepin", 600);
-				}else{
-					configureAudio(2, "spankme");
-				}
+				configureAudio(2, "grenadepin", 600);
+			}else if(evaluateAudio(currentRound, "Pull Out Whip")){
+				configureAudio(2, "spankme");
 			}else if(evaluateAudio(currentRound, "Smoke Bomb")){
-				if(project_id != 3 && project_id != 4){
-					configureAudio(2, "grenadecontra");
-				}else{
-					configureAudio(2, "spank");
-				}
+				configureAudio(2, "grenadecontra");
+			}else if(evaluateAudio(currentRound, "Whip")){
+				configureAudio(2, "spank");
 			}else if(evaluateAudio(currentRound, "Pull Grenade")){
 				if(project_id != 3 && project_id != 4){
 					configureAudio(2, "grenadepin", 600);
@@ -157,19 +151,13 @@ function displayRound(project_id) {
 					configureAudio(2, "massexplosioncontra");
 				}
 			}else if(evaluateAudio(currentRound, "Demolition")){
-				if(project_id != 3 && project_id != 4){
-					configureAudio(2, "demo");
-				}else{
-					configureAudio(2, "spankme");
-				}
+				configureAudio(2, "demo");
+			}else if(evaluateAudio(currentRound, "Paddle")){
+				configureAudio(2, "spankme");
 			}else if(evaluateAudio(currentRound, "Explosion")){
-				if(project_id != 3 && project_id != 4){
-					configureAudio(2, "explosioncontra");
-				}else if(project_id == 3){
-					configureAudio(2, "spank");
-				}else if(project_id == 4){
-					configureAudio(2, "spank", 1500);
-				}
+				configureAudio(2, "explosioncontra");
+			}else if(evaluateAudio(currentRound, "Spank")){
+				configureAudio(2, "spank", 1500);
 			}else if(evaluateAudio(currentRound, "Sniper")){
 				if(project_id != 3 && project_id != 4){
 					configureAudio(2, "sniper", 1000);
