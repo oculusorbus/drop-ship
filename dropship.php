@@ -275,6 +275,9 @@ function filterTroops($page){
 checkUser($conn);
 checkGame($conn);
 
+// Set project folder prefix
+$prefix = "/".strtolower(str_replace(" ", "-", getProjectName($conn)))."/";
+
 // Kill player
 function kill($dropshipMarkup, $counter) {
 	global $prefix, $conn;
