@@ -37,8 +37,8 @@ if(isset($_POST['wager'])) {
 				<div class="content" id="battles">
 					<ul class='roles'>
 					 <li class='role'>
-						<img class="icon" src="icons/dropship.png">
-						<h3>Available Battles</h3>
+						<img class="icon" src="icons/<?php echo evaluateText("dropship"); ?>.png">
+						<h3>Available <?php echo evaluateText("Battles");?></h3>
 					 </li>
 					</ul>
 					<?php getBattles($conn); ?>
