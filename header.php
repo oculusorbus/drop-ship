@@ -8,12 +8,20 @@
   <!--<link href="dist/output.css" rel="stylesheet">-->
   <link href="dist/flexbox.css?var=<?php echo rand(0,999); ?>" rel="stylesheet">
   <?php
-  if($_SESSION["userData"]["project_id"] == 4 && !str_contains($_SERVER['PHP_SELF'], "battles.php")){?>
+  if($_SESSION["userData"]["project_id"] == 4){?>
+	<?php if(str_contains($_SERVER['PHP_SELF'], "battles.php")){?>
 	<style>
-		.button, .small-button{
+		.button{
 			filter: hue-rotate(145deg);
 		}
 	</style>
+	  <?php }else{ ?>
+		<style>
+			.button, .small-button{
+				filter: hue-rotate(145deg);
+			}
+		</style>
+	  <?php } ?>
   <?php } ?>
 </head>
 <body>
