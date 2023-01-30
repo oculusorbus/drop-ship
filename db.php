@@ -1599,6 +1599,7 @@ function instantReplayButton($result_id, $small_button){
 }
 
 function getResultsSoldiers($conn, $result_id){
+	global $prefix;
 	$sql = "SELECT name, asset_name, ipfs FROM soldiers INNER JOIN results_soldiers ON soldiers.id=results_soldiers.soldier_id WHERE results_soldiers.result_id='".$result_id."' AND soldiers.project_id = '".$_SESSION['userData']['project_id']."'";
 	$result = $conn->query($sql);
 
@@ -1614,7 +1615,7 @@ function getResultsSoldiers($conn, $result_id){
 			}
 		}
 		for($i=1; $i<=(4-$counter); $i++){
-			echo "<span class='leaderboard-nft'><img src='images/nfts/placeholder.jpg'></span>";
+			echo "<span class='leaderboard-nft'><img src='".$prefix."images/nfts/placeholder.jpg'></span>";
 		}
 		echo "</div>";
 	} else {
