@@ -363,7 +363,7 @@ if($_SESSION['userData']['project_id'] == 1){
 							}if($_SESSION['userData']['project_id'] == 4 && $vip == "true"){
 								echo '<form action="dashboard.php" method="post">
 								  <input type="hidden" id="run" name="run" value="true">
-								  <input class="button" type="submit" value="Play XXX Rated Game'.$battle.'">
+								  <input class="button" type="submit" value="Play XXX Game'.$battle.'">
 								</form>';
 							}else if($_SESSION['userData']['project_id'] == 3){ 
 								echo "<p><strong>You Must Have 5+ NFTs to Play</strong></p>";
