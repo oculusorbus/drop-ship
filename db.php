@@ -84,6 +84,7 @@ function evaluateText($text){
 			$replacements['supersoldier'] = 'vip';
 			$replacements['Super Soldier'] = 'VIP';
 			$replacements['Grunt'] = 'Sex Slave';
+			$replacements['dropship'] = 'vip';
 			
 			if($_SESSION['userData']['project_id'] == 3){
 				$replacements['Barracks'] = 'Hideout';
