@@ -23,6 +23,9 @@
 			.credit{
 				filter: hue-rotate(45deg);
 			}
+			.battle-credit{
+				filter: hue-rotate(145deg);
+			}
 		</style>
 	  <?php } ?>
   <?php } ?>
