@@ -11,7 +11,7 @@
   if($_SESSION["userData"]["project_id"] == 4){?>
 	<style>
 		.button, .small-button{
-			filter: hue(145deg);
+			filter: hue-rotate(145deg);
 		}
 	</style>
   <?php } ?>
