@@ -7,6 +7,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <!--<link href="dist/output.css" rel="stylesheet">-->
   <link href="dist/flexbox.css?var=<?php echo rand(0,999); ?>" rel="stylesheet">
+  <?php
+  if($_SESSION["userData"]["project_id"] == 4){?>
+	<style>
+		.button, .small-button{
+			filter: hue(145deg);
+		}
+	</style>
+  <?php } ?>
 </head>
 <body>
 	<div id="loading" <?php echo (isset($_POST['run']) || isset($_POST['instant_replay']))?'style="display:none"':""; ?>>
