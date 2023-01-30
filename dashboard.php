@@ -518,7 +518,7 @@ if($_SESSION['userData']['project_id'] == 1){
 					</li>
 					<?php } ?>
 					<?php
-					if(isset($_SESSION["userData"]["rank"])){?>
+					if(isset($_SESSION["userData"]["rank"]) && $_SESSION["userData"]["project_id"] != 4){?>
 						<li class="role"><img class="icon" src="icons/rank.png"/>
 							<?php echo "<strong>".$_SESSION["userData"]["rank"]."</strong>";?>
 						</li>
