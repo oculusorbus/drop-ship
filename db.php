@@ -95,6 +95,8 @@ function evaluateText($text){
 			$replacements_description['Climbed the Hill'] = 'Approached the Stage';
 			$replacements_description['Entered the Bunker'] = 'Accessed VIP';
 			
+			$replacements['Pull Grenade Pin'] = 'Insert Anal Beads';
+			$replacements['Pull Smoke Bomb Pin'] = 'Whip';
 
 			$replacements_description['beach'] = 'lobby';
 			$replacements_description['hill'] = 'stage';
