@@ -452,7 +452,7 @@ function getBattles($conn) {
 		echo "</td>";
 		echo "<td>";
 		$opponent = getOpponentUsername($conn, $row["battle_id"];
-		echo ($opponent != "")$opponent?"");
+		echo ($opponent != "")?$opponent:"";
 		echo "</td>";
 		echo "</tr></table>";
 		echo "</li>";
