@@ -455,7 +455,7 @@ function getBattles($conn) {
 		if($opponent != ""){
 			echo $opponent;
 		}else{
-			echo "&nbsp;";
+			echo "None";
 		}
 		echo "</td>";
 		echo "</tr></table>";
