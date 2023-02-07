@@ -418,6 +418,12 @@ body {
     filter: drop-shadow(5px 5px 5px #202225);
 }
 
+.avatar {
+	width: 20px;
+    padding-right: 0px;
+    border-radius: 1rem;
+}
+
 .pinch {
 	padding: 0px;
 	height: 20px;

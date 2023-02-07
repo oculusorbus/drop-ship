@@ -423,7 +423,7 @@ function getBattles($conn) {
 	  while($row = $result->fetch_assoc()) {
 		$avatar = "";
 		if($row["avatar"] != ""){
-			$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon'/>";
+			$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon avatar'/>";
 		}
 		echo "<li class='role'><table><tr><td>".$avatar.substr($row["username"], 0, $offset)."</td>";
 		echo "<td>".'<img class="icon pinch" src="icons/scrip.png">&nbsp;'.$row["wager"]."</td>";
