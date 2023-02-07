@@ -434,6 +434,7 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 
 // Get current battles
 function getBattles($conn) {
+	global $prefix;
 	$sql = "SELECT battles.id AS battle_id, user_id, wager, opponent_score, username, discord_id, avatar FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY wager DESC";
 	$result = $conn->query($sql);
 	
@@ -486,7 +487,7 @@ function getBattles($conn) {
 		if($opponent != ""){
 			echo $opponent_avatar." ".substr($opponent, 0, $offset);
 		}else{
-			echo "None";
+			echo "<img src='".$prefix."images/nfts/placeholder.jpg' class='icon avatar'/>";
 		}
 		echo "</td>";
 		echo "</tr></table>";
