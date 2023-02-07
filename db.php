@@ -1670,7 +1670,10 @@ function checkLeaderboard($conn, $clean) {
 		  	echo "<ul id='leaderboard'>";
 		  	while($row = $result->fetch_assoc()) {
 				$leaderboardCounter++;
-				$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+				$avatar = "";
+				if($row["avatar"] != ""){
+					$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+				}
 		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]. "</strong> (" . $row["score"]. ")";
 				checkResultsItems($conn, $row["id"], "false");
 				$data = checkXP($conn, $row["user_id"]);
@@ -1714,7 +1717,10 @@ function checkATHLeaderboard($conn, $clean) {
 		  	echo "<ul id='leaderboard'>";
 		  	while($row = $result->fetch_assoc()) {
 				$leaderboardCounter++;
-				$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+				$avatar = "";
+				if($row["avatar"] != ""){
+					$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+				}
 		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]."</strong> (" . $row["max_score"]. ")";
 				$result_id = checkMaxScoreResultID($conn, $row["user_id"], $row["max_score"]);
 				checkResultsItems($conn, $result_id, "false");
@@ -1800,7 +1806,10 @@ function checkXPLeaderboard($conn, $clean) {
 		  	while($row = $result->fetch_assoc()) {
 				$leaderboardCounter++;
 				$level = floor($row["xp"]/100);
-				$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+				$avatar = "";
+				if($row["avatar"] != ""){
+					$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+				}
 		    	echo "<li>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]. "</strong>: <i>Lv. ".$level."</i> - (" . $row["xp"]. " XP)</li>";
 		  	}
 			echo "</ul>";
