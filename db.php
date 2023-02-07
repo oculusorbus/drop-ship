@@ -1693,7 +1693,7 @@ function checkLeaderboard($conn, $clean) {
 // Check ATH leaderboard for discord
 function checkATHLeaderboard($conn, $clean) {
 	global $discordid_kryptman, $discordid_oculusorbus, $discordid_ohhmeed;
-	$sql = "SELECT results.id, results.user_id, results.game_id, users.username, discord_id, avatar, MAX(results.score) as max_score, replay FROM results LEFT JOIN users ON results.user_id = users.id WHERE results.project_id = '".$_SESSION['userData']['project_id']."' GROUP BY results.user_id ORDER BY max_score DESC";
+	$sql = "SELECT results.id, results.user_id, results.game_id, users.username, users.discord_id, users.avatar, MAX(results.score) as max_score, replay FROM results LEFT JOIN users ON results.user_id = users.id WHERE results.project_id = '".$_SESSION['userData']['project_id']."' GROUP BY results.user_id ORDER BY max_score DESC";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
