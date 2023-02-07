@@ -1254,7 +1254,7 @@ function loadItems($conn, $type, $heavy_armor, $medium_armor, $light_armor, $bas
 									}
 								}
 							}else{
-								echo "[&nbsp;&#x2713;&nbsp;]";
+								echo "<img class='icon pinch' src='icons/check.png'>";
 							}
 						}
 					} else {
