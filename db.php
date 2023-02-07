@@ -299,6 +299,28 @@ function getOpponentUsername($conn, $battle_id){
 	}
 }
 
+// Get opponent avatar for a specific battle
+function getOpponentAvatar($conn, $battle_id){
+	$sql = "SELECT avatar FROM battles INNER JOIN users ON battles.opponent_id = users.id WHERE battles.id = '".$battle_id."'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+			return $row["avatar"];
+		}
+	}
+}
+
+// Get opponent discord id for a specific battle
+function getOpponentDiscordID($conn, $battle_id){
+	$sql = "SELECT discord_id FROM battles INNER JOIN users ON battles.opponent_id = users.id WHERE battles.id = '".$battle_id."'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+			return $row["discord_id"];
+		}
+	}
+}
+
 // Get creator username for a specific battle
 function getCreatorUsername($conn, $battle_id){
 	$sql = "SELECT username FROM battles INNER JOIN users ON battles.user_id = users.id WHERE battles.id = '".$battle_id."'";
@@ -455,9 +477,14 @@ function getBattles($conn) {
 		}
 		echo "</td>";
 		echo "<td>";
+		$opponent_avatar = getOpponentAvatar($conn, $row["battle_id"]);
+		if($opponent_avatar != ""){
+			$opponent_discord_id = getOpponentDiscordID($conn, $row["battle_id"]);
+			$opponent_avatar = "<img src='https://cdn.discordapp.com/avatars/".$opponent_discord_id."/".$opponent_avatar.".jpg' class='icon avatar'/>";
+		}
 		$opponent = getOpponentUsername($conn, $row["battle_id"]);
 		if($opponent != ""){
-			echo substr($opponent, 0, $offset);
+			echo $opponent_avatar." ".substr($opponent, 0, $offset);
 		}else{
 			echo "None";
 		}
