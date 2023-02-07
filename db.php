@@ -421,7 +421,7 @@ function getBattles($conn) {
       echo "<ul class='roles'>";
 	  echo "<li class='role'><table><tr><th>Creator</th><th>Wager</th><th align='center'>Action</th><th>Opponent</th></tr></table></li>";
 	  while($row = $result->fetch_assoc()) {
-		echo "<li class='role'><table><tr><td>".substr($row["username"], 0, 8)."</td>";
+		echo "<li class='role'><table><tr><td>".substr($row["username"], 0, 12)."</td>";
 		echo "<td>".'<img class="icon pinch" src="icons/scrip.png">&nbsp;'.$row["wager"]."</td>";
 		// Show accept button if player didn't create the battle, they have enough currency and they're not currently battling
 		// $row["user_id"] != $_SESSION['userData']['user_id'] && 
