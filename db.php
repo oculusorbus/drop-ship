@@ -423,9 +423,9 @@ function getBattles($conn) {
 	  while($row = $result->fetch_assoc()) {
 		$avatar = "";
 		if($row["avatar"] != ""){
-			$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+			$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon'/>";
 		}
-		echo "<li class='role'><table><tr><td>".$avatar." ".substr($row["username"], 0, $offset)."</td>";
+		echo "<li class='role'><table><tr><td>".$avatar.substr($row["username"], 0, $offset)."</td>";
 		echo "<td>".'<img class="icon pinch" src="icons/scrip.png">&nbsp;'.$row["wager"]."</td>";
 		// Show accept button if player didn't create the battle, they have enough currency and they're not currently battling
 		// $row["user_id"] != $_SESSION['userData']['user_id'] && 
