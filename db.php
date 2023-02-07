@@ -419,7 +419,7 @@ function getBattles($conn) {
 	  // output data of each row
 	  
       echo "<ul class='roles'>";
-	  echo "<li class='role'><table><tr><th>Creator</th><th>Wager</th><th>Action</th><th>Opponent</th></tr></table></li>";
+	  echo "<li class='role'><table><tr><th>Creator</th><th>Wager</th><th align='center'>Action</th><th>Opponent</th></tr></table></li>";
 	  while($row = $result->fetch_assoc()) {
 		echo "<li class='role'><table><tr><td>".$row["username"]."</td>";
 		echo "<td>".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."</td>";
