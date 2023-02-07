@@ -447,7 +447,7 @@ function getBattles($conn) {
 			  <input class="small-button defend" type="submit" value="Defend">
 			</form>';
 		}else{
-			echo "[&nbsp;&nbsp;NA&nbsp;&nbsp;]";
+			echo '<img class="icon pinch" src="icons/locked.png">';
 		}
 		echo "</td>";
 		echo "<td>";
