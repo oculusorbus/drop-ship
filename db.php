@@ -1670,7 +1670,7 @@ function checkLeaderboard($conn, $clean) {
 		  	echo "<ul id='leaderboard'>";
 		  	while($row = $result->fetch_assoc()) {
 				$leaderboardCounter++;
-				$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon'/>";
+				$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
 		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". ".$avatar."<strong>".$row["username"]. "</strong> (" . $row["score"]. ")";
 				checkResultsItems($conn, $row["id"], "false");
 				$data = checkXP($conn, $row["user_id"]);
@@ -1693,7 +1693,7 @@ function checkLeaderboard($conn, $clean) {
 // Check ATH leaderboard for discord
 function checkATHLeaderboard($conn, $clean) {
 	global $discordid_kryptman, $discordid_oculusorbus, $discordid_ohhmeed;
-	$sql = "SELECT results.id, results.user_id, results.game_id, users.username, users.discord_id, users.avatar, MAX(results.score) as max_score, replay FROM results LEFT JOIN users ON results.user_id = users.id WHERE results.project_id = '".$_SESSION['userData']['project_id']."' GROUP BY results.user_id ORDER BY max_score DESC";
+	$sql = "SELECT results.id, results.user_id, results.game_id, users.username, discord_id, avatar, MAX(results.score) as max_score, replay FROM results LEFT JOIN users ON results.user_id = users.id WHERE results.project_id = '".$_SESSION['userData']['project_id']."' GROUP BY results.user_id ORDER BY max_score DESC";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -1714,8 +1714,8 @@ function checkATHLeaderboard($conn, $clean) {
 		  	echo "<ul id='leaderboard'>";
 		  	while($row = $result->fetch_assoc()) {
 				$leaderboardCounter++;
-				$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon'/>";
-		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]."</strong> (" . $row["max_score"]. ")";
+				$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". ".$avatar."<strong>".$row["username"]."</strong> (" . $row["max_score"]. ")";
 				$result_id = checkMaxScoreResultID($conn, $row["user_id"], $row["max_score"]);
 				checkResultsItems($conn, $result_id, "false");
 				$data = checkXP($conn, $row["user_id"]);
