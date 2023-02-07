@@ -414,14 +414,14 @@ function logBattleScore($conn, $type, $user_id, $battle_id){
 function getBattles($conn) {
 	$sql = "SELECT battles.id AS battle_id, user_id, wager, opponent_score, username FROM battles INNER JOIN users ON users.id = battles.user_id WHERE battles.project_id = '".$_SESSION['userData']['project_id']."' AND active = '1' ORDER BY wager DESC";
 	$result = $conn->query($sql);
-
+	
 	if ($result->num_rows > 0) {
 	  // output data of each row
-	  
+	  $offset = 12;
       echo "<ul class='roles'>";
 	  echo "<li class='role'><table><tr><th>Creator</th><th>Wager</th><th align='center'>Action</th><th>Opponent</th></tr></table></li>";
 	  while($row = $result->fetch_assoc()) {
-		echo "<li class='role'><table><tr><td>".substr($row["username"], 0, 12)."</td>";
+		echo "<li class='role'><table><tr><td>".substr($row["username"], 0, $offset)."</td>";
 		echo "<td>".'<img class="icon pinch" src="icons/scrip.png">&nbsp;'.$row["wager"]."</td>";
 		// Show accept button if player didn't create the battle, they have enough currency and they're not currently battling
 		// $row["user_id"] != $_SESSION['userData']['user_id'] && 
@@ -451,7 +451,7 @@ function getBattles($conn) {
 		}
 		echo "</td>";
 		echo "<td>";
-		$opponent = getOpponentUsername($conn, $row["battle_id"]);
+		$opponent = substr(getOpponentUsername($conn, $row["battle_id"]), 0, $offset);
 		if($opponent != ""){
 			echo $opponent;
 		}else{
