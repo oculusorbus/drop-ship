@@ -32,7 +32,7 @@
 </head>
 <body>
 	<div id="loading" <?php echo (isset($_POST['run']) || isset($_POST['instant_replay']))?'style="display:none"':""; ?>>
-	  <img id="loading-image" src="images/loading.gif" alt="Loading..." />
+	  <img id="loading-image" src="<?php echo $prefix;?>images/loading.gif" alt="Loading..." />
 	</div>
 	<div class="container">
 		<!-- Navigation Bar -->
