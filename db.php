@@ -451,9 +451,9 @@ function getBattles($conn) {
 		}
 		echo "</td>";
 		echo "<td>";
-		$opponent = substr(getOpponentUsername($conn, $row["battle_id"]), 0, $offset);
+		$opponent = getOpponentUsername($conn, $row["battle_id"]);
 		if($opponent != ""){
-			echo $opponent;
+			echo substr($opponent, 0, $offset);
 		}else{
 			echo "None";
 		}
