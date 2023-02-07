@@ -419,13 +419,13 @@ function getBattles($conn) {
 	  // output data of each row
 	  
       echo "<ul class='roles'>";
-	  echo "<li class='role'><table><tr><th>Creator</th><th>Wager</th><th>Action</th><th>Opponent</th></tr></table></li>";
+	  echo "<li class='role'><table><tr><th>Creator</th><th>Wager</th><th align='center'>Action</th><th>Opponent</th></tr></table></li>";
 	  while($row = $result->fetch_assoc()) {
 		echo "<li class='role'><table><tr><td>".$row["username"]."</td>";
 		echo "<td>".$row["wager"]."&nbsp;$".evaluateText("SCRIP")."</td>";
 		// Show accept button if player didn't create the battle, they have enough currency and they're not currently battling
 		// $row["user_id"] != $_SESSION['userData']['user_id'] && 
-		echo "<td>";
+		echo "<td align='center'>";
 		if($row["user_id"] != $_SESSION['userData']['user_id'] && $row["opponent_score"] == 0 && checkBalance($conn) >= $row["wager"] && !isset($_SESSION['userData']['battle_id'])){
 			echo '<form id="opponentForm" action="dashboard.php#barracks" method="post">
 			  <input type="hidden" id="opponent_id" name="opponent_id" value="'.$_SESSION['userData']['user_id'].'">
