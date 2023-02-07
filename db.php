@@ -1780,7 +1780,7 @@ function checkXP($conn, $user_id) {
 
 // Check XP leaderboard for discord and site display
 function checkXPLeaderboard($conn, $clean) {
-	$sql = "SELECT results.game_id, results.user_id, SUM(results.score) as xp, users.username FROM results INNER JOIN users ON results.user_id=users.id WHERE results.project_id = '".$_SESSION['userData']['project_id']."' GROUP BY results.user_id ORDER BY xp DESC";
+	$sql = "SELECT results.game_id, results.user_id, SUM(results.score) as xp, users.username, discord_id, avatar FROM results INNER JOIN users ON results.user_id=users.id WHERE results.project_id = '".$_SESSION['userData']['project_id']."' GROUP BY results.user_id ORDER BY xp DESC";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -1800,7 +1800,8 @@ function checkXPLeaderboard($conn, $clean) {
 		  	while($row = $result->fetch_assoc()) {
 				$leaderboardCounter++;
 				$level = floor($row["xp"]/100);
-		    	echo "<li>".$leaderboardCounter.". <strong>".$row["username"]. "</strong>: <i>Lv. ".$level."</i> - (" . $row["xp"]. " XP)</li>";
+				$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+		    	echo "<li>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]. "</strong>: <i>Lv. ".$level."</i> - (" . $row["xp"]. " XP)</li>";
 		  	}
 			echo "</ul>";
 		}
