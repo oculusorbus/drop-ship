@@ -487,7 +487,7 @@ function getBattles($conn) {
 		if($opponent != ""){
 			echo $opponent_avatar." ".substr($opponent, 0, $offset);
 		}else{
-			echo "<img src='".$prefix."images/nfts/placeholder.jpg' class='icon avatar'/>";
+			echo "<img src='".$prefix."images/nfts/placeholder.jpg' class='icon avatar'/> None";
 		}
 		echo "</td>";
 		echo "</tr></table>";
