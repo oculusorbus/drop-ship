@@ -69,8 +69,10 @@ function displayRound(project_id) {
 		loadAudio(1, "8bit"+randomInt(1, 5));
 		if(project_id == 1){
 			loadAudio(2, "alarm");
-		}else if(project_id == 3 || project_id == 4){
+		}else if(project_id == 3){
 			loadAudio(2, "crowd");
+		}else if(project_id == 4){
+			loadAudio(2, "flyingcar");
 		}
 		//document.getElementById(currentRound).style.visibility = "visible";
 //		document.getElementById("results").innerHTML = document.getElementById(currentRound).innerHTML;
