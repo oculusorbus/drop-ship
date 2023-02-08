@@ -114,6 +114,8 @@ function displayRound(project_id) {
 				configureAudio(2, "analbeadsinsertion");
 			}else if(evaluateAudio(currentRound, "Remove Anal Beads")){
 				configureAudio(2, "analbeadsremoval", 1200);
+			}else if(evaluateAudio(currentRound, "Ball Gag")){
+				configureAudio(2, "ballgag");
 			}else if(evaluateAudio(currentRound, "Load Machine Gun")){
 				if(project_id != 3 && project_id != 4){
 					configureAudio(2, "loading");
