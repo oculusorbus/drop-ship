@@ -800,6 +800,7 @@ if(isset($_POST['run'])){
 			$light_credit = 2;
 			$base_credit = 1;
 			
+			/* Original armor thresholds
 			if($mech_suit == 'true') {
 				$threshold = 88.9;
 			} else if($exo_suit == 'true') {
@@ -808,7 +809,8 @@ if(isset($_POST['run'])){
 				$threshold = 85.7;
 			} else if($ballistic_shield == 'true') {
 				$threshold = 83.3;
-			} else if($heavy == 'true' || $_SESSION['userData']['heavy_armor'] == "true") {
+			}*/
+			if($heavy == 'true' || $_SESSION['userData']['heavy_armor'] == "true") {
 				if($medium == 'true' || $_SESSION['userData']['medium_armor'] == "true") {
 					if($light == "true" || $_SESSION['userData']['light_armor'] == "true"){
 						if($base == "true" || $_SESSION['userData']['base_armor'] == "true"){
@@ -852,6 +854,16 @@ if(isset($_POST['run'])){
 				}
 			} else if($base == 'true' || $_SESSION['userData']['base_armor'] == "true") {
 				$threshold = $base_thresold;
+			}
+			// Append additional armor to threshold
+			if($mech_suit == 'true') {
+				$threshold += 8.9;
+			} else if($exo_suit == 'true') {
+				$threshold += 7.5;
+			} else if($quantum_stealth == 'true') {
+				$threshold += 5.7;
+			} else if($ballistic_shield == 'true') {
+				$threshold += 3.3;
 			}
 			$dropbox = false;
 			// Original loop logic checking drop ship flag for drop ship holders, which prevents non-dropship holders, like Discos, from playing
