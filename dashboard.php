@@ -485,13 +485,18 @@ if($_SESSION['userData']['project_id'] == 1){
 					</li>
 					</div>
 					<?php
-						echo $_SESSION['userData']['audio'];
+						$checked = "";
+						if($_SESSION['userData']['audio'] == "true"){
+							$checked = "checked";
+						}else if($_SESSION['userData']['audio'] == "false"){
+							$checked = "";
+						}
 					?>
 					<li class="role"><img class="icon" id="audio-icon" src="icons/audio-on.png"/>Audio
 						&nbsp;
 						<!-- Rounded switch -->
 						<label class="switch">
-						  <input onchange="javascript:toggleAudio(this.checked);" type="checkbox" checked>
+						  <input onchange="javascript:toggleAudio(this.checked);" type="checkbox" <?php echo $checked; ?>>
 						  <span class="slider rounded"></span>
 						</label>
 					</li>
