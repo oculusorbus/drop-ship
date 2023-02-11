@@ -20,6 +20,7 @@ function toggleAudio(status){
 	}else{
 		audioIcon.src = "icons/audio-off.png";
 	}
+	alert(status);
 	audio1.muted = status;
 	audio2.muted = status;
 	var xhttp = new XMLHttpRequest();
