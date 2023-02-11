@@ -14,6 +14,7 @@ var lastRound = 0;
 function toggleAudio(status){
 	audio1 = document.getElementById("audio1");
 	audio2 = document.getElementById("audio2");
+	video1 = document.getElementById("dropshipPromoVideo");
 	audioIcon = document.getElementById("audio-icon");
 	if(status){
 		audioIcon.src = "icons/audio-on.png";
@@ -30,6 +31,13 @@ function toggleAudio(status){
 			audio1.muted = true;
 			audio2.muted = true;
 		}
+	}
+	if(video1 != null){
+		if(status == "true"){
+			video1.muted = false;
+		}else{
+			video1.muted = true;
+		}	
 	}
 	var xhttp = new XMLHttpRequest();
 	xhttp.open('GET', 'ajax/toggle-audio.php?status='+status, true);
