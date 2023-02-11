@@ -278,7 +278,7 @@ checkGame($conn);
 // Set project folder prefix
 $project_name = getProjectName($conn);
 if(isset($project_name)){
-	$prefix = "/".strtolower(str_replace(" ", "-", ))."/";
+	$prefix = "/".strtolower(str_replace(" ", "-", $project_name))."/";
 }
 
 // Kill player
