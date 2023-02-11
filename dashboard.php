@@ -484,13 +484,13 @@ if($_SESSION['userData']['project_id'] == 1){
 						</form>
 					</li>
 					</div>
-					<li class="role"><img class="icon" src="icons/audio-on.png"/>Audio
-					&nbsp;
-					<!-- Rounded switch -->
-					<label class="switch">
-					  <input onchange="javascript:toggleAudio(this.checked);" type="checkbox" checked>
-					  <span class="slider rounded"></span>
-					</label>
+					<li class="role"><img class="icon" id="audio-icon" src="icons/audio-on.png"/>Audio
+						&nbsp;
+						<!-- Rounded switch -->
+						<label class="switch">
+						  <input onchange="javascript:toggleAudio(this.checked);" type="checkbox" checked>
+						  <span class="slider rounded"></span>
+						</label>
 					</li>
 					<li class="role"><img class="icon" src="icons/level.png"/>Level <?php echo (!empty($data))?$data['level']:"0"; ?></li>
 					<?php if($hideLeaderboard == "false") { 

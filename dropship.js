@@ -14,6 +14,12 @@ var lastRound = 0;
 function toggleAudio(status){
 	audio1 = document.getElementById("audio1");
 	audio2 = document.getElementById("audio2");
+	audioIcon = document.getElementById("audio-icon");
+	if(status){
+		audioIcon.src = "icons/audio-on.png";
+	}else{
+		audioIcon.src = "icons/audio-off.png";
+	}
 	audio1.muted = status;
 	audio2.muted = status;
 	var xhttp = new XMLHttpRequest();
