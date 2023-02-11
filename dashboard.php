@@ -484,6 +484,9 @@ if($_SESSION['userData']['project_id'] == 1){
 						</form>
 					</li>
 					</div>
+					<?php
+						echo $_SESSION['userData']['audio'];
+					?>
 					<li class="role"><img class="icon" id="audio-icon" src="icons/audio-on.png"/>Audio
 						&nbsp;
 						<!-- Rounded switch -->
