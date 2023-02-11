@@ -313,6 +313,10 @@ if($_SESSION['userData']['project_id'] == 1){
 				}else if($_SESSION["userData"]["project_id"] == 4){
 					$audio2 = "laughing";
 				}
+				$muted = "";
+				if(isset($_SESSION['userData']['audio']) && $_SESSION['userData']['audio'] == "false"){
+					$muted = "muted";
+				}
 				// Set results display variable
 				$view_results = '
 				<br>
@@ -320,11 +324,11 @@ if($_SESSION['userData']['project_id'] == 1){
 				<div id="disableMessage" style="display:none">false</div>
 				<div id="resultsText"></div>
 				<br>
-				<audio id="audio1" controls onloadstart="this.volume=0.75" style="display:none">
+				<audio '.$muted.' id="audio1" controls onloadstart="this.volume=0.75" style="display:none">
 				  <source id="audioSource1" src="sounds/static.mp3" type="audio/mpeg">
 				Your browser does not support the audio element.
 				</audio>
-				<audio id="audio2" controls autoplay style="display:none">
+				<audio '.$muted.' id="audio2" controls autoplay style="display:none">
 				  <source id="audioSource2" src="sounds/'.$audio2.'.mp3" type="audio/mpeg">
 				Your browser does not support the audio element.
 				</audio>';
