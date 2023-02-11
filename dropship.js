@@ -15,7 +15,7 @@ function toggleAudio(status){
 	audio1 = document.getElementById("audio1");
 	audio2 = document.getElementById("audio2");
 	audioIcon = document.getElementById("audio-icon");
-	if(status == "true"){
+	if(status){
 		audioIcon.src = "icons/audio-on.png";
 	}else{
 		audioIcon.src = "icons/audio-off.png";
