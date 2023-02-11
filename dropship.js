@@ -26,6 +26,7 @@ function toggleAudio(status){
 		audio2.muted = true;
 		status = "false";
 	}
+	alert(status);
 	var xhttp = new XMLHttpRequest();
 	xhttp.open('GET', 'ajax/toggle-audio.php?status='+status, true);
 	xhttp.send();
