@@ -279,6 +279,8 @@ checkGame($conn);
 $project_name = getProjectName($conn);
 if(isset($project_name)){
 	$prefix = "/".strtolower(str_replace(" ", "-", $project_name))."/";
+}else{
+	$prefix = "\/drop-ship\/";
 }
 
 // Kill player
