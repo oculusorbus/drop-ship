@@ -263,6 +263,9 @@ function filterTroops(criteria){
 }
 
 function selectProject(criteria){
+	if(criteria == "none"){
+		alert("Please select a project from the dropdown.");
+	}
 	document.getElementById('loading').style.display = "block";
 	document.getElementById('project_id').value = criteria;
 	document.getElementById("projectForm").submit();
