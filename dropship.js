@@ -22,10 +22,8 @@ function toggleAudio(status){
 		audioIcon.src = "icons/audio-off.png";
 		status = "false";
 	}
-	if(audio1 == null){
-		// No Audio present
-	}else{
-		alert('not null');
+	if(audio1 != null){
+		alert(status);
 		if(status){
 			audio1.muted = false;
 			audio2.muted = false;
