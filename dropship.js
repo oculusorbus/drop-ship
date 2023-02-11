@@ -23,8 +23,7 @@ function toggleAudio(status){
 		status = "false";
 	}
 	if(audio1 != null){
-		alert(status);
-		if(status){
+		if(status == "true"){
 			audio1.muted = false;
 			audio2.muted = false;
 		}else{
