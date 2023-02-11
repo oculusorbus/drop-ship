@@ -12,9 +12,11 @@ var lastRound = 0;
 
 // Toggle Audio On & Off
 function toggleAudio(status){
+	alert(status);
+	/*
 	var xhttp = new XMLHttpRequest();
 	xhttp.open('GET', 'toggle-audio.php?status='+status, true);
-	xhttp.send();
+	xhttp.send();*/
 }
 
 // Evaluate whether term is in results text
