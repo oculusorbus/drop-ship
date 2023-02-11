@@ -486,7 +486,7 @@ if($_SESSION['userData']['project_id'] == 1){
 					</div>
 					<?php
 						$checked = "";
-						if($_SESSION['userData']['audio']){
+						if($_SESSION['userData']['audio'] == true){
 							$checked = "checked";
 						}else{
 							$checked = "";
