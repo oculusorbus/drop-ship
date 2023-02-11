@@ -394,7 +394,7 @@ if($_SESSION['userData']['project_id'] == 1){
 							}else{
 								video = "dropship";
 							}
-							videoContent ='<video id="dropshipPromoVideo" onloadstart="this.volume=0.15" autoplay controls><source src="videos/'+video+'.mp4" type="video/mp4">Your browser does not support the video tag.</video>';
+							videoContent ='<video <?php echo $muted; ?> id="dropshipPromoVideo" onloadstart="this.volume=0.15" autoplay controls><source src="videos/'+video+'.mp4" type="video/mp4">Your browser does not support the video tag.</video>';
 							document.getElementById("results").innerHTML = videoContent;
 							document.getElementById("dropshipPromoVideo").style.height = (document.getElementById("results").offsetHeight-10)+"px";
 							</script>
