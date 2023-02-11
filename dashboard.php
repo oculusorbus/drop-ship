@@ -485,10 +485,11 @@ if($_SESSION['userData']['project_id'] == 1){
 					</li>
 					</div>
 					<li class="role"><img class="icon" src="icons/audio-on.png"/>Audio On
+					&nbsp;
 					<!-- Rounded switch -->
 					<label class="switch">
 					  <input type="checkbox">
-					  <span class="slider round"></span>
+					  <span class="slider rounded"></span>
 					</label>
 					</li>
 					<li class="role"><img class="icon" src="icons/level.png"/>Level <?php echo (!empty($data))?$data['level']:"0"; ?></li>
