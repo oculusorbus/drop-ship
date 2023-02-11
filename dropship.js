@@ -10,6 +10,13 @@ var lastRound = 0;
   lastRound++;
 });
 
+// Toggle Audio On & Off
+function toggleAudio(status){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open('GET', 'toggle-audio.php?status='+status, true);
+	xhttp.send();
+}
+
 // Evaluate whether term is in results text
 function evaluateAudio(currentRound, terms) {
 	if(document.getElementById(currentRound).getElementsByTagName('h3')[0].innerHTML.includes(terms)){
