@@ -15,16 +15,18 @@ function toggleAudio(status){
 	audio1 = document.getElementById("audio1");
 	audio2 = document.getElementById("audio2");
 	audioIcon = document.getElementById("audio-icon");
-	if(status){
-		audioIcon.src = "icons/audio-on.png";
-		audio1.muted = false;
-		audio2.muted = false;
-		status = "true";
-	}else{
-		audioIcon.src = "icons/audio-off.png";
-		audio1.muted = true;
-		audio2.muted = true;
-		status = "false";
+	if(audio1 != null && audio2 != null){
+		if(status){
+			audioIcon.src = "icons/audio-on.png";
+			audio1.muted = false;
+			audio2.muted = false;
+			status = "true";
+		}else{
+			audioIcon.src = "icons/audio-off.png";
+			audio1.muted = true;
+			audio2.muted = true;
+			status = "false";
+		}
 	}
 	alert(status);
 	var xhttp = new XMLHttpRequest();
