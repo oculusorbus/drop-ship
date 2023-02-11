@@ -484,7 +484,7 @@ if($_SESSION['userData']['project_id'] == 1){
 						</form>
 					</li>
 					</div>
-					<li class="role"><img class="icon" src="icons/audio-on.png"/>Audio On
+					<li class="role"><img class="icon" src="icons/audio-on.png"/>Audio
 					&nbsp;
 					<!-- Rounded switch -->
 					<label class="switch">
