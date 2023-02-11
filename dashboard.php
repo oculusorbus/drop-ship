@@ -486,17 +486,21 @@ if($_SESSION['userData']['project_id'] == 1){
 					</div>
 					<?php
 					$checked = "checked";
+					$audio = "on";
 					if(isset($_SESSION['userData']['audio'])){
 						if($_SESSION['userData']['audio'] == "true"){
 							$checked = "checked";
+							$audio = "on";
 						}else{
 							$checked = "";
+							$audio = "off";
 						}
 					}else{
 						$checked = "checked";
+						$audio = "on";
 					}
 					?>
-					<li class="role"><img class="icon" id="audio-icon" src="icons/audio-on.png"/>Audio
+					<li class="role"><img class="icon" id="audio-icon" src="icons/audio-<?php echo $audio;?>.png"/>Audio
 						&nbsp;
 						<!-- Rounded switch -->
 						<label class="switch">
