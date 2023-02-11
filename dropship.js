@@ -17,12 +17,12 @@ function toggleAudio(status){
 	audioIcon = document.getElementById("audio-icon");
 	if(status){
 		audioIcon.src = "icons/audio-on.png";
-		audio1.muted = "false";
-		audio2.muted = "false";
+		audio1.muted = false;
+		audio2.muted = false;
 	}else{
 		audioIcon.src = "icons/audio-off.png";
-		audio1.muted = "true";
-		audio2.muted = "true";
+		audio1.muted = true;
+		audio2.muted = true;
 	}
 	var xhttp = new XMLHttpRequest();
 	xhttp.open('GET', 'toggle-audio.php?status='+status, true);
