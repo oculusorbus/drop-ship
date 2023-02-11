@@ -276,7 +276,10 @@ checkUser($conn);
 checkGame($conn);
 
 // Set project folder prefix
-$prefix = "/".strtolower(str_replace(" ", "-", getProjectName($conn)))."/";
+$project_name = getProjectName($conn);
+if(isset($project_name)){
+	$prefix = "/".strtolower(str_replace(" ", "-", ))."/";
+}
 
 // Kill player
 function kill($dropshipMarkup, $counter) {
