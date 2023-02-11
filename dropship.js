@@ -19,10 +19,12 @@ function toggleAudio(status){
 		audioIcon.src = "icons/audio-on.png";
 		audio1.muted = false;
 		audio2.muted = false;
+		status = "true";
 	}else{
 		audioIcon.src = "icons/audio-off.png";
 		audio1.muted = true;
 		audio2.muted = true;
+		status = "false";
 	}
 	var xhttp = new XMLHttpRequest();
 	xhttp.open('GET', 'ajax/toggle-audio.php?status='+status, true);
