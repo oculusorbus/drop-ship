@@ -268,7 +268,8 @@ if($_SESSION['userData']['project_id'] == 1){
 	$characters = "Neo Miami Citizens";
 }else{
 	$currency = "SCRIP";
-	$squad = "Super Soldier";	
+	$squad = "Super Soldier";
+	$characters = "Troops";	
 }
 ?>
 		<a name="dashboard" id="dashboard"></a>
