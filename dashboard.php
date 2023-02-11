@@ -485,14 +485,15 @@ if($_SESSION['userData']['project_id'] == 1){
 					</li>
 					</div>
 					<?php
-						$checked = "";
+						
+						$checked = "checked";
+						/*
 						echo $_SESSION['userData']['audio'];
 						if($_SESSION['userData']['audio']){
 							$checked = "checked";
-							
 						}else{
 							$checked = "";
-						}
+						}*/
 					?>
 					<li class="role"><img class="icon" id="audio-icon" src="icons/audio-on.png"/>Audio
 						&nbsp;
