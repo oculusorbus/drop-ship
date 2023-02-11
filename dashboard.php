@@ -484,6 +484,7 @@ if($_SESSION['userData']['project_id'] == 1){
 						</form>
 					</li>
 					</div>
+					<li class="role"><img class="icon" src="icons/audio-on.png"/>Audio On</li>
 					<li class="role"><img class="icon" src="icons/level.png"/>Level <?php echo (!empty($data))?$data['level']:"0"; ?></li>
 					<?php if($hideLeaderboard == "false") { 
 						if(!empty($data)){
