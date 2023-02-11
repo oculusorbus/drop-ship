@@ -488,7 +488,7 @@ if($_SESSION['userData']['project_id'] == 1){
 					&nbsp;
 					<!-- Rounded switch -->
 					<label class="switch">
-					  <input type="checkbox">
+					  <input type="checkbox" checked>
 					  <span class="slider rounded"></span>
 					</label>
 					</li>
