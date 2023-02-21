@@ -280,6 +280,7 @@ if($_SESSION['userData']['project_id'] == 1){
 				<!--<h1>Doc Oc & Ohh Meed's Drop Ship</h1>-->
 			    <!-- Display results of Drop Ship run to user -->
 				<?php 
+				$image_wrap = "";
 				if(isset($_POST['run']) || isset($_POST['instant_replay'])) {
 					$image_wrap = "class='image-wrap'";
 				}?>
