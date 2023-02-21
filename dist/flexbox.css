@@ -812,6 +812,8 @@ input:checked + .slider:before {
 #results-image {
 	width: 100%;
 	height: 100%;
+	min-height: 898px;
+	max-height: 898px;
 	background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -944,6 +946,10 @@ input:checked + .slider:before {
     margin-top: 10px;
   }
 	#results {
+		min-height: 350px;
+		max-height: 350px;
+	}
+	#results-image {
 		min-height: 350px;
 		max-height: 350px;
 	}
