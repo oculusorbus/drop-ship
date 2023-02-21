@@ -78,6 +78,7 @@ function evaluateText($text){
 				$replacements['Registered Soldiers'] = 'Oculus Lounge VIPs';
 				$replacements['Beach Secured'] = 'Approach Stage';
 				$replacements['Hill Secured'] = 'Enter VIP';
+				$replacements['gif'] = 'png';
 			}
 			
 			$replacements['SCRIP'] = 'TIDDIES';
