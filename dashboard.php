@@ -276,12 +276,13 @@ if($_SESSION['userData']['project_id'] == 1){
 		<!-- The flexible grid (content) -->
 		<div class="row" id="row1">
 		  <div class="main">
-		    <div class="content image-wrap">
+		    <div class="content">
 				<!--<h1>Doc Oc & Ohh Meed's Drop Ship</h1>-->
 			    <!-- Display results of Drop Ship run to user -->
-				<div id="results">
+				<div id="results image-wrap">
+					<div id="results-image"></div>
 					<?php if(isset($_SESSION['userData']['current_score']) && checkSquadCount($conn) < 1) { ?>
-						<script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/gameover.gif')";</script>
+						<script>document.getElementById("results-image").style.backgroundImage = "url('<?php echo $prefix; ?>images/gameover.gif')";</script>
 						<?php 
 						// Send message to Discord channel with round death information only when there is an active score AND a notification hasn't already been sent.
 						if(!isset($_SESSION['userData']['notification']) && isset($_SESSION['userData']['score'])) {
@@ -299,9 +300,9 @@ if($_SESSION['userData']['project_id'] == 1){
 						<!--<img class="rounded" src='gameover.gif'/>-->
 					<?php } else { ?>
 						<?php if(isset($_POST['run'])) { ?>
-							<script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/reset/intro.jpg')";</script>
+							<script>document.getElementById("results-image").style.backgroundImage = "url('<?php echo $prefix; ?>images/reset/intro.jpg')";</script>
 						<?php } else { ?>
-							<script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/dropship.jpg')";</script>
+							<script>document.getElementById("results-image").style.backgroundImage = "url('<?php echo $prefix; ?>images/dropship.jpg')";</script>
 							<!--<img class="rounded" src='dropship.jpg'/>-->
 						<?php } ?>
 					<?php } ?>
@@ -386,7 +387,7 @@ if($_SESSION['userData']['project_id'] == 1){
 					} else if((!isset($_SESSION['userData']['current_score']) || checkSquadCount($conn) >= 1) || isset($_SESSION['userData']['battle_id'])) { 
 						if(!isset($_SESSION['userData']['game_id']) && !isset($_SESSION['userData']['battle_id'])) {
 							?>
-							<script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/dropship.jpg')";</script>
+							<script>document.getElementById("results-image").style.backgroundImage = "url('<?php echo $prefix; ?>images/dropship.jpg')";</script>
 							<script>
 							var videoContent = "";
 							var video = "";
@@ -417,7 +418,7 @@ if($_SESSION['userData']['project_id'] == 1){
 				?>
 				
 				<?php if(isset($_POST['instant_replay'])) { 
-					?><script>document.getElementById("results").style.backgroundImage = "url('<?php echo $prefix; ?>images/reset/intro.jpg')";</script><?php
+					?><script>document.getElementById("results-image").style.backgroundImage = "url('<?php echo $prefix; ?>images/reset/intro.jpg')";</script><?php
 					// Do not display instant replay button if play button is rendered
 					echo $view_results;
 					echo "<script type='text/javascript'>document.getElementById('disableMessage').innerHTML = 'true';</script>";

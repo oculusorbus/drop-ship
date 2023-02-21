@@ -811,15 +811,12 @@ input:checked + .slider:before {
 
 /* Ken Burns Effect */
 .image-wrap {
-  width: 100%;
-  min-height: 898px;
-  min-height: 898px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
 }
 
-.image-wrap div {
+.image-wrap #results-image {
   width: 100%;
   animation: move 40s ease;
   /* Add infinite to loop. */
@@ -828,7 +825,7 @@ input:checked + .slider:before {
   -webkit-animation: move 40s ease;
   -0-animation: move 40s ease;
   -moz-animation: move 40s ease;
-  position: relative;
+  position: absolute;
 }
 
 @-webkit-keyframes move {
