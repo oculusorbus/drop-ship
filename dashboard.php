@@ -279,7 +279,7 @@ if($_SESSION['userData']['project_id'] == 1){
 		    <div class="content">
 				<!--<h1>Doc Oc & Ohh Meed's Drop Ship</h1>-->
 			    <!-- Display results of Drop Ship run to user -->
-				<div id="results image-wrap">
+				<div id="results" class="image-wrap">
 					<div id="results-image"></div>
 					<?php if(isset($_SESSION['userData']['current_score']) && checkSquadCount($conn) < 1) { ?>
 						<script>document.getElementById("results-image").style.backgroundImage = "url('<?php echo $prefix; ?>images/gameover.gif')";</script>

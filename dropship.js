@@ -111,14 +111,14 @@ function displayRound(project_id) {
 		//document.getElementById(currentRound).style.visibility = "visible";
 //		document.getElementById("results").innerHTML = document.getElementById(currentRound).innerHTML;
 		document.getElementById("resultsText").innerHTML = "<h3>"+document.getElementById(currentRound).getElementsByTagName('h3')[0].innerHTML+"</h3>";
-		document.getElementById("results").style.backgroundImage = "url('"+document.getElementById(currentRound).getElementsByTagName('img')[0].src+"')";
+		document.getElementById("results-image").style.backgroundImage = "url('"+document.getElementById(currentRound).getElementsByTagName('img')[0].src+"')";
 	}else{
 		if(currentRound != lastRound){
 			document.getElementById(currentRound-1).style.visibility = "hidden";
 			//document.getElementById(currentRound).style.visibility = "visible";
 //			document.getElementById("results").innerHTML = document.getElementById(currentRound).innerHTML;
 			document.getElementById("resultsText").innerHTML = "<h3>"+document.getElementById(currentRound).getElementsByTagName('h3')[0].innerHTML+"</h3>";
-			document.getElementById("results").style.backgroundImage = "url('"+document.getElementById(currentRound).getElementsByTagName('img')[0].src+"')";
+			document.getElementById("results-image").style.backgroundImage = "url('"+document.getElementById(currentRound).getElementsByTagName('img')[0].src+"')";
 			
 			if(evaluateAudio(currentRound, "Melee")){
 				configureAudio(2, "melee");

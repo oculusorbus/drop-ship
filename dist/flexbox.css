@@ -811,9 +811,6 @@ input:checked + .slider:before {
 
 /* Ken Burns Effect */
 .image-wrap {
-  width: 100%;
-  min-height: 898px;
-  max-height: 898px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
