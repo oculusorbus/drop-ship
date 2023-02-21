@@ -276,7 +276,7 @@ if($_SESSION['userData']['project_id'] == 1){
 		<!-- The flexible grid (content) -->
 		<div class="row" id="row1">
 		  <div class="main">
-		    <div class="content">
+		    <div class="content image-wrap">
 				<!--<h1>Doc Oc & Ohh Meed's Drop Ship</h1>-->
 			    <!-- Display results of Drop Ship run to user -->
 				<div id="results">
