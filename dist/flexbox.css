@@ -812,7 +812,8 @@ input:checked + .slider:before {
 /* Ken Burns Effect */
 .image-wrap {
   width: 100%;
-  height: 50vw;
+  min-height: 898px;
+  min-height: 898px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
@@ -827,7 +828,7 @@ input:checked + .slider:before {
   -webkit-animation: move 40s ease;
   -0-animation: move 40s ease;
   -moz-animation: move 40s ease;
-  position: absolute;
+  position: relative;
 }
 
 @-webkit-keyframes move {
