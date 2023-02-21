@@ -281,7 +281,7 @@ if($_SESSION['userData']['project_id'] == 1){
 			    <!-- Display results of Drop Ship run to user -->
 				<?php 
 				$image_wrap = "";
-				if(isset($_POST['run']) || isset($_POST['instant_replay'])) {
+				if((isset($_POST['run']) || isset($_POST['instant_replay'])) && $_SESSION['userData']['project_id'] == 4) {
 					$image_wrap = "class='image-wrap'";
 				}?>
 				<div id="results" <?php echo $image_wrap;?>>
