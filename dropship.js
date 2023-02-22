@@ -54,8 +54,10 @@ function toggle3D(status){
 	xhttp.open('GET', 'ajax/toggle-3d.php?status='+status, true);
 	xhttp.send();
 	if(status){
+		document.getElementById("results_image").style.backgroundImage = document.getElementById("results_image").style.backgroundImage.replace("png", "gif");
 		document.getElementById("hidden-results").innerHTML = replaceAll(document.getElementById("hidden-results").innerHTML, "png", "gif");
 	}else{
+		document.getElementById("results_image").style.backgroundImage = document.getElementById("results_image").style.backgroundImage.replace("gif", "png");
 		document.getElementById("hidden-results").innerHTML = replaceAll(document.getElementById("hidden-results").innerHTML, "gif", "png");
 	}
 }
