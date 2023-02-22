@@ -520,7 +520,6 @@ if($_SESSION['userData']['project_id'] == 1){
 						</label>
 					</li>
 					<?php
-					echo $_SESSION['userData']['3d'];
 					if(isset($_SESSION['userData']['project_id']) == 4){ 
 						if(isset($_SESSION['userData']['3d'])){
 							if($_SESSION['userData']['3d'] == "true"){
