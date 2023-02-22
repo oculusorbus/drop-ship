@@ -520,19 +520,25 @@ if($_SESSION['userData']['project_id'] == 1){
 						</label>
 					</li>
 					<?php
-					$dimension_checked = "";
-					if(isset($_SESSION['userData']['project_id']) == 4){ ?>
+					if(isset($_SESSION['userData']['project_id']) == 4){ 
+						if(isset($_SESSION['userData']['3d'])){
+							if($_SESSION['userData']['3d'] == "true"){
+								$dimension_checked = "checked";
+							}else{
+								$dimension_checked = "";
+							}
+						}else{
+							$dimension_checked = "";
+						}?>
 					<li class="role"><img class="icon" id="3d-icon" src="icons/3d.png"/>3D
 						&nbsp;
 						<!-- Rounded switch -->
 						<label class="switch">
-						  <input onchange="javascript:toggleAudio(this.checked);" type="checkbox" <?php echo $dimension_checked; ?>>
+						  <input onchange="javascript:toggle3D(this.checked);" type="checkbox" <?php echo $dimension_checked; ?>>
 						  <span class="slider rounded"></span>
 						</label>
 					</li>
-					<?php
-					}	
-					?>
+					<?php } ?>
 					<li class="role"><img class="icon" src="icons/level.png"/>Level <?php echo (!empty($data))?$data['level']:"0"; ?></li>
 					<?php if($hideLeaderboard == "false") { 
 						if(!empty($data)){

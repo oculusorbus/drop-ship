@@ -44,6 +44,13 @@ function toggleAudio(status){
 	xhttp.send();
 }
 
+// Toggle 3D On & Off
+function toggle3D(status){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open('GET', 'ajax/toggle-3d.php?status='+status, true);
+	xhttp.send();
+}
+
 // Evaluate whether term is in results text
 function evaluateAudio(currentRound, terms) {
 	if(document.getElementById(currentRound).getElementsByTagName('h3')[0].innerHTML.includes(terms)){
