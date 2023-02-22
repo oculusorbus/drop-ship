@@ -428,6 +428,15 @@ if($_SESSION['userData']['project_id'] == 1){
 					echo $view_results;
 					echo "<script type='text/javascript'>document.getElementById('disableMessage').innerHTML = 'true';</script>";
 					$dropshipMarkup = getReplay($conn, $_POST['result_id']);
+					if($_SESSION['userData']['project_id'] == 4){
+						if(isset($_SESSION['userData']['3d']){
+							if($_SESSION['userData']['3d'] == "true"){
+								$dropshipMarkup = str_replace("png", "gif", $dropshipMarkup);
+							}else if($_SESSION['userData']['3d'] == "false"){
+								$dropshipMarkup = str_replace("gif", "png", $dropshipMarkup);
+							}
+						}
+					}
 				}  
 				if(!isset($_POST['instant_replay']) && isset($_SESSION['userData']['current_score']) && isset($_SESSION['userData']['game_id']) && !isset($_POST['deactivate']) && !isset($_POST['newgame'])){
 					// Old instant replay by user id only, disabled until or if this can be figured out with result id.
