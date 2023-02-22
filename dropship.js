@@ -50,9 +50,9 @@ function toggle3D(status){
 	xhttp.open('GET', 'ajax/toggle-3d.php?status='+status, true);
 	xhttp.send();
 	if(status){
-		document.getElementById("hidden-results").innerHTML.replace("png", "gif");
+		document.getElementById("hidden-results").innerHTML = document.getElementById("hidden-results").innerHTML.replace("png", "gif");
 	}else{
-		document.getElementById("hidden-results").innerHTML.replace("gif", "png");
+		document.getElementById("hidden-results").innerHTML = document.getElementById("hidden-results").innerHTML.replace("gif", "png");
 	}
 }
 
