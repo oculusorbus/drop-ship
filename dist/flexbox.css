@@ -337,6 +337,7 @@ body {
 	max-height: 898px;
 	color: #D6DDDE;
 	margin: 0 auto;
+	overflow: hidden;
 	
 	/*background-image: url("../tvstatic.jpg");*/
 	background-position: center; /* Center the image */
