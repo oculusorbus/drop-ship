@@ -429,12 +429,14 @@ if($_SESSION['userData']['project_id'] == 1){
 					echo "<script type='text/javascript'>document.getElementById('disableMessage').innerHTML = 'true';</script>";
 					$dropshipMarkup = getReplay($conn, $_POST['result_id']);
 					if($_SESSION['userData']['project_id'] == 4){
-						if(isset($_SESSION['userData']['3d']){
+						if(isset($_SESSION['userData']['3d'])){
 							if($_SESSION['userData']['3d'] == "true"){
 								$dropshipMarkup = str_replace("png", "gif", $dropshipMarkup);
 							}else if($_SESSION['userData']['3d'] == "false"){
 								$dropshipMarkup = str_replace("gif", "png", $dropshipMarkup);
 							}
+						}else{
+							$dropshipMarkup = str_replace("gif", "png", $dropshipMarkup);
 						}
 					}
 				}  
