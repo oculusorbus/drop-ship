@@ -519,6 +519,19 @@ if($_SESSION['userData']['project_id'] == 1){
 						  <span class="slider rounded"></span>
 						</label>
 					</li>
+					<?php
+					if(isset($_SESSION['userData']['project_id']) == 4){ ?>
+					<li class="role"><img class="icon" id="3d-icon" src="icons/3d>.png"/>3D
+						&nbsp;
+						<!-- Rounded switch -->
+						<label class="switch">
+						  <input onchange="javascript:toggleAudio(this.checked);" type="checkbox" <?php echo $dimension_checked; ?>>
+						  <span class="slider rounded"></span>
+						</label>
+					</li>
+					<?php
+					}	
+					?>
 					<li class="role"><img class="icon" src="icons/level.png"/>Level <?php echo (!empty($data))?$data['level']:"0"; ?></li>
 					<?php if($hideLeaderboard == "false") { 
 						if(!empty($data)){
