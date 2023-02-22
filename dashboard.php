@@ -520,6 +520,7 @@ if($_SESSION['userData']['project_id'] == 1){
 						</label>
 					</li>
 					<?php
+					$dimension_checked = "";
 					if(isset($_SESSION['userData']['project_id']) == 4){ ?>
 					<li class="role"><img class="icon" id="3d-icon" src="icons/3d>.png"/>3D
 						&nbsp;
