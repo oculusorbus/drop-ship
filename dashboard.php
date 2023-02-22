@@ -448,7 +448,7 @@ if($_SESSION['userData']['project_id'] == 1){
 				?>
 				
 				<!-- Hidden Drop Ship results that are manipulated with Javascript -->
-		        <div style="display:none;">
+		        <div id="hidden-results" style="display:none;">
 					<?php echo $dropshipMarkup; ?>
 				</div>
 		    </div>

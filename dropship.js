@@ -49,6 +49,11 @@ function toggle3D(status){
 	var xhttp = new XMLHttpRequest();
 	xhttp.open('GET', 'ajax/toggle-3d.php?status='+status, true);
 	xhttp.send();
+	if(status){
+		document.getElementById("hidden-results").innerHTML.replace("png", "gif");
+	}else{
+		document.getElementById("hidden-results").innerHTML.replace("gif", "png");
+	}
 }
 
 // Evaluate whether term is in results text
