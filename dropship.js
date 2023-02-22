@@ -57,6 +57,7 @@ function toggle3D(status){
 		document.getElementById("hidden-results").innerHTML = replaceAll(document.getElementById("hidden-results").innerHTML, "png", "gif");
 	}else{
 		document.getElementById("hidden-results").innerHTML = replaceAll(document.getElementById("hidden-results").innerHTML, "gif", "png");
+	}
 }
 
 // Evaluate whether term is in results text
