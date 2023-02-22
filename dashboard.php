@@ -428,6 +428,7 @@ if($_SESSION['userData']['project_id'] == 1){
 					echo $view_results;
 					echo "<script type='text/javascript'>document.getElementById('disableMessage').innerHTML = 'true';</script>";
 					$dropshipMarkup = getReplay($conn, $_POST['result_id']);
+					// 3D Swapping
 					if($_SESSION['userData']['project_id'] == 4){
 						if(isset($_SESSION['userData']['3d'])){
 							if($_SESSION['userData']['3d'] == "true"){
@@ -531,7 +532,7 @@ if($_SESSION['userData']['project_id'] == 1){
 						</label>
 					</li>
 					<?php
-					if(isset($_SESSION['userData']['project_id']) == 4){ 
+					if($_SESSION['userData']['project_id'] == 4){ 
 						if(isset($_SESSION['userData']['3d'])){
 							if($_SESSION['userData']['3d'] == "true"){
 								$dimension_checked = "checked";
