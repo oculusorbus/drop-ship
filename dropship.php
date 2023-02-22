@@ -875,15 +875,15 @@ if(isset($_POST['run'])){
 				if ($counter <= 2){
 					if ($counter == 0){
 						$dropshipMarkup.="<div class='round' id='0'><h3>".evaluateText("Drop Ship Initiating")."</h3>";
-						$dropshipMarkup.="<img src='".$prefix."images/reset/reset.".evaluateText("gif")."?var=123'/></div>";
+						$dropshipMarkup.="<img src='".$prefix."images/reset/reset.".evaluateText("gif")."?var=1234'/></div>";
 					}
 					if ($counter == 1){
 						$dropshipMarkup.="<div class='round' id='1'><h3>Round 1 - ".evaluateText("Drop Ship")."</h3>";
-						$dropshipMarkup.="<img src='".$prefix."images/drop/drop.".evaluateText("gif")."?var=123'/></div>";
+						$dropshipMarkup.="<img src='".$prefix."images/drop/drop.".evaluateText("gif")."?var=1234'/></div>";
 					}
 					if ($counter == 2){
 						$dropshipMarkup.="<div class='round' id='2'><h3>Round 2 - ".evaluateText("Drop Ship Landed")."</h3>";
-						$dropshipMarkup.="<img src='".$prefix."images/drop/team.".evaluateText("gif")."?var=123'/></div>";
+						$dropshipMarkup.="<img src='".$prefix."images/drop/team.".evaluateText("gif")."?var=1234'/></div>";
 					}
 					$counter++;
 				} else {
