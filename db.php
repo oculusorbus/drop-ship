@@ -673,6 +673,30 @@ function checkSquadCount($conn){
 	}
 }
 
+// Check if player has default soldiers or not
+function checkDefaultSoldiers($conn){
+	$sql = "SELECT title, soldiers.id AS soldier_id FROM soldiers INNER JOIN users ON users.id = soldiers.user_id WHERE user_id = '".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."' AND title = 'GRUNT'";
+	if ($result->num_rows > 0) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
+// Add default soldiers to player
+function addDefaultSoldiers($conn){
+	$sql = "INSERT INTO soldiers (asset_name, name, title, rank, armor, gear, level, project_id, user_id, active)
+	VALUES ('GRUNT', 'GRUNT', 'GRUNT', 'Grunt', 'None', 'none', '0', '".$_SESSION['userData']['project_id']."', '".$_SESSION['userData']['user_id']."', '1')";
+	
+	for ($x = 1; $x <= 4; $x++) {
+	  	if ($conn->query($sql) === TRUE) {
+		  //echo "New record created successfully";
+		} else {
+		  //echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+}
+
 // Deploy user's soldier to a squad, or retrieve
 function deploySoldier($conn, $id, $active){
 	// Check to see if squad is full or not

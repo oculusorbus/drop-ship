@@ -250,6 +250,13 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 	}*/
 }
 
+// Assign default soldiers to players for Drop Ship
+if($_SESSION['userData']['project_id'] == 1){
+	if(!checkDefaultSoldiers($conn)){
+		addDefaultSoldiers($conn);
+	}
+}
+
 if($_SESSION['userData']['project_id'] == 1){
 	$currency = "SCRIP";
 	$squad = "Super Soldier";
