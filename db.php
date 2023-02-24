@@ -675,7 +675,7 @@ function checkSquadCount($conn){
 
 // Check if player has default soldiers or not
 function checkDefaultSoldiers($conn){
-	$sql = "SELECT title, soldiers.id AS soldier_id FROM soldiers INNER JOIN users ON users.id = soldiers.user_id WHERE user_id = '".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."' AND title = 'GRUNT'";
+	$sql = "SELECT title, soldiers.id AS soldier_id FROM soldiers INNER JOIN users ON users.id = soldiers.user_id WHERE user_id = '".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."' AND title = 'ZGRUNT'";
 	$result = $conn->query($sql);
 	
 	if ($result->num_rows > 0) {
@@ -688,7 +688,7 @@ function checkDefaultSoldiers($conn){
 // Add default soldiers to player
 function addDefaultSoldiers($conn){
 	$sql = "INSERT INTO soldiers (asset_name, name, title, rank, armor, gear, level, project_id, user_id, active)
-	VALUES ('GRUNT', 'GRUNT', 'GRUNT', 'Grunt', 'None', 'None', '0', '".$_SESSION['userData']['project_id']."', '".$_SESSION['userData']['user_id']."', '0')";
+	VALUES ('GRUNT', 'GRUNT', 'ZGRUNT', 'Grunt', 'None', 'None', '0', '".$_SESSION['userData']['project_id']."', '".$_SESSION['userData']['user_id']."', '0')";
 	
 	for ($x = 1; $x <= 4; $x++) {
 	  	if ($conn->query($sql) === TRUE) {
@@ -736,7 +736,7 @@ function getSoldiers($conn, $active, $filterby="", $all=false){
 		$user_clause = "user_id = '".$_SESSION['userData']['user_id']."' ";
 	}
 
-	$sql = "SELECT name, asset_name, ipfs, rank, armor, gear, level, username, deceased, active, soldiers.id AS soldier_id FROM soldiers INNER JOIN users ON users.id = soldiers.user_id WHERE ".$user_clause.$active_clause.$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, name";
+	$sql = "SELECT name, asset_name, ipfs, rank, armor, gear, level, username, deceased, active, soldiers.id AS soldier_id FROM soldiers INNER JOIN users ON users.id = soldiers.user_id WHERE ".$user_clause.$active_clause.$filterby." AND project_id = '".$_SESSION['userData']['project_id']."' ORDER BY deceased, title, id";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
