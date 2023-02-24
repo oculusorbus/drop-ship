@@ -779,7 +779,8 @@ if(isset($_POST['run'])){
 			if(!isset($_SESSION['userData']['battle_id'])){
 				unset($_SESSION['userData']['current_score']);
 			}
-			$threshold = 0;
+			// Threshold for default soldiers
+			$threshold = 49;
 			$ballistic_shield = "false";
 			$quantum_stealth = "false";
 			$exo_suit = "false";
@@ -859,10 +860,6 @@ if(isset($_POST['run'])){
 				$threshold = $base_thresold;
 			}
 			
-			// Set threshold for default soldiers
-			if($threshold == 0){
-				$threshold = 49;
-			}
 			/*// Append additional armor to threshold
 			if($mech_suit == 'true') {
 				$threshold += 8.9;
