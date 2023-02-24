@@ -875,7 +875,7 @@ function createSoldier($conn, $asset_name, $name, $title, $rank, $armor, $gear, 
 // Assign soldiers to users based on NFT holdings
 function updateSoldiers($conn, $asset_names) {
 	// Clear out all NFT associations for user
-	$sql = "UPDATE soldiers SET user_id = 0 WHERE user_id = '".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."'";
+	$sql = "UPDATE soldiers SET user_id = 0 WHERE user_id = '".$_SESSION['userData']['user_id']."' AND project_id = '".$_SESSION['userData']['project_id']."' AND rank != 'GRUNT'";
 	if ($conn->query($sql) === TRUE) {
 	  //echo "New record created successfully";
 	} else {
