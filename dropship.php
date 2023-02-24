@@ -858,6 +858,11 @@ if(isset($_POST['run'])){
 			} else if($base == 'true' || $_SESSION['userData']['base_armor'] == "true") {
 				$threshold = $base_thresold;
 			}
+			
+			// Set threshold for default soldiers
+			if($threshold == 0){
+				$threshold = 49;
+			}
 			/*// Append additional armor to threshold
 			if($mech_suit == 'true') {
 				$threshold += 8.9;
