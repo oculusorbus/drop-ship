@@ -688,10 +688,10 @@ function checkDefaultSoldiers($conn){
 // Add default soldiers to player
 function addDefaultSoldiers($conn){
 	$names = array(
-	    "1" => "HAGAR",
-	    "2" => "SEKTR",
-		"3" => "DELAY",
-		"4" => "BLOOD BAG",
+	    "1" => "BLOOD BAG",
+	    "2" => "DELAY",
+		"3" => "HAGAR",
+		"4" => "SEKTR",
 	);
 	for ($x = 1; $x <= 4; $x++) {
 		$sql = "INSERT INTO soldiers (asset_name, name, title, rank, armor, gear, level, project_id, user_id, active)
