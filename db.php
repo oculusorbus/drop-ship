@@ -687,9 +687,15 @@ function checkDefaultSoldiers($conn){
 
 // Add default soldiers to player
 function addDefaultSoldiers($conn){
+	$names = array(
+	    "1" => "HAGAR",
+	    "2" => "SEKTR",
+		"3" => "DELAY",
+		"4" => "BLOOD BAG",
+	);
 	for ($x = 1; $x <= 4; $x++) {
 		$sql = "INSERT INTO soldiers (asset_name, name, title, rank, armor, gear, level, project_id, user_id, active)
-		VALUES ('GRUNT00".$x."', 'GRUNT #0".$x."', 'ZGRUNT', 'Grunt', 'None', 'None', '0', '".$_SESSION['userData']['project_id']."', '".$_SESSION['userData']['user_id']."', '0')";
+		VALUES ('GRUNT00".$x."', '".$names[$x]." #00', 'ZGRUNT', 'Grunt', 'None', 'None', '0', '".$_SESSION['userData']['project_id']."', '".$_SESSION['userData']['user_id']."', '0')";
 	
 	  	if ($conn->query($sql) === TRUE) {
 		  //echo "New record created successfully";
