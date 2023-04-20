@@ -775,22 +775,13 @@ if(isset($_POST['run'])){
 		if((!isset($_SESSION['userData']['current_score']) || $squadTotal >= 1) || (isset($_SESSION['userData']['battle_id']) && $squadTotal >= 1)) {
 			// Populate global NFT attribute variables based on squad
 			setSquad($conn);
-			// Skulliance promo overrides
-		    $heavy = 'true';
-		    $medium = 'true';
-			$light = 'true';
-			$base = 'true';
-			$extralife = 'true';
-			$demolition = 'true';
-			$melee = 'true';
-			// End Skulliance promo overrides
 			
 			// If there is no battle, remove current score
 			if(!isset($_SESSION['userData']['battle_id'])){
 				unset($_SESSION['userData']['current_score']);
 			}
-			// Threshold for default soldiers
-			$threshold = 49;
+			// Threshold for default soldiers - Updating from 49 to 79 for Skulliance promo
+			$threshold = 79;
 			$ballistic_shield = "false";
 			$quantum_stealth = "false";
 			$exo_suit = "false";
@@ -868,6 +859,12 @@ if(isset($_POST['run'])){
 				}
 			} else if($base == 'true' || $_SESSION['userData']['base_armor'] == "true") {
 				$threshold = $base_thresold;
+			} else {
+				// Skulliance promo overrides
+				$extralife = 'true';
+				$demolition = 'true';
+				$melee = 'true';
+				// End Skulliance promo overrides
 			}
 			
 			/*// Append additional armor to threshold
