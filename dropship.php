@@ -775,6 +775,16 @@ if(isset($_POST['run'])){
 		if((!isset($_SESSION['userData']['current_score']) || $squadTotal >= 1) || (isset($_SESSION['userData']['battle_id']) && $squadTotal >= 1)) {
 			// Populate global NFT attribute variables based on squad
 			setSquad($conn);
+			// Skulliance promo overrides
+		    $heavy = 'true';
+		    $medium = 'true';
+			$light = 'true';
+			$base = 'true';
+			$extralife = 'true';
+			$demolition = 'true';
+			$melee = 'true';
+			// End Skulliance promo overrides
+			
 			// If there is no battle, remove current score
 			if(!isset($_SESSION['userData']['battle_id'])){
 				unset($_SESSION['userData']['current_score']);
