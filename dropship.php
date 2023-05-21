@@ -780,8 +780,8 @@ if(isset($_POST['run'])){
 			if(!isset($_SESSION['userData']['battle_id'])){
 				unset($_SESSION['userData']['current_score']);
 			}
-			// Threshold for default soldiers - Updating from 49 to 79 for Skulliance promo
-			$threshold = 79;
+			// Threshold for default soldiers - Restoring to 49 from 79 for Skulliance promo
+			$threshold = 49;
 			$ballistic_shield = "false";
 			$quantum_stealth = "false";
 			$exo_suit = "false";
@@ -859,13 +859,18 @@ if(isset($_POST['run'])){
 				}
 			} else if($base == 'true' || $_SESSION['userData']['base_armor'] == "true") {
 				$threshold = $base_thresold;
-			} else {
+			} 
+			/*
+			else {
+
 				// Skulliance promo overrides
 				$extralife = 'true';
 				$demolition = 'true';
 				$melee = 'true';
 				// End Skulliance promo overrides
+
 			}
+			*/
 			
 			/*// Append additional armor to threshold
 			if($mech_suit == 'true') {
