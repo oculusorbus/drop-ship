@@ -1743,7 +1743,7 @@ function checkLeaderboard($conn, $clean) {
 				$leaderboardCounter++;
 				$avatar = "";
 				if($row["avatar"] != ""){
-					$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+					$avatar = "<img onError='this.src=\"/drop-ship/icons/xp.png\";' src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
 				}
 		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]. "</strong> (" . $row["score"]. ")";
 				checkResultsItems($conn, $row["id"], "false");
@@ -1879,7 +1879,7 @@ function checkXPLeaderboard($conn, $clean) {
 				$level = floor($row["xp"]/100);
 				$avatar = "";
 				if($row["avatar"] != ""){
-					$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+					$avatar = "<img onError='this.src=\"/drop-ship/icons/xp.png\";' src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
 				}
 		    	echo "<li>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]. "</strong>: <i>Lv. ".$level."</i> - (" . $row["xp"]. " XP)</li>";
 		  	}
