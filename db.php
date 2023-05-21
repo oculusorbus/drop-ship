@@ -1790,7 +1790,7 @@ function checkATHLeaderboard($conn, $clean) {
 				$leaderboardCounter++;
 				$avatar = "";
 				if($row["avatar"] != ""){
-					$avatar = "<img onError='this.style.display=\"none\";' src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+					$avatar = "<img onError='this.src=\"/drop-ship/icons/xp.png\";' src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
 				}
 		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]."</strong> (" . $row["max_score"]. ")";
 				$result_id = checkMaxScoreResultID($conn, $row["user_id"], $row["max_score"]);
