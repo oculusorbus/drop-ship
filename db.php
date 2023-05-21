@@ -1718,6 +1718,24 @@ function getResultsSoldiers($conn, $result_id){
 	}
 }
 
+function checkRemoteFile($url)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL,$url);
+    // don't download content
+    curl_setopt($ch, CURLOPT_NOBODY, 1);
+    curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    if(curl_exec($ch)!==FALSE)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 // Check leaderboard for discord and site display
 function checkLeaderboard($conn, $clean) {
 	global $discordid_kryptman, $discordid_oculusorbus, $discordid_ohhmeed;
@@ -1790,10 +1808,10 @@ function checkATHLeaderboard($conn, $clean) {
 				$leaderboardCounter++;
 				$avatar = "";
 				if($row["avatar"] != ""){
-					$headers = @get_headers("https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg");
-					if (preg_match("|200|", $headers[0])) {
+					if(checkRemoteFile("https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg"))
+					{
 						$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
-					} else {
+					}else{
 						$avatar = "";
 					}
 					//$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
