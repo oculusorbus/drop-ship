@@ -1743,12 +1743,6 @@ function checkLeaderboard($conn, $clean) {
 				$leaderboardCounter++;
 				$avatar = "";
 				if($row["avatar"] != ""){
-					$headers = @get_headers("https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg");
-					if (preg_match("|200|", $headers[0])) {
-						$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
-					} else {
-						$avatar = "";
-					}
 					$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
 				}
 		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]. "</strong> (" . $row["score"]. ")";
@@ -1796,7 +1790,13 @@ function checkATHLeaderboard($conn, $clean) {
 				$leaderboardCounter++;
 				$avatar = "";
 				if($row["avatar"] != ""){
-					$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+					$headers = @get_headers("https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg");
+					if (preg_match("|200|", $headers[0])) {
+						$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
+					} else {
+						$avatar = "";
+					}
+					//$avatar = "<img src='https://cdn.discordapp.com/avatars/".$row["discord_id"]."/".$row["avatar"].".jpg' class='icon rounded-full'/>";
 				}
 		    	echo "<li class='role'><table width='100%'><tr><td width='90%'>".$leaderboardCounter.". ".$avatar." <strong>".$row["username"]."</strong> (" . $row["max_score"]. ")";
 				$result_id = checkMaxScoreResultID($conn, $row["user_id"], $row["max_score"]);
