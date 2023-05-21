@@ -14,9 +14,12 @@ async function connectWallet(wallet){
 		lucid.selectWallet(api);
 		const address = await lucid.wallet.address();
 		const stakeAddress = await lucid.wallet.rewardAddress();
-		alert(stakeAddress);
+		/* Old address approach
 		if(address != ""){
 			sendAddress(address, wallet);
+		}*/
+		if(stakeAddress != ""){
+			sendAddress(stakeAddress, wallet);
 		}
 	}
 }

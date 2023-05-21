@@ -131,10 +131,10 @@ if(isset($_POST['address'])){
 if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $project_id_changed == "true"){
 	if($_SESSION['userData']['address'] != ""){
 		//echo "<div class='current-address'><strong>Current Address:</strong><br>".$_SESSION['userData']['address']."</div>";
-		$ch = curl_init("https://api.koios.rest/api/v0/address_assets");
+		$ch = curl_init("https://api.koios.rest/api/v0/account_assets");
 		curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
 		curl_setopt( $ch, CURLOPT_POST, 1);
-		curl_setopt( $ch, CURLOPT_POSTFIELDS, '{"_addresses":["'.$_SESSION['userData']['address'].'"]}');
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, '{"_stake_addresses":["'.$_SESSION['userData']['address'].'"]}');
 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt( $ch, CURLOPT_HEADER, 0);
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
