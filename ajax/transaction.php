@@ -72,9 +72,12 @@ while(!$flag) {
 					$flag = true;
 					// Assign VIP role
 					assignRole($_SESSION['userData']['discord_id'], "966399108011163678");
+					// Assign Disco role
+					assignRole($_SESSION['userData']['discord_id'], "966399231671812106");
 					// Assign Disco VIP role
 					assignRole($_SESSION['userData']['discord_id'], "966399671184556052");
-					echo "Your transaction was successfully verified. You have now been assigned temporary VIP status in the Oculus Lounge discord. Logout and log back in to gain access to the Oculus Lounge game.";
+					$_SESSION['userData']['VIP'] = 1;
+					echo "Your transaction was successfully verified. You have now been assigned temporary VIP status in the Oculus Lounge discord and can participate in the Oculus Lounge game.";
 					exit;
 				}
 			}
