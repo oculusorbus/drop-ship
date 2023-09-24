@@ -43,14 +43,15 @@ $discoin_policy_id = "5612bee388219c1b76fd527ed0fa5aa1d28652838bcab4ee4ee63197";
 	//print_r($response[0]->asset_list);
 	//exit;
 	curl_close( $ch );
+	
+	$count = count($response[0]->outputs);
+	$ada = $response[0]->outputs[$count]->value;
+	$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
+	$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
 
-	$ada = $response[0]->inputs[1]->value;
-	$quantity = $response[0]->inputs[1]->asset_list[0]->quantity;
-	$policy_id = $response[0]->inputs[1]->asset_list[0]->policy_id;
-
-	//echo "ADA: ".$ada."<br>";
-	//echo "Qty: ".$quantity."<br>";
-	//echo "PID: ".$policy_id."<br>";
+	echo "ADA: ".$ada."<br>";
+	echo "Qty: ".$quantity."<br>";
+	echo "PID: ".$policy_id."<br>";
 	
 	print_r($response);
 
