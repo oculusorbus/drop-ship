@@ -34,6 +34,6 @@ $conn->close();
 ?>
 <script type="text/javascript" src="dropship.js"></script>
 <script type="text/javascript">
-	checkTransaction();
+	//checkTransaction();
 </script>
 </html>
