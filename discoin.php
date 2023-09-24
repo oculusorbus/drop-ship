@@ -14,9 +14,9 @@
 		//exit;
 		curl_close( $ch );
 		
-		$transaction_hash = $response[0]["tx_hash"];
+		//$transaction_hash = $response[0]["tx_hash"];
 		
-		echo $transaction_hash;
+		//echo $transaction_hash;
 		exit;
 		
 		/*
