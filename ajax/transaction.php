@@ -21,6 +21,9 @@ while(!$flag) {
 	curl_close( $ch );
 
 	//$transaction_hash = $response[0]->tx_hash;
+	
+	print_r($response);
+	exit;
 
 	//foreach($response AS $index => $value){
 	for ($x = 0; $x <= count($response); $x++) {
@@ -38,11 +41,6 @@ while(!$flag) {
 		//print_r($response[0]->asset_list);
 		//exit;
 		curl_close( $ch );
-		
-		if($x == 1){
-			print_r($response);
-			exit;
-		}
 		
 		$count = 0;
 		if(isset($response[0]->outputs)){
