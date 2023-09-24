@@ -47,7 +47,7 @@ while(!$flag) {
 		//echo "Qty: ".$quantity."<br>";
 		//echo "PID: ".$policy_id."<br>";
 
-		$_SESSION['userData']['transaction'] = "187084";
+		$_SESSION['userData']['transaction'] = "483644";
 		if(str_contains($ada, $_SESSION['userData']['transaction'])){
 			if($policy_id == $discoin_policy_id){
 				if($quantity == 100000000000){ 
