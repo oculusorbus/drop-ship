@@ -21,9 +21,6 @@ while(!$flag) {
 	curl_close( $ch );
 
 	//$transaction_hash = $response[0]->tx_hash;
-	
-	print_r($response);
-	exit;
 
 	//foreach($response AS $index => $value){
 	for ($x = 0; $x <= count($response); $x++) {
@@ -35,28 +32,28 @@ while(!$flag) {
 		curl_setopt( $ch, CURLOPT_HEADER, 0);
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 
-		$response = curl_exec( $ch );
+		$tx_response = curl_exec( $ch );
 		// If you need to debug, or find out why you can't send message uncomment line below, and execute script.
-		$response = json_decode($response);
+		$tx_response = json_decode($tx_response);
 		//print_r($response[0]->asset_list);
 		//exit;
 		curl_close( $ch );
 		
 		$count = 0;
-		if(isset($response[0]->outputs)){
-			$count = count($response[0]->outputs)-1;
+		if(isset($tx_response[0]->outputs)){
+			$count = count($tx_response[0]->outputs)-1;
 		}
 		$ada = "";
-		if(isset($response[0]->outputs[$count]->value)){
-			$ada = $response[0]->outputs[$count]->value;
+		if(isset($tx_response[0]->outputs[$count]->value)){
+			$ada = $tx_response[0]->outputs[$count]->value;
 		}
 		$quantity = "";
-		if(isset($response[0]->outputs[$count]->asset_list[0]->quantity)){
-			$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
+		if(isset($tx_response[0]->outputs[$count]->asset_list[0]->quantity)){
+			$quantity = $tx_response[0]->outputs[$count]->asset_list[0]->quantity;
 		}
 		$policy_id = "";
-		if(isset($response[0]->outputs[$count]->asset_list[0]->policy_id)){
-			$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
+		if(isset($tx_response[0]->outputs[$count]->asset_list[0]->policy_id)){
+			$policy_id = $tx_response[0]->outputs[$count]->asset_list[0]->policy_id;
 		}
 
 		//echo "ADA: ".$ada."<br>";
