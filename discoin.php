@@ -19,7 +19,7 @@
 		echo $transaction_hash;
 		exit;
 		
-		/*
+		
 		$ch = curl_init("https://api.koios.rest/api/v0/tx_info");
  		curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
  		curl_setopt( $ch, CURLOPT_POST, 1);
@@ -35,5 +35,5 @@
 		//exit;
 		curl_close( $ch );
 		
-		print_r($response);*/
+		print_r($response);
 ?>
