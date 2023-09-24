@@ -1,4 +1,5 @@
 <?php
+include '../webhooks.php';
 session_start();
 
 $discoin_policy_id = "5612bee388219c1b76fd527ed0fa5aa1d28652838bcab4ee4ee63197";
@@ -68,7 +69,11 @@ while(!$flag) {
 			if($policy_id == $discoin_policy_id){
 				if($quantity == 100000000000){ 
 					$flag = true;
-					echo "true";
+					// Assign VIP role
+					assignRole($_SESSION['userData']['discord_id'], "966399108011163678");
+					// Assign Disco VIP role
+					assignRole($_SESSION['userData']['discord_id'], "966399671184556052");
+					echo "Your transaction was successfully verified. You have now been assigned temporary VIP status in the Oculus Lounge discord. Logout and log back in to gain access to the Oculus Lounge game.";
 					exit;
 				}
 			}
