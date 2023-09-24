@@ -16,6 +16,10 @@ if(!isset($_SESSION['userData']['transaction'])){
 					<p>
 					Please send 1.<?php echo $_SESSION['userData']['transaction']; ?> ADA and 1,000 DISCOIN to the following address: addr1qykk9ue0wmnky9mh453ln84tf472036wqmhj46a45m6a8xqpqyck03v2n0nhz94r39gymw6q9xa0d8pg6daf3rsz7y3qdy8m9t
 					</p>
+					<p>
+					After successfully sending the transaction, please click this button to verify that it has been received with the correct amount.
+					</p>
+					<button type="button" onclick="checkTransaction();">Verify Transaction</button>
 				</div>
 			</div>
 		</div>
@@ -32,7 +36,4 @@ if(!isset($_SESSION['userData']['transaction'])){
 $conn->close();
 ?>
 <script type="text/javascript" src="dropship.js"></script>
-<script type="text/javascript">
-	checkTransaction();
-</script>
 </html>
