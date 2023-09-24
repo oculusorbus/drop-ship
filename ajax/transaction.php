@@ -59,11 +59,12 @@ while(!$flag) {
 		}
 		
 		if($x == 1){
+//			print_r($tx_response[0]->outputs[$count]);
 			echo "ADA: ".$ada."<br>";
 			echo "Qty: ".$quantity."<br>";
 			echo "PID: ".$policy_id."<br>";
+			exit;
 		}
-		exit;
 
 		//echo "ADA: ".$ada."<br>";
 		//echo "Qty: ".$quantity."<br>";
