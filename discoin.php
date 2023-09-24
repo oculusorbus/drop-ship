@@ -1,4 +1,8 @@
 <?php
+		$six_digit_random_number = random_int(100000, 999999);
+		echo $six_digit_random_number;
+
+
 		$ch = curl_init("https://api.koios.rest/api/v0/address_txs");
 		curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
 		curl_setopt( $ch, CURLOPT_POST, 1);
