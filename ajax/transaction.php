@@ -83,16 +83,16 @@ while(!$flag) {
 				}
 			}
 		}
-		if($index >= 10){
+		if($x >= 10){
 			break;
 		}
 	}
 	//sleep for 5 seconds
 	sleep(5);
-	if($counter == 24){
+	//if($counter == 24){
 		echo "The verification timed out. Please hit the verification button to try again.";
 		exit;
-	}
+	//}
 	$counter++;
 }
 ?>
