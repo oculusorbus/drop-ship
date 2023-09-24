@@ -51,7 +51,7 @@ while(!$flag) {
 		if($policy_id == $discoin_policy_id){
 			if($quantity == 1){
 				$flag = true;
-				echo "true;"
+				echo "true";
 			}
 		}
 	}
