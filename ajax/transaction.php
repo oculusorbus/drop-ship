@@ -6,6 +6,7 @@ session_start();
 $discoin_policy_id = "5612bee388219c1b76fd527ed0fa5aa1d28652838bcab4ee4ee63197";
 
 $flag = false;
+$counter = 0;
 while(!$flag) {
 	$ch = curl_init("https://api.koios.rest/api/v0/address_txs");
 	curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
@@ -88,5 +89,10 @@ while(!$flag) {
 	}
 	//sleep for 5 seconds
 	sleep(5);
+	if($counter == 24){
+		echo "The verification timed out. Please hit the verification button to try again.";
+		exit;
+	}
+	$counter++;
 }
 ?>
