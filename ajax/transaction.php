@@ -26,7 +26,7 @@ while(!$flag) {
 		$ch = curl_init("https://api.koios.rest/api/v0/tx_info");
 		curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
 		curl_setopt( $ch, CURLOPT_POST, 1);
-		curl_setopt( $ch, CURLOPT_POSTFIELDS, '{"_tx_hashes":["'.$response[$index]->tx_hash.'"]}');
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, '{"_tx_hashes":["'.$response[1]->tx_hash.'"]}');
 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt( $ch, CURLOPT_HEADER, 0);
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
