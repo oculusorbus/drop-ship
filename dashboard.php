@@ -386,9 +386,10 @@ if($_SESSION['userData']['project_id'] == 1){
 							}else if($_SESSION['userData']['project_id'] == 3){ 
 								echo "<p><strong>You Must Have 5+ NFTs to Play</strong></p>";
 							}else if($_SESSION['userData']['project_id'] == 4){ 
-									echo "<p><strong>You Must Have a VIP Token to Play</strong></p>";
+									echo "<p><strong>You Must Have a VIP Token to Play or <a href='/discoin.php'>Purchase a Temporary VIP Pass with DISCOIN</a></strong></p>";
 							}else if($_SESSION['userData']['project_id'] != 3){ 
 								echo $play_button;
+								echo "<p><strong>You Must Have a VIP Token to Play or <a href='/discoin.php'>Purchase a Temporary VIP Pass with DISCOIN</a></strong></p>";
  							} ?>
 						<?php 
 						} else {
