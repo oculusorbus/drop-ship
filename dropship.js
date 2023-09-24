@@ -64,10 +64,12 @@ function toggle3D(status){
 
 // Check DISCOIN transaction
 function checkTransaction(){
+	document.getElementById("loading-transaction").style.display = "block";
 	var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         alert(this.responseText);
+		document.getElementById("loading-transaction").style.display = "none";
       }
     };
 	xhttp.open('GET', 'ajax/transaction.php', true);
