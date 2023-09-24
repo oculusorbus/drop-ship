@@ -88,7 +88,7 @@ while(!$flag) {
 		}
 	}
 	//if($counter == 24){
-		echo "The verification timed out. Please hit the verification button to try again.";
+		echo "The verification timed out. Please hit the verify transaction button to try again.";
 		exit;
 	//}
 	//sleep for 5 seconds
