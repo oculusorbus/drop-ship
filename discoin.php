@@ -44,7 +44,7 @@ $discoin_policy_id = "5612bee388219c1b76fd527ed0fa5aa1d28652838bcab4ee4ee63197";
 	//exit;
 	curl_close( $ch );
 	
-	$count = count($response[0]->outputs);
+	$count = count($response[0]->outputs)-1;
 	$ada = $response[0]->outputs[$count]->value;
 	$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
 	$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
