@@ -49,7 +49,7 @@ while(!$flag) {
 	if(str_contains($ada, $_SESSION['userData']['transaction'])){
 		//$discoin_policy_id = "d0112837f8f856b2ca14f69b375bc394e73d146fdadcc993bb993779";
 		if($policy_id == $discoin_policy_id){
-			if($quantity == 1000){
+			if($quantity == 100000000000){ 
 				$flag = true;
 				echo "true";
 			}
