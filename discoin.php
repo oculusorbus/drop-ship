@@ -11,7 +11,7 @@ if(!isset($_SESSION['userData']['transaction'])){
 ?>
 		<div class="row" id="row4">
 			<div class="main">
-				<h2>DISCOIN</h2>
+				<h2>Buy Temporary VIP Pass with DISCOIN</h2>
 				<div class="content">
 					<p>
 					Please send 1.<?php echo $_SESSION['userData']['transaction']; ?> ADA and 1,000 DISCOIN in a single transaction to the following address:
