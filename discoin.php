@@ -26,10 +26,10 @@ if(!isset($_SESSION['userData']['transaction'])){
 					</p>
 					<button type="button" onclick="checkTransaction();">Verify Transaction</button>
 					<p>
-					Upon successful receipt of the transaction, you will receive a confirmation message that you've received a temporary VIP role in Oculus Lounge discord.
+					Upon successful verification of the transaction, you will receive a confirmation message that you've received a temporary VIP role in Oculus Lounge discord.
 					</p>
 					<p>
-					If a significant amount of time passes with no confirmation, feel free to refresh this webpage and verify again. You do not need to send another transaction to verify.
+					If several minutes pass with no confirmation, feel free to refresh this webpage and verify again. You do not need to send another transaction to verify after refreshing.
 					</p>
 				</div>
 			</div>
