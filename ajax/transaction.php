@@ -39,6 +39,9 @@ while(!$flag) {
 		curl_close( $ch );
 
 		$count = count($response[0]->outputs)-1;
+		if($count == -1){
+			$count = 0;
+		}
 		$ada = $response[0]->outputs[$count]->value;
 		$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
 		$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
