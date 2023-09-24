@@ -94,6 +94,9 @@ while(!$flag) {
 				exit;
 			}
 		}
+		if($x == 1){
+			exit;
+		}
 		if($index >= 10){
 			break;
 		}
