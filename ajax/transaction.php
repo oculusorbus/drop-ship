@@ -22,7 +22,7 @@ while(!$flag) {
 
 	//$transaction_hash = $response[0]->tx_hash;
 
-	foreach($response AS &$index){
+	foreach($response AS $index => $value){
 		$ch = curl_init("https://api.koios.rest/api/v0/tx_info");
 		curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
 		curl_setopt( $ch, CURLOPT_POST, 1);
@@ -39,9 +39,18 @@ while(!$flag) {
 		curl_close( $ch );
 
 		$count = count($response[0]->outputs)-1;
-		$ada = $response[0]->outputs[$count]->value;
-		$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
-		$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
+		$ada = 0;
+		if(isset($response[0]->outputs[$count]->value)){
+			$ada = $response[0]->outputs[$count]->value;
+		}
+		$quantity = 0;
+		if(isset($response[0]->outputs[$count]->asset_list[0]->quantity)){
+			$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
+		}
+		$policy_id = 0;
+		if(isset($response[0]->outputs[$count]->asset_list[0]->policy_id)){
+			$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
+		}
 
 		//echo "ADA: ".$ada."<br>";
 		//echo "Qty: ".$quantity."<br>";
@@ -56,7 +65,7 @@ while(!$flag) {
 				}
 			}
 		}
-		if($index >= 10){
+		if($index >= 1){
 			break;
 		}
 	}
