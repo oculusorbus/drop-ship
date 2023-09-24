@@ -39,15 +39,18 @@ while(!$flag) {
 		//exit;
 		curl_close( $ch );
 		
-		if($x == 1){
-			print_r($tx_response);
-			exit;
-		}
+
 		
 		$count = 0;
 		if(isset($tx_response[0]->outputs)){
 			$count = count($tx_response[0]->outputs)-1;
 		}
+		
+		if($x == 1){
+			echo $count;
+			exit;
+		}
+		
 		$ada = "";
 		if(isset($tx_response[0]->outputs[$count]->value)){
 			$ada = $tx_response[0]->outputs[$count]->value;
