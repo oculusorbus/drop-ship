@@ -4,6 +4,8 @@ include 'webhooks.php';
 include 'dropship.php';
 include 'header.php';
 		
+		$discoin_policy_id = "5612bee388219c1b76fd527ed0fa5aa1d28652838bcab4ee4ee63197";
+		
 		if(!isset($_SESSION['userData']['transaction'])){
 			$six_digit_random_number = random_int(100000, 999999);
 			$_SESSION['userData']['transaction'] = $six_digit_random_number;
@@ -46,9 +48,22 @@ include 'header.php';
 		$quantity = $response[0]->inputs[1]->asset_list[0]->quantity;
 		$policy_id = $response[0]->inputs[1]->asset_list[0]->policy_id;
 		
-		echo "ADA: ".$ada."<br>";
-		echo "Qty: ".$quantity."<br>";
-		echo "PID: ".$policy_id."<br>";
+		//echo "ADA: ".$ada."<br>";
+		//echo "Qty: ".$quantity."<br>";
+		//echo "PID: ".$policy_id."<br>";
+		
+		$_SESSION['userData']['transaction'] = "189560";
+		if(str_contains($ada, $_SESSION['userData']['transaction'])){
+			echo "transaction";
+		}
+		
+		if($quantity == 1){
+			echo "quantity";
+		}
+		$discoin_policy_id = "d0112837f8f856b2ca14f69b375bc394e73d146fdadcc993bb993779";
+		if($policy_id == $discoin_policy_id){
+			echo "policy";
+		}
 		
 		?>
 		<div class="row" id="row4">
