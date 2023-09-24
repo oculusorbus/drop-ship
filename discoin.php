@@ -31,5 +31,11 @@
 		//exit;
 		curl_close( $ch );
 		
-		print_r($response);
+		$ada = $response[0]->inputs[1]->value;
+		$quantity = $response[0]->inputs[1]->asset_list[0]->quantity;
+		$policy_id = $response[0]->inputs[1]->asset_list[0]->policy_id;
+		
+		echo "ADA: ".$ada."<br>";
+		echo "Qty: ".$quantity."<br>";
+		echo "PID: ".$policy_id."<br>";
 ?>
