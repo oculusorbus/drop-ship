@@ -62,6 +62,18 @@ function toggle3D(status){
 	}
 }
 
+// Check DISCOIN transaction
+function checkTransaction(){
+	var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        alert(this.responseText);
+      }
+    };
+	xhttp.open('GET', 'ajax/transaction.php', true);
+	xhttp.send();
+}
+
 // Evaluate whether term is in results text
 function evaluateAudio(currentRound, terms) {
 	if(document.getElementById(currentRound).getElementsByTagName('h3')[0].innerHTML.includes(terms)){
