@@ -37,17 +37,17 @@ while(!$flag) {
 	//exit;
 	curl_close( $ch );
 
-	$ada = $response[0]->inputs[1]->value;
-	$quantity = $response[0]->inputs[1]->asset_list[0]->quantity;
-	$policy_id = $response[0]->inputs[1]->asset_list[0]->policy_id;
+	$count = count($response[0]->outputs)-1;
+	$ada = $response[0]->outputs[$count]->value;
+	$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
+	$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
 
 	//echo "ADA: ".$ada."<br>";
 	//echo "Qty: ".$quantity."<br>";
 	//echo "PID: ".$policy_id."<br>";
 
-	//$_SESSION['userData']['transaction'] = "189560";
+	$_SESSION['userData']['transaction'] = "187084";
 	if(str_contains($ada, $_SESSION['userData']['transaction'])){
-		//$discoin_policy_id = "d0112837f8f856b2ca14f69b375bc394e73d146fdadcc993bb993779";
 		if($policy_id == $discoin_policy_id){
 			if($quantity == 100000000000){ 
 				$flag = true;
