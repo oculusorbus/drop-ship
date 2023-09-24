@@ -28,7 +28,7 @@ if(!isset($_SESSION['userData']['transaction'])){
 					<p>
 					After successfully sending the transaction, please click this button to verify that it has been received with the correct amount.
 					</p>
-					<button type="button" onclick="checkTransaction();">Verify Transaction</button>
+					<button class="button" type="button" onclick="checkTransaction();">Verify Transaction</button>
 					<p>
 					Upon successful verification of the transaction, you will receive a confirmation message.
 					</p>
