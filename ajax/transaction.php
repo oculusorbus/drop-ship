@@ -22,7 +22,7 @@ while(!$flag) {
 
 	//$transaction_hash = $response[0]->tx_hash;
 
-	foreach($response AS $index){
+	foreach($response AS $index => $value){
 		$ch = curl_init("https://api.koios.rest/api/v0/tx_info");
 		curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
 		curl_setopt( $ch, CURLOPT_POST, 1);
