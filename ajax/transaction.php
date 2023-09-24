@@ -45,12 +45,6 @@ while(!$flag) {
 		if(isset($tx_response[0]->outputs)){
 			$count = count($tx_response[0]->outputs)-1;
 		}
-		
-		if($x == 1){
-			echo $count;
-			exit;
-		}
-		
 		$ada = "";
 		if(isset($tx_response[0]->outputs[$count]->value)){
 			$ada = $tx_response[0]->outputs[$count]->value;
@@ -63,6 +57,13 @@ while(!$flag) {
 		if(isset($tx_response[0]->outputs[$count]->asset_list[0]->policy_id)){
 			$policy_id = $tx_response[0]->outputs[$count]->asset_list[0]->policy_id;
 		}
+		
+		if($x == 1){
+			echo "ADA: ".$ada."<br>";
+			echo "Qty: ".$quantity."<br>";
+			echo "PID: ".$policy_id."<br>";
+		}
+		exit;
 
 		//echo "ADA: ".$ada."<br>";
 		//echo "Qty: ".$quantity."<br>";
