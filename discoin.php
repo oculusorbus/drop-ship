@@ -14,8 +14,6 @@
 		//exit;
 		curl_close( $ch );
 		
-		print_r($response);
-		
 		$transaction_hash = $response[0]["tx_hash"];
 
 		$ch = curl_init("https://api.koios.rest/api/v0/tx_info");
