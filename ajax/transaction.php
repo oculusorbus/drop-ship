@@ -20,39 +20,44 @@ while(!$flag) {
 	//exit;
 	curl_close( $ch );
 
-	$transaction_hash = $response[0]->tx_hash;
+	//$transaction_hash = $response[0]->tx_hash;
 
-	$ch = curl_init("https://api.koios.rest/api/v0/tx_info");
-	curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
-	curl_setopt( $ch, CURLOPT_POST, 1);
-	curl_setopt( $ch, CURLOPT_POSTFIELDS, '{"_tx_hashes":["'.$transaction_hash.'"]}');
-	curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt( $ch, CURLOPT_HEADER, 0);
-	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+	foreach($response AS $index){
+		$ch = curl_init("https://api.koios.rest/api/v0/tx_info");
+		curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+		curl_setopt( $ch, CURLOPT_POST, 1);
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, '{"_tx_hashes":["'.$response[$index]->tx_hash.'"]}');
+		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt( $ch, CURLOPT_HEADER, 0);
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 
-	$response = curl_exec( $ch );
-	// If you need to debug, or find out why you can't send message uncomment line below, and execute script.
-	$response = json_decode($response);
-	//print_r($response[0]->asset_list);
-	//exit;
-	curl_close( $ch );
+		$response = curl_exec( $ch );
+		// If you need to debug, or find out why you can't send message uncomment line below, and execute script.
+		$response = json_decode($response);
+		//print_r($response[0]->asset_list);
+		//exit;
+		curl_close( $ch );
 
-	$count = count($response[0]->outputs)-1;
-	$ada = $response[0]->outputs[$count]->value;
-	$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
-	$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
+		$count = count($response[0]->outputs)-1;
+		$ada = $response[0]->outputs[$count]->value;
+		$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
+		$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
 
-	//echo "ADA: ".$ada."<br>";
-	//echo "Qty: ".$quantity."<br>";
-	//echo "PID: ".$policy_id."<br>";
+		//echo "ADA: ".$ada."<br>";
+		//echo "Qty: ".$quantity."<br>";
+		//echo "PID: ".$policy_id."<br>";
 
-	//$_SESSION['userData']['transaction'] = "187084";
-	if(str_contains($ada, $_SESSION['userData']['transaction'])){
-		if($policy_id == $discoin_policy_id){
-			if($quantity == 100000000000){ 
-				$flag = true;
-				echo "true";
+		//$_SESSION['userData']['transaction'] = "187084";
+		if(str_contains($ada, $_SESSION['userData']['transaction'])){
+			if($policy_id == $discoin_policy_id){
+				if($quantity == 100000000000){ 
+					$flag = true;
+					echo "true";
+				}
 			}
+		}
+		if($index >= 10){
+			break;
 		}
 	}
 	//sleep for 5 seconds
