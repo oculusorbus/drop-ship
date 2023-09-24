@@ -45,11 +45,11 @@ while(!$flag) {
 	//echo "Qty: ".$quantity."<br>";
 	//echo "PID: ".$policy_id."<br>";
 
-	$_SESSION['userData']['transaction'] = "189560";
+	//$_SESSION['userData']['transaction'] = "189560";
 	if(str_contains($ada, $_SESSION['userData']['transaction'])){
-		$discoin_policy_id = "d0112837f8f856b2ca14f69b375bc394e73d146fdadcc993bb993779";
+		//$discoin_policy_id = "d0112837f8f856b2ca14f69b375bc394e73d146fdadcc993bb993779";
 		if($policy_id == $discoin_policy_id){
-			if($quantity == 1){
+			if($quantity == 1000){
 				$flag = true;
 				echo "true";
 			}
