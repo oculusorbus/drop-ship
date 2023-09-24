@@ -15,4 +15,23 @@
 		curl_close( $ch );
 		
 		print_r($response);
+		
+		$transaction_hash = $response[0]["tx_hash"];
+
+		$ch = curl_init("https://api.koios.rest/api/v0/tx_info");
+ 		curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+ 		curl_setopt( $ch, CURLOPT_POST, 1);
+ 		curl_setopt( $ch, CURLOPT_POSTFIELDS, '{"_tx_hashes":["'.$transaction_hash.'"]}');
+ 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+ 		curl_setopt( $ch, CURLOPT_HEADER, 0);
+ 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+		
+		$response = curl_exec( $ch );
+		// If you need to debug, or find out why you can't send message uncomment line below, and execute script.
+		$response = json_decode($response);
+		//print_r($response[0]->asset_list);
+		//exit;
+		curl_close( $ch );
+		
+		print_r($response);
 ?>
