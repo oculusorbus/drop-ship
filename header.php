@@ -40,7 +40,11 @@
 	      <img class="rounded-full" src="<?php echo $avatar_url?>" />
 		  <a href="https://discord.gg/DHbGU9ZDyG"><?php echo $name;?></a>
 		  <a class="navbar-first" href="dashboard.php">Dashboard</a>
-
+		  <?php
+    	  if($_SESSION["userData"]["project_id"] == 4){?>
+			<a href="discoin.php">Buy Temp VIP</a>  
+		  <?php }
+		  ?>
     	  <a href="dashboard.php#barracks"><?php echo evaluateText("Barracks");?></a>
     	  <a href="dashboard.php#armory"><?php echo evaluateText("Armory");?></a>
     	  <a href="battles.php"><?php echo evaluateText("Battles");?></a>
