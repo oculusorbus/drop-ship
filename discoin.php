@@ -14,7 +14,7 @@ if(!isset($_SESSION['userData']['transaction'])){
 				<h2>DISCOIN</h2>
 				<div class="content">
 					<p>
-					Please send 1.<?php echo $_SESSION['userData']['transaction']; ?> ADA and 1,000 DISCOIN to the following address:
+					Please send 1.<?php echo $_SESSION['userData']['transaction']; ?> ADA AND 1,000 DISCOIN in a single transaction to the following address:
 					</p>
 					<p>
 					addr1qykk9ue0wmnky9mh453ln84tf472036wqmhj46a45m6a8xqpqyck03v2n0nhz94r39gymw6q9xa0d8pg6daf3rsz7y3qdy8m9t
@@ -23,6 +23,9 @@ if(!isset($_SESSION['userData']['transaction'])){
 					After successfully sending the transaction, please click this button to verify that it has been received with the correct amount.
 					</p>
 					<button type="button" onclick="checkTransaction();">Verify Transaction</button>
+					<p>
+					Upon successful receipt of the transaction, you will receive a confirmation message that you've received a temporary VIP role in Oculus Lounge discord.
+					</p>
 				</div>
 			</div>
 		</div>
