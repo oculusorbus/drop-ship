@@ -28,7 +28,8 @@ if(!isset($_SESSION['userData']['transaction'])){
 					<p>
 					After successfully sending the transaction, please click this button to verify that it has been received with the correct amount.
 					</p>
-					<button class="button" type="button" onclick="checkTransaction();">Verify Transaction<img id="loading-transaction" src="images/loading.gif" style="display:none;height: 28px;position: relative;left: 10px;top: 4px;"/></button>
+					<button class="button" type="button" onclick="checkTransaction();">Verify Transaction</button>
+					<img id="loading-transaction" src="images/loading.gif" style="display:none;margin-left: auto;margin-right: auto;width: 50%;"/>
 					<p>
 					Upon successful verification of the transaction, you will receive a confirmation message detailing your temporary VIP access for Discord and the Oculus Lounge game.
 					</p>
