@@ -42,7 +42,7 @@
 		  <a class="navbar-first" href="dashboard.php">Dashboard</a>
 		  <?php
     	  if($_SESSION["userData"]["project_id"] == 4){?>
-			<a class="navbar-first" href="discoin.php">Buy Temp VIP Pass</a>  
+			<a href="discoin.php">Buy Temp VIP Pass</a>  
 		  <?php }
 		  ?>
     	  <a href="dashboard.php#barracks"><?php echo evaluateText("Barracks");?></a>
