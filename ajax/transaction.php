@@ -38,8 +38,11 @@ while(!$flag) {
 		//print_r($response[0]->asset_list);
 		//exit;
 		curl_close( $ch );
-
-		$count = count($response[0]->outputs)-1;
+		
+		$count = 0;
+		if(isset($response[0]->outputs)){
+			$count = count($response[0]->outputs)-1;
+		}
 		$ada = "";
 		if(isset($response[0]->outputs[$count]->value)){
 			$ada = $response[0]->outputs[$count]->value;
