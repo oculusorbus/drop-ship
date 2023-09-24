@@ -4,7 +4,7 @@ include 'webhooks.php';
 include 'dropship.php';
 include 'header.php';
 		
-		if(isset($_SESSION['userData']['transaction'])){
+		if(!isset($_SESSION['userData']['transaction'])){
 			$six_digit_random_number = random_int(100000, 999999);
 			$_SESSION['userData']['transaction'] = $six_digit_random_number;
 		}
