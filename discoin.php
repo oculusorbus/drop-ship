@@ -45,5 +45,4 @@ if(!isset($_SESSION['userData']['transaction'])){
 $conn->close();
 ?>
 <script type="text/javascript" src="dropship.js"></script>
-<script>document.getElementById("results-image").style.backgroundImage = "url('<?php echo $prefix; ?>images/dropship.jpg')";</script>
 </html>

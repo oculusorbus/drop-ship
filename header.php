@@ -55,3 +55,8 @@
 		  <a href="logout.php">Logout</a>
 		</div>
 		<button onclick="topFunction()" id="back-to-top-button" title="Go to top">^</button>
+<?php 
+if($_SESSION['userData']['project_id'] == 4){?>
+	<script type='text/javascript'>document.body.style.backgroundImage = "url('/oculus-lounge/oculusloungebackground.png')";</script>
+<?php }
+?>
