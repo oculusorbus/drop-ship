@@ -41,6 +41,7 @@ while(!$flag) {
 		
 		if($x == 1){
 			print_r($tx_response);
+			exit;
 		}
 		
 		$count = 0;
