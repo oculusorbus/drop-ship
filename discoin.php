@@ -26,6 +26,9 @@ if(!isset($_SESSION['userData']['transaction'])){
 					<p>
 					Upon successful receipt of the transaction, you will receive a confirmation message that you've received a temporary VIP role in Oculus Lounge discord.
 					</p>
+					<p>
+					If a significant amount of time passes with no confirmation, feel free to refresh this webpage and verify again. You do not need to send another transaction to verify.
+					</p>
 				</div>
 			</div>
 		</div>
