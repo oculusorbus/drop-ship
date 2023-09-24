@@ -16,7 +16,7 @@
 		
 		//$transaction_hash = $response[0]["tx_hash"];
 		
-		print_r($response[0]);
+		print_r($response[0]->tx_hash);
 		//echo $transaction_hash;
 		exit;
 		
