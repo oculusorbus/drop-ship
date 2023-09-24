@@ -9,11 +9,7 @@ if(!isset($_SESSION['userData']['transaction'])){
 	$six_digit_random_number = random_int(200000, 999999);
 	$_SESSION['userData']['transaction'] = $six_digit_random_number;
 }
-
-// Assign VIP role
-assignRole($_SESSION['userData']['discord_id'], "966399108011163678");
-// Assign Disco VIP role
-assignRole($_SESSION['userData']['discord_id'], "966399671184556052");
+print_r($_SESSION['userData']);
 ?>
 		<div class="row" id="row4">
 			<div class="main">
