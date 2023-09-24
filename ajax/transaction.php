@@ -1,5 +1,6 @@
 <?php
 include '../webhooks.php';
+include '../role.php';
 session_start();
 
 $discoin_policy_id = "5612bee388219c1b76fd527ed0fa5aa1d28652838bcab4ee4ee63197";
