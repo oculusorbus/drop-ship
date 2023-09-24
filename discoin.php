@@ -53,7 +53,7 @@ $discoin_policy_id = "5612bee388219c1b76fd527ed0fa5aa1d28652838bcab4ee4ee63197";
 	echo "Qty: ".$quantity."<br>";
 	echo "PID: ".$policy_id."<br>";
 	
-	print_r($response);
+	//print_r($response);
 
 	$_SESSION['userData']['transaction'] = "187014";
 	if(str_contains($ada, $_SESSION['userData']['transaction'])){
