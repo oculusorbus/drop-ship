@@ -48,11 +48,13 @@ $discoin_policy_id = "5612bee388219c1b76fd527ed0fa5aa1d28652838bcab4ee4ee63197";
 	$quantity = $response[0]->inputs[1]->asset_list[0]->quantity;
 	$policy_id = $response[0]->inputs[1]->asset_list[0]->policy_id;
 
-	echo "ADA: ".$ada."<br>";
-	echo "Qty: ".$quantity."<br>";
-	echo "PID: ".$policy_id."<br>";
+	//echo "ADA: ".$ada."<br>";
+	//echo "Qty: ".$quantity."<br>";
+	//echo "PID: ".$policy_id."<br>";
+	
+	print_r($response);
 
-	//$_SESSION['userData']['transaction'] = "189560";
+	$_SESSION['userData']['transaction'] = "187014";
 	if(str_contains($ada, $_SESSION['userData']['transaction'])){
 		//$discoin_policy_id = "d0112837f8f856b2ca14f69b375bc394e73d146fdadcc993bb993779";
 		if($policy_id == $discoin_policy_id){
