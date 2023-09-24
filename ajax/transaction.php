@@ -63,7 +63,6 @@ while(!$flag) {
 			echo "ADA: ".$ada."<br>";
 			echo "Qty: ".$quantity."<br>";
 			echo "PID: ".$policy_id."<br>";
-			exit;
 		}
 
 		//echo "ADA: ".$ada."<br>";
@@ -77,7 +76,22 @@ while(!$flag) {
 				if($quantity == 100000000000){ 
 					$flag = true;
 					echo "true";
+				}else{
+					if($x == 1){
+						echo "quantity failed";
+						exit;
+					}
 				}
+			}else{
+				if($x == 1){
+					echo "policy failed";
+					exit;
+				}
+			}
+		}else{
+			if($x == 1){
+				echo "ADA failed";
+				exit;
 			}
 		}
 		if($index >= 10){
