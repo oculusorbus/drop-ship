@@ -57,13 +57,6 @@ while(!$flag) {
 		if(isset($tx_response[0]->outputs[$count]->asset_list[0]->policy_id)){
 			$policy_id = $tx_response[0]->outputs[$count]->asset_list[0]->policy_id;
 		}
-		
-		if($x == 1){
-//			print_r($tx_response[0]->outputs[$count]);
-			echo "ADA: ".$ada."<br>";
-			echo "Qty: ".$quantity."<br>";
-			echo "PID: ".$policy_id."<br>";
-		}
 
 		//echo "ADA: ".$ada."<br>";
 		//echo "Qty: ".$quantity."<br>";
