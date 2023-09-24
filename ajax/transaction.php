@@ -39,15 +39,15 @@ while(!$flag) {
 		curl_close( $ch );
 
 		$count = count($response[0]->outputs)-1;
-		$ada = 0;
+		$ada = "";
 		if(isset($response[0]->outputs[$count]->value)){
 			$ada = $response[0]->outputs[$count]->value;
 		}
-		$quantity = 0;
+		$quantity = "";
 		if(isset($response[0]->outputs[$count]->asset_list[0]->quantity)){
 			$quantity = $response[0]->outputs[$count]->asset_list[0]->quantity;
 		}
-		$policy_id = 0;
+		$policy_id = "";
 		if(isset($response[0]->outputs[$count]->asset_list[0]->policy_id)){
 			$policy_id = $response[0]->outputs[$count]->asset_list[0]->policy_id;
 		}
