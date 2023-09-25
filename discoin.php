@@ -23,9 +23,9 @@ if(!isset($_SESSION['userData']['transaction'])){
 					Please send 1.<?php echo $_SESSION['userData']['transaction']; ?> ADA and 1,000 DISCOIN in a single transaction to the following address:
 					</p>
 					<p>
-					$tiddies<br><br>
-					OR<br><br>
-					addr1q9spjm8huu3svyh286wcrfs8hvv2pa0rlewk5zsj308wwduf9vr444v7z8xktt4l5z20f6dv2yujs9z6gc3hxzqjunqsrl06ny
+					$tiddies</p>
+					<p>OR</p>
+					<p>addr1q9spjm8huu3svyh286wcrfs8hvv2pa0rlewk5zsj308wwduf9vr444v7z8xktt4l5z20f6dv2yujs9z6gc3hxzqjunqsrl06ny</p>
 					</p>
 					<p>
 					After successfully sending the transaction, please click this button to verify that it has been received with the correct amount.
