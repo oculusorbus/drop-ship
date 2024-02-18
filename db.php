@@ -1916,15 +1916,42 @@ function logBalances($conn) {
 	if ($result->num_rows > 0) {
 	  // output data of each row
 		$counter = 0;
+		$previous_score = 0;
 		while($row = $result->fetch_assoc()) {
-			$counter++;
+			// If previous player score is not equal to current player score, advance counter. Since player score will never be zero, counter advances for winning player. This logic ensures that ties do not receive SCRIP.
+			if($previous_score != $row["score"]){
+				$counter++;
+			}
 			// Check to see if score position is greater than counter. This ensures prize winners don't get $SCRIP rewards.
 			if($counter > $row["prizes"]){
 				logBalance($conn, $row["user_id"], $row["score"]);
 				logCredit($conn, $row["user_id"], $row["id"], $row["score"]);
 			}else{
 				logCredit($conn, $row["user_id"], $row["id"], 0);
+				
+				// CURL request to update Skulliance DB with DREAD allocations for winners
+				if($_SESSION['userData']['project_id'] == 1){
+					// set post fields
+					$post = [
+					    'discord_id' => $row["discord_id"],
+					    'rank' => $counter
+					];
+
+					$ch = curl_init('http://www.skulliance.io/testing/db.php');
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+
+					// execute!
+					$response = curl_exec($ch);
+
+					// close the connection, release resources used
+					curl_close($ch);
+
+					// do anything you want with your response
+					var_dump($response);
+				}
 			}
+			$previous_score = $row["score"];
 		}
 	} else {
 	  //echo "0 results";
