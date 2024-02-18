@@ -1910,7 +1910,7 @@ function deactivateGame($conn) {
 
 // Log balances for players for current game that is being deactivated
 function logBalances($conn) {
-	$sql = "SELECT results.id, results.game_id, results.user_id, results.score, users.username, games.prizes FROM results INNER JOIN users ON results.user_id=users.id INNER JOIN games ON results.game_id = games.id WHERE game_id='".$_SESSION['userData']['game_id']."' AND results.project_id = '".$_SESSION['userData']['project_id']."' ORDER BY results.score DESC";
+	$sql = "SELECT results.id, results.game_id, results.user_id, results.score, users.username, users.discord_id, games.prizes FROM results INNER JOIN users ON results.user_id=users.id INNER JOIN games ON results.game_id = games.id WHERE game_id='".$_SESSION['userData']['game_id']."' AND results.project_id = '".$_SESSION['userData']['project_id']."' ORDER BY results.score DESC";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
