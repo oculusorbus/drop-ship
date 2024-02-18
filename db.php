@@ -1948,7 +1948,7 @@ function logBalances($conn) {
 					curl_close($ch);
 
 					// do anything you want with your response
-					var_dump($response);
+					// var_dump($response);
 				}
 			}
 			$previous_score = $row["score"];
