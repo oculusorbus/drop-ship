@@ -1908,8 +1908,6 @@ function deactivateGame($conn) {
 	}
 }
 
-echo $_SERVER['REQUEST_URI'];
-
 // Log balances for players for current game that is being deactivated
 function logBalances($conn) {
 	$sql = "SELECT results.id, results.game_id, results.user_id, results.score, users.username, users.discord_id, games.prizes FROM results INNER JOIN users ON results.user_id=users.id INNER JOIN games ON results.game_id = games.id WHERE game_id='".$_SESSION['userData']['game_id']."' AND results.project_id = '".$_SESSION['userData']['project_id']."' ORDER BY results.score DESC";
@@ -1931,15 +1929,15 @@ function logBalances($conn) {
 			}else{
 				logCredit($conn, $row["user_id"], $row["id"], 0);
 				
-				// CURL request to update Skulliance DB with DREAD allocations for winners
-				if($_SESSION['userData']['project_id'] == 1){
+				// CURL request to update Skulliance DB with DREAD allocations for winners, only execute on live Drop Ship
+				if($_SESSION['userData']['project_id'] == 1 && $_SERVER['REQUEST_URI'] != '/test/drop-ship/dashboard.php'){
 					// set post fields
 					$post = [
 					    'discord_id' => $row["discord_id"],
 					    'rank' => $counter
 					];
 
-					$ch = curl_init('http://www.skulliance.io/testing/db.php');
+					$ch = curl_init('http://www.skulliance.io/staking/db.php');
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 					curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 
