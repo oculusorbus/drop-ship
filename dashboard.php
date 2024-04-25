@@ -189,54 +189,57 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 						$nfts = $metadata->$policy_id;
 						print_r($nfts);
 						exit;
-						$nft_data = $nft->$asset_name;
-						$ipfs = substr($nft_data->image, 7, strlen($nft_data->image));
-						if($_SESSION['userData']['project_id'] == 1){
-							$ranks[$nft_data->Rank] = true;
-						}
-						//$armor[$nft_data->Armor] = true;
-						//$gear[$nft_data->Gear] = true;
-						// Account for NFT with NaN value for asset name
-						if($asset_name == "NaN"){
-							$nft_data->AssetName = "DROPSHIP012";
-						}else{
-							$nft_data->AssetName = $asset_name;
-						}
-						//renderNFT($nft_data, $ipfs);
-						/* Removing to rely on database now
-						if($_SESSION['userData']['project_id'] != 1){
-							$_SESSION['userData']['nfts'][] = $nft_data;
-						}*/
-						$asset_names[] = $nft_data->AssetName;
-						if(!checkSoldier($conn, $nft_data->AssetName)){
-							// Soldier doesn't exist, create soldier
-							if($_SESSION['userData']['project_id'] != 1){
-								$armor_weight["Base"] = 0;
-								$armor_weight["Light"] = 2;
-								$armor_weight["Medium"] = 4;
-								$armor_weight["Heavy"] = 6;
-								$gear_weight["None"] = 1;
-								$gear_weight["Melee"] = 2;
-								$gear_weight["Demolition"] = 3;
-								$gear_weight["Medkit"] = 4;
-								$armor = array("Heavy", "Medium", "Light", "Base");
-								$gear = array("None", "Melee", "Demolition", "Medkit");
-								$armor_random = rand(0,3);
-								$gear_random = rand(0,3);
-								$armor_final = $armor[$armor_random];
-								$gear_final = $gear[$gear_random];
-								$level = $armor_weight[$armor_final] + $gear_weight[$gear_final];
-								if(!isset($nft_data->summary)){
-									$nft_data->summary = null;
-								}
-								if($_SESSION['userData']['project_id'] == 2 || $_SESSION['userData']['project_id'] == 3){
-									$rank = "Henchmen";
-								}else if($_SESSION['userData']['project_id'] == 4){
-									$rank = "Neo Miami Citizen";
-								}
-								createSoldier($conn, $nft_data->AssetName, $nft_data->name, $nft_data->summary, $rank, $armor_final, $gear_final, $level, $ipfs);
+						foreach($nfts AS $nft){
+							$nft = $nft->$policy_id;
+							$nft_data = $nft->$asset_name;
+							$ipfs = substr($nft_data->image, 7, strlen($nft_data->image));
+							if($_SESSION['userData']['project_id'] == 1){
+								$ranks[$nft_data->Rank] = true;
 							}
-						} // End if
+							//$armor[$nft_data->Armor] = true;
+							//$gear[$nft_data->Gear] = true;
+							// Account for NFT with NaN value for asset name
+							if($asset_name == "NaN"){
+								$nft_data->AssetName = "DROPSHIP012";
+							}else{
+								$nft_data->AssetName = $asset_name;
+							}
+							//renderNFT($nft_data, $ipfs);
+							/* Removing to rely on database now
+							if($_SESSION['userData']['project_id'] != 1){
+								$_SESSION['userData']['nfts'][] = $nft_data;
+							}*/
+							$asset_names[] = $nft_data->AssetName;
+							if(!checkSoldier($conn, $nft_data->AssetName)){
+								// Soldier doesn't exist, create soldier
+								if($_SESSION['userData']['project_id'] != 1){
+									$armor_weight["Base"] = 0;
+									$armor_weight["Light"] = 2;
+									$armor_weight["Medium"] = 4;
+									$armor_weight["Heavy"] = 6;
+									$gear_weight["None"] = 1;
+									$gear_weight["Melee"] = 2;
+									$gear_weight["Demolition"] = 3;
+									$gear_weight["Medkit"] = 4;
+									$armor = array("Heavy", "Medium", "Light", "Base");
+									$gear = array("None", "Melee", "Demolition", "Medkit");
+									$armor_random = rand(0,3);
+									$gear_random = rand(0,3);
+									$armor_final = $armor[$armor_random];
+									$gear_final = $gear[$gear_random];
+									$level = $armor_weight[$armor_final] + $gear_weight[$gear_final];
+									if(!isset($nft_data->summary)){
+										$nft_data->summary = null;
+									}
+									if($_SESSION['userData']['project_id'] == 2 || $_SESSION['userData']['project_id'] == 3){
+										$rank = "Henchmen";
+									}else if($_SESSION['userData']['project_id'] == 4){
+										$rank = "Neo Miami Citizen";
+									}
+									createSoldier($conn, $nft_data->AssetName, $nft_data->name, $nft_data->summary, $rank, $armor_final, $gear_final, $level, $ipfs);
+								}
+							} // End if
+						} // End foreach
 					} // End foreach
 				}// End if
 				} // End foreach
