@@ -182,6 +182,8 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 							if($_SESSION['userData']['project_id'] != 1){
 								$_SESSION['userData']['nfts'][] = $nft_data;
 							}*/
+							print_r($nft_data);
+							exit;
 							$asset_names[] = $nft_data->AssetName;
 							if(!checkSoldier($conn, $nft_data->AssetName)){
 								// Soldier doesn't exist, create soldier
