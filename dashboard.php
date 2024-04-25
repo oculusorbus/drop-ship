@@ -157,6 +157,8 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 					curl_setopt( $tokench, CURLOPT_RETURNTRANSFER, 1);
 					$tokenresponse = curl_exec( $tokench );
 					$tokenresponse = json_decode($tokenresponse);
+					print_r($tokenresponse);
+					exit;
 					curl_close( $tokench );
 					if(isset($tokenresponse[0])){
 						foreach($tokenresponse[0]->minting_tx_metadata AS $metadata){
@@ -182,7 +184,6 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 							if($_SESSION['userData']['project_id'] != 1){
 								$_SESSION['userData']['nfts'][] = $nft_data;
 							}*/
-							print_r($nft_data);
 							$asset_names[] = $nft_data->AssetName;
 							if(!checkSoldier($conn, $nft_data->AssetName)){
 								// Soldier doesn't exist, create soldier
