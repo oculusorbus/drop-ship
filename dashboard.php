@@ -148,6 +148,8 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 		
 	
 		$_SESSION['userData']['nfts'] = array();
+		print_r($response);
+		exit;
 	    if(isset($response)){
 			$asset_names = array();
 			$counter = 0;
