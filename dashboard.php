@@ -145,6 +145,8 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 		//print_r($response[0]->asset_list);
 		//exit;
 		curl_close( $ch );
+		
+		print_r($response);
 	
 		$_SESSION['userData']['nfts'] = array();
 	    if(isset($response[0])){
