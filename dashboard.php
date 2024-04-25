@@ -180,9 +180,9 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 			if(is_array($tokenresponse)){
 				foreach($tokenresponse AS $index => $tokenresponsedata){		
 				if(isset($tokenresponsedata->minting_tx_metadata)){
-					foreach($tokenresponsedata->minting_tx_metadata AS $policy_id => $metadata){
+					foreach($tokenresponsedata->minting_tx_metadata AS $index => $metadata){
 						$counter++;
-						//$policy_id = $token->policy_id;
+						$policy_id = $token->policy_id;
 						$asset_name = $tokenresponsedata->asset_name_ascii;
 						$nfts = $metadata->$policy_id;
 						foreach($nfts AS $nft){
