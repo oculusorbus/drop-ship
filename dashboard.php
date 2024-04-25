@@ -146,95 +146,121 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 		//exit;
 		curl_close( $ch );
 		
+		
+		
 		$_SESSION['userData']['nfts'] = array();
-	    if(isset($response)){
+		if(is_array($response)){
+	    if(isset($response[0])){
 			$asset_names = array();
 			$counter = 0;
-			foreach($response AS $index => $token){
-				if($token->policy_id == $policy_id){
-					$tokench = curl_init("https://api.koios.rest/api/v1/asset_info?_asset_policy=".$token->policy_id."&_asset_name=".$token->asset_name);
-					curl_setopt( $tokench, CURLOPT_RETURNTRANSFER, 1);
-					$tokenresponse = curl_exec( $tokench );
-					$tokenresponse = json_decode($tokenresponse);
-					curl_close( $tokench );
-					if(isset($tokenresponse[0])){
-						foreach($tokenresponse[0]->minting_tx_metadata AS $metadata){
-							$counter++;
-							$policy_id = $token->policy_id;
-							$asset_name = $tokenresponse[0]->asset_name_ascii;
-							$nft = $metadata->$policy_id;
-							$nft_data = $nft->$asset_name;
-							$ipfs = substr($nft_data->image, 7, strlen($nft_data->image));
-							if($_SESSION['userData']['project_id'] == 1){
-								$ranks[$nft_data->Rank] = true;
-							}
-							//$armor[$nft_data->Armor] = true;
-							//$gear[$nft_data->Gear] = true;
-							// Account for NFT with NaN value for asset name
-							if($asset_name == "NaN"){
-								$nft_data->AssetName = "DROPSHIP012";
-							}else{
-								$nft_data->AssetName = $asset_name;
-							}
-							//renderNFT($nft_data, $ipfs);
-							/* Removing to rely on database now
-							if($_SESSION['userData']['project_id'] != 1){
-								$_SESSION['userData']['nfts'][] = $nft_data;
-							}*/
-							$asset_names[] = $nft_data->AssetName;
-							if(!checkSoldier($conn, $nft_data->AssetName)){
-								// Soldier doesn't exist, create soldier
-								if($_SESSION['userData']['project_id'] != 1){
-									$armor_weight["Base"] = 0;
-									$armor_weight["Light"] = 2;
-									$armor_weight["Medium"] = 4;
-									$armor_weight["Heavy"] = 6;
-									$gear_weight["None"] = 1;
-									$gear_weight["Melee"] = 2;
-									$gear_weight["Demolition"] = 3;
-									$gear_weight["Medkit"] = 4;
-									$armor = array("Heavy", "Medium", "Light", "Base");
-									$gear = array("None", "Melee", "Demolition", "Medkit");
-									$armor_random = rand(0,3);
-									$gear_random = rand(0,3);
-									$armor_final = $armor[$armor_random];
-									$gear_final = $gear[$gear_random];
-									$level = $armor_weight[$armor_final] + $gear_weight[$gear_final];
-									if(!isset($nft_data->summary)){
-										$nft_data->summary = null;
-									}
-									if($_SESSION['userData']['project_id'] == 2 || $_SESSION['userData']['project_id'] == 3){
-										$rank = "Henchmen";
-									}else if($_SESSION['userData']['project_id'] == 4){
-										$rank = "Neo Miami Citizen";
-									}
-									createSoldier($conn, $nft_data->AssetName, $nft_data->name, $nft_data->summary, $rank, $armor_final, $gear_final, $level, $ipfs);
-								}
-							} // End if
-						} // End foreach
-					}// End if
-					if($_SESSION['userData']['project_id'] == 2){
-						if($counter >= 40){
-							$ranks["Mayor"] = true;
-						}else if($counter >= 30){
-							$ranks["Don"] = true;
-						}else if($counter >= 20){
-							$ranks["Capo"] = true;
-						}else if($counter >= 10){
-							$ranks["VIP"] = true;
-						}else if($counter >= 5){
-							$ranks["Patron"] = true;
-						}else if($counter >= 1){
-							$ranks["Henchmen"] = true;
+			$asset_list = array();
+			$asset_list["_asset_list"] = array();
+			foreach($response AS $index => $list){
+				foreach($list->asset_list AS $index => $token){
+					if($token->policy_id == $policy_id){
+						$asset_list["_asset_list"][$counter] = array();
+						$asset_list["_asset_list"][$counter][0] = $token->policy_id;
+						$asset_list["_asset_list"][$counter][1] = $token->asset_name;
+						$counter++;
+					
+					} // End if
+				} // End foreach
+			}
+			
+			$tokench = curl_init("https://api.koios.rest/api/v1/asset_info");
+			curl_setopt( $tokench, CURLOPT_HTTPHEADER, array('Content-type: application/json', 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyIjoic3Rha2UxdXlxc3p2dDhjazlmaGVtM3o2M2NqNXpkaGRxem53aGtuczVkeDc1YzNjcDB6Z3MwODR1OGoiLCJleHAiOjE3MzQ3MDc5OTUsInRpZXIiOjEsInByb2pJRCI6InNrdWxsaWFuY2UifQ.eYZU74nwkN_qD8uK0UIv9VLveZLXMfJHznvzPWmnrq0'));
+			curl_setopt( $tokench, CURLOPT_POST, 1);
+			curl_setopt( $tokench, CURLOPT_POSTFIELDS, json_encode($asset_list));
+			curl_setopt( $tokench, CURLOPT_FOLLOWLOCATION, 1);
+			curl_setopt( $tokench, CURLOPT_HEADER, 0);
+			curl_setopt( $tokench, CURLOPT_RETURNTRANSFER, 1);
+			
+			$tokenresponse = curl_exec( $tokench );
+			$tokenresponse = json_decode($tokenresponse);
+			curl_close( $tokench );
+			
+			if(is_array($tokenresponse)){
+				foreach($tokenresponse AS $index => $tokenresponsedata){		
+				if(isset($tokenresponse->minting_tx_metadata)){
+					foreach($tokenresponse->minting_tx_metadata AS $metadata){
+						$counter++;
+						$policy_id = $token->policy_id;
+						$asset_name = $tokenresponse[0]->asset_name_ascii;
+						$nft = $metadata->$policy_id;
+						$nft_data = $nft->$asset_name;
+						$ipfs = substr($nft_data->image, 7, strlen($nft_data->image));
+						if($_SESSION['userData']['project_id'] == 1){
+							$ranks[$nft_data->Rank] = true;
 						}
-					}else if($_SESSION['userData']['project_id'] == 4){
+						//$armor[$nft_data->Armor] = true;
+						//$gear[$nft_data->Gear] = true;
+						// Account for NFT with NaN value for asset name
+						if($asset_name == "NaN"){
+							$nft_data->AssetName = "DROPSHIP012";
+						}else{
+							$nft_data->AssetName = $asset_name;
+						}
+						//renderNFT($nft_data, $ipfs);
+						/* Removing to rely on database now
+						if($_SESSION['userData']['project_id'] != 1){
+							$_SESSION['userData']['nfts'][] = $nft_data;
+						}*/
+						$asset_names[] = $nft_data->AssetName;
+						if(!checkSoldier($conn, $nft_data->AssetName)){
+							// Soldier doesn't exist, create soldier
+							if($_SESSION['userData']['project_id'] != 1){
+								$armor_weight["Base"] = 0;
+								$armor_weight["Light"] = 2;
+								$armor_weight["Medium"] = 4;
+								$armor_weight["Heavy"] = 6;
+								$gear_weight["None"] = 1;
+								$gear_weight["Melee"] = 2;
+								$gear_weight["Demolition"] = 3;
+								$gear_weight["Medkit"] = 4;
+								$armor = array("Heavy", "Medium", "Light", "Base");
+								$gear = array("None", "Melee", "Demolition", "Medkit");
+								$armor_random = rand(0,3);
+								$gear_random = rand(0,3);
+								$armor_final = $armor[$armor_random];
+								$gear_final = $gear[$gear_random];
+								$level = $armor_weight[$armor_final] + $gear_weight[$gear_final];
+								if(!isset($nft_data->summary)){
+									$nft_data->summary = null;
+								}
+								if($_SESSION['userData']['project_id'] == 2 || $_SESSION['userData']['project_id'] == 3){
+									$rank = "Henchmen";
+								}else if($_SESSION['userData']['project_id'] == 4){
+									$rank = "Neo Miami Citizen";
+								}
+								createSoldier($conn, $nft_data->AssetName, $nft_data->name, $nft_data->summary, $rank, $armor_final, $gear_final, $level, $ipfs);
+							}
+						} // End if
+					} // End foreach
+				}// End if
+				} // End foreach
+				if($_SESSION['userData']['project_id'] == 2){
+					if($counter >= 40){
+						$ranks["Mayor"] = true;
+					}else if($counter >= 30){
+						$ranks["Don"] = true;
+					}else if($counter >= 20){
+						$ranks["Capo"] = true;
+					}else if($counter >= 10){
 						$ranks["VIP"] = true;
+					}else if($counter >= 5){
+						$ranks["Patron"] = true;
+					}else if($counter >= 1){
+						$ranks["Henchmen"] = true;
 					}
-				} // End if
-			} // End foreach
+				}else if($_SESSION['userData']['project_id'] == 4){
+					$ranks["VIP"] = true;
+				}
+
+			} // End if
 			updateSoldiers($conn, implode("', '", $asset_names));
 			//getSoldiers($conn, 0);
 		} // End if
+		} // End Outer if
 		$_SESSION['userData']['rank'] = "";
 		storeRank($ranks);
 	}
