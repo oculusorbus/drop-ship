@@ -180,13 +180,15 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 			if(is_array($tokenresponse)){
 				foreach($tokenresponse AS $index => $tokenresponsedata){		
 				if(isset($tokenresponsedata->minting_tx_metadata)){
-					foreach($tokenresponsedata->minting_tx_metadata AS $metadata){
+					foreach($tokenresponsedata->minting_tx_metadata AS $policy_id => $metadata){
 						print_r($metadata);
 						exit;
 						$counter++;
-						$policy_id = $token->policy_id;
+						//$policy_id = $token->policy_id;
 						$asset_name = $tokenresponsedata->asset_name_ascii;
-						$nft = $metadata->$policy_id;
+						$nfts = $metadata->$policy_id;
+						print_r($nfts);
+						exit;
 						$nft_data = $nft->$asset_name;
 						$ipfs = substr($nft_data->image, 7, strlen($nft_data->image));
 						if($_SESSION['userData']['project_id'] == 1){
