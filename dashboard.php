@@ -181,8 +181,6 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 				foreach($tokenresponse AS $index => $tokenresponsedata){		
 				if(isset($tokenresponsedata->minting_tx_metadata)){
 					foreach($tokenresponsedata->minting_tx_metadata AS $policy_id => $metadata){
-						print_r($metadata);
-						exit;
 						$counter++;
 						//$policy_id = $token->policy_id;
 						$asset_name = $tokenresponsedata->asset_name_ascii;
