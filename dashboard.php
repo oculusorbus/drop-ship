@@ -152,7 +152,7 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 			$counter = 0;
 			foreach($response AS $index => $token){
 				if($token->policy_id == $policy_id){
-					$tokench = curl_init("https://api.koios.rest/api/v1/policy_asset_info?_asset_policy=".$token->policy_id."&_asset_name=".$token->asset_name);
+					$tokench = curl_init("https://api.koios.rest/api/v1/asset_info?_asset_policy=".$token->policy_id."&_asset_name=".$token->asset_name);
 					curl_setopt( $tokench, CURLOPT_RETURNTRANSFER, 1);
 					$tokenresponse = curl_exec( $tokench );
 					$tokenresponse = json_decode($tokenresponse);
