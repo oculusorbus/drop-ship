@@ -184,8 +184,6 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 						$counter++;
 						$policy_id = $tokenresponsedata->policy_id;
 						$asset_name = $tokenresponsedata->asset_name_ascii;
-						print_r($metadata);
-						exit;
 						$nfts = $metadata->$policy_id;
 						foreach($nfts AS $nft){
 							$nft = $nft->$policy_id;
