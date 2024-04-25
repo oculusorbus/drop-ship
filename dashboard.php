@@ -151,9 +151,7 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 	    if(isset($response[0])){
 			$asset_names = array();
 			$counter = 0;
-			foreach($response[0] AS $index => $token){
-				print_r($token);
-				exit;
+			foreach($response[0] AS $token){
 				if($token->policy_id == $policy_id){
 					$tokench = curl_init("https://api.koios.rest/api/v1/asset_info?_asset_policy=".$token->policy_id."&_asset_name=".$token->asset_name);
 					curl_setopt( $tokench, CURLOPT_RETURNTRANSFER, 1);
