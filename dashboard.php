@@ -180,7 +180,7 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 			if(is_array($tokenresponse)){
 				foreach($tokenresponse AS $index => $tokenresponsedata){		
 				if(isset($tokenresponsedata->minting_tx_metadata)){
-					foreach($tokenresponsedata->minting_tx_metadata AS $metadata){
+						$metadata = $tokenresponsedata->minting_tx_metadata;
 						$counter++;
 						$policy_id = $token->policy_id;
 						$asset_name = $tokenresponsedata->asset_name_ascii;
@@ -233,7 +233,6 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 								createSoldier($conn, $nft_data->AssetName, $nft_data->name, $nft_data->summary, $rank, $armor_final, $gear_final, $level, $ipfs);
 							}
 						} // End if
-					} // End foreach
 				}// End if
 				} // End foreach
 				if($_SESSION['userData']['project_id'] == 2){
