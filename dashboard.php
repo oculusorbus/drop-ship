@@ -177,16 +177,13 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 			$tokenresponse = json_decode($tokenresponse);
 			curl_close( $tokench );
 			
-			print_r($tokenresponse);
-			exit;
-			
 			if(is_array($tokenresponse)){
 				foreach($tokenresponse AS $index => $tokenresponsedata){		
 				if(isset($tokenresponse->minting_tx_metadata)){
 					foreach($tokenresponse->minting_tx_metadata AS $metadata){
 						$counter++;
 						$policy_id = $token->policy_id;
-						$asset_name = $tokenresponse[0]->asset_name_ascii;
+						$asset_name = $tokenresponse->asset_name_ascii;
 						$nft = $metadata->$policy_id;
 						$nft_data = $nft->$asset_name;
 						$ipfs = substr($nft_data->image, 7, strlen($nft_data->image));
