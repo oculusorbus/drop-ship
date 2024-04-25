@@ -146,10 +146,7 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 		//exit;
 		curl_close( $ch );
 		
-	
 		$_SESSION['userData']['nfts'] = array();
-		print_r($response);
-		exit;
 	    if(isset($response)){
 			$asset_names = array();
 			$counter = 0;
@@ -159,6 +156,8 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 					curl_setopt( $tokench, CURLOPT_RETURNTRANSFER, 1);
 					$tokenresponse = curl_exec( $tokench );
 					$tokenresponse = json_decode($tokenresponse);
+					print_r($tokenresponse);
+					exit;
 					curl_close( $tokench );
 					if(isset($tokenresponse[0])){
 						foreach($tokenresponse[0]->minting_tx_metadata AS $metadata){
