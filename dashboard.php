@@ -151,7 +151,7 @@ if((isset($_SESSION['userData']['address']) && $address_changed == "true") || $p
 	    if(isset($response[0])){
 			$asset_names = array();
 			$counter = 0;
-			foreach($response[0] AS $token){
+			foreach($response AS $index => $token){
 				print_r($token);
 				exit;
 				if($token->policy_id == $policy_id){
