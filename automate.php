@@ -9,7 +9,9 @@ if(isset($argv)){
 if(isset($_GET['automate'])){	
 	$prefix = "drop-ship";
 	$_SESSION['userData']['project_id'] = 1;
+	
 	// Automatically end current game
+	checkGame($conn);
 	$title = "Game Over";
 	ob_start(); // Start output buffering
 	checkLeaderboard($conn, "true");
