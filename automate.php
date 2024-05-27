@@ -20,7 +20,7 @@ if(isset($_GET['automate'])){
 	deactivateGame($conn);
 
 	// Automatically create new game
-	createGame($conn, $_POST['name'], $_POST['prizes']);
+	createGame($conn, "1K, 500, 250 DREAD", 3);
 	$title = "New Game 1K, 500, 250 DREAD";
 	$description = "A new game of ".getProjectName($conn)." has been created.";
 	$imageurl = "https://www.madballs.net/".$prefix."/images/dropship.jpg";
