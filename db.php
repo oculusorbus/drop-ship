@@ -1930,7 +1930,7 @@ function logBalances($conn) {
 				logCredit($conn, $row["user_id"], $row["id"], 0);
 				
 				// CURL request to update Skulliance DB with DREAD allocations for winners, only execute on live Drop Ship
-				if($_SESSION['userData']['project_id'] == 1 && $_SERVER['REQUEST_URI'] != '/test/drop-ship/dashboard.php'){
+				if($_SESSION['userData']['project_id'] == 1 && !str_contains($_SERVER['REQUEST_URI'], "test")){
 					echo $_SERVER['REQUEST_URI'];
 					/*
 					// set post fields
