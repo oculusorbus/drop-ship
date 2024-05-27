@@ -1,13 +1,13 @@
 <?php
 include 'db.php';
-include 'dropship.php';
 include 'webhooks.php';
 
 if(isset($argv)){
 	parse_str(implode('&', array_slice($argv, 1)), $_GET);
 }
 // Validate cron job execution
-if(isset($_GET['automate'])){	
+if(isset($_GET['automate'])){
+	$project_id = 1;	
 	// Automatically end current game
 	$title = "Game Over";
 	ob_start(); // Start output buffering
@@ -16,7 +16,7 @@ if(isset($_GET['automate'])){
 	ob_end_clean(); // End buffering and clean up
 	$description = $list;
 	$imageurl = "https://www.madballs.net/".$prefix."/images/dropship.jpg";
-	discordmsg($title, evaluateText($description), $imageurl, $_SESSION['userData']['project_id']);
+	discordmsg($title, evaluateText($description), $imageurl, $project_id);
 	deactivateGame($conn);
 
 	// Automatically create new game
@@ -24,6 +24,6 @@ if(isset($_GET['automate'])){
 	$title = "New Game 1K, 500, 250 DREAD";
 	$description = "A new game of ".getProjectName($conn)." has been created.";
 	$imageurl = "https://www.madballs.net/".$prefix."/images/dropship.jpg";
-	discordmsg($title, $description, $imageurl, $_SESSION['userData']['project_id']);
+	discordmsg($title, $description, $imageurl, $project_id);
 }
 ?>
