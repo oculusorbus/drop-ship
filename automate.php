@@ -7,6 +7,7 @@ if(isset($argv)){
 }
 // Validate cron job execution
 if(isset($_GET['automate'])){	
+	$prefix = "drop-ship";
 	$_SESSION['userData']['project_id'] = 1;
 	// Automatically end current game
 	$title = "Game Over";
