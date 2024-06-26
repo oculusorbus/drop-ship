@@ -1930,14 +1930,18 @@ function logBalances($conn) {
 				logCredit($conn, $row["user_id"], $row["id"], 0);
 				
 				// CURL request to update Skulliance DB with DREAD allocations for winners, only execute on live Drop Ship
-				if($_SESSION['userData']['project_id'] == 1 && !str_contains($_SERVER['REQUEST_URI'], "test")){
+				if(($_SESSION['userData']['project_id'] == 1 || $_SESSION['userData']['project_id'] == 4)){
 					// set post fields
 					$post = [
 					    'discord_id' => $row["discord_id"],
-					    'rank' => $counter
+					    'rank' => $counter,
+						'project_id' => $_SESSION['userData']['project_id']
 					];
-
-					$ch = curl_init('http://www.skulliance.io/staking/db.php');
+					if(!str_contains($_SERVER['REQUEST_URI'], "test")){
+						$ch = curl_init('http://www.skulliance.io/staking/db.php');
+					}else{
+						$ch = curl_init('http://www.skulliance.io/testing/db.php');
+					}
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 					curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 
