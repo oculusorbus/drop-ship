@@ -1939,12 +1939,9 @@ function logBalances($conn) {
 					];
 					if(!str_contains($_SERVER['REQUEST_URI'], "test")){
 						$ch = curl_init('http://www.skulliance.io/staking/db.php');
-						echo 'http://www.skulliance.io/staking/db.php';
 					}else{
 						$ch = curl_init('http://www.skulliance.io/testing/db.php');
-						echo 'http://www.skulliance.io/testing/db.php';
 					}
-					exit;
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 					curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 
@@ -1955,7 +1952,7 @@ function logBalances($conn) {
 					curl_close($ch);
 
 					// do anything you want with your response
-					// var_dump($response);
+					var_dump($response);
 				}
 			}
 			$previous_score = $row["score"];
