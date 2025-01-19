@@ -14,6 +14,8 @@ if($_GET['project'] == "Drop Ship"){
 	$_SESSION['userData']['project_id'] = 3;
 }else if($_GET['project'] == "Oculus Lounge"){
 	$_SESSION['userData']['project_id'] = 4;
+}else{
+	$_SESSION['userData']['project_id'] = 1;
 }
 
 if(isset($_GET['ath'])){
