@@ -513,7 +513,7 @@ function getBattles($conn) {
 
 // Get participating NFT projects
 function getProjects($conn) {
-	$sql = "SELECT id, name FROM projects WHERE name != 'Filthy Mermaid'";
+	$sql = "SELECT id, name FROM projects WHERE name != 'Filthy Mermaid' AND name != 'Dread City'";
 	$result = $conn->query($sql);
 	$projects = array();
 	if ($result->num_rows > 0) {
