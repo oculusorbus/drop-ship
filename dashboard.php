@@ -411,7 +411,7 @@ if($_SESSION['userData']['project_id'] == 1){
 								</form>';
 							}else if($_SESSION['userData']['project_id'] == 3){ 
 								echo "<p><strong>You Must Have 5+ NFTs to Play</strong></p>";
-							}else if($_SESSION['userData']['project_id'] == 4){ 
+							}else if($_SESSION['userData']['project_id'] == 4 || $_SESSION["userData"]["discord_id"] = "788627790555643926"){ // Allows Papo VIP access
 									echo "<p><strong>You Must Have a VIP Token to Play or <a href='/discoin.php'>Purchase a Temporary VIP Pass with DISCOIN</a></strong></p>";
 							}else if($_SESSION['userData']['project_id'] != 3){ 
 								echo $play_button;
